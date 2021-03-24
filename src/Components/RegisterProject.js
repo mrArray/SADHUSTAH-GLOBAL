@@ -222,55 +222,55 @@ export default class RegisterProject extends Component {
                         <form className="form" id="kt_form">
                           {/*begin::Wizard Step 1*/}
                           <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                            <h3 className="mb-10 font-weight-bold text-dark">Setup Your Current Location</h3>
+                            <h3 className="mb-10 font-weight-bold text-dark">Setup Your Project Details</h3>
                             {/*begin::Input*/}
                             <div className="form-group">
-                              <label>Address Line 1</label>
-                              <input type="text" className="form-control form-control-solid form-control-lg" name="address1" placeholder="Address Line 1" defaultValue="Address Line 1" />
-                              <span className="form-text text-muted">Please enter your Address.</span>
+                              <label>Project Name</label>
+                              <input type="text" className="form-control form-control-solid form-control-lg" name="projectname" placeholder="Project Name" defaultValue="Project Name" />
+                              <span className="form-text text-muted">Please enter Project Name.</span>
                             </div>
                             {/*end::Input*/}
                             {/*begin::Input*/}
                             <div className="form-group">
-                              <label>Address Line 2</label>
-                              <input type="text" className="form-control form-control-solid form-control-lg" name="address2" placeholder="Address Line 2" defaultValue="Address Line 2" />
-                              <span className="form-text text-muted">Please enter your Address.</span>
+                              <label>Project Description</label>
+                              <textarea type="text" className="form-control form-control-solid form-control-lg" name="address2" placeholder="Project Description" defaultValue="Description" />
+                              <span className="form-text text-muted">Please enter Project Description.</span>
                             </div>
                             {/*end::Input*/}
                             <div className="row">
                               <div className="col-xl-6">
                                 {/*begin::Input*/}
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                   <label>Postcode</label>
                                   <input type="text" className="form-control form-control-solid form-control-lg" name="postcode" placeholder="Postcode" defaultValue={3000} />
                                   <span className="form-text text-muted">Please enter your Postcode.</span>
-                                </div>
+                                </div> */}
                                 {/*end::Input*/}
                               </div>
                               <div className="col-xl-6">
                                 {/*begin::Input*/}
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                   <label>City</label>
                                   <input type="text" className="form-control form-control-solid form-control-lg" name="city" placeholder="City" defaultValue="Melbourne" />
                                   <span className="form-text text-muted">Please enter your City.</span>
-                                </div>
+                                </div> */}
                                 {/*end::Input*/}
                               </div>
                             </div>
                             <div className="row">
                               <div className="col-xl-6">
                                 {/*begin::Input*/}
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                   <label>State</label>
                                   <input type="text" className="form-control form-control-solid form-control-lg" name="state" placeholder="State" defaultValue="VIC" />
                                   <span className="form-text text-muted">Please enter your State.</span>
-                                </div>
+                                </div> */}
                                 {/*end::Input*/}
                               </div>
-                              <div className="col-xl-6">
+                              <div className="col-xl-12">
                                 {/*begin::Select*/}
                                 <div className="form-group">
-                                  <label>Country</label>
+                                  <label>Project Type</label>
                                   <select name="country" className="form-control form-control-solid form-control-lg">
                                     <option value>Select</option>
                                     <option value="AF">Afghanistan</option>
@@ -529,6 +529,7 @@ export default class RegisterProject extends Component {
                             </div>
                           </div>
                           {/*end::Wizard Step 1*/}
+
                           {/*begin::Wizard Step 2*/}
                           <div className="pb-5" data-wizard-type="step-content">
                             <h4 className="mb-10 font-weight-bold text-dark">Enter the Details of your Delivery</h4>
