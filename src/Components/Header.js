@@ -38,10 +38,8 @@ class Header extends Component {
 
     logout = () => {
 
-
-        // localStorage.clear("user");
-        // this.setState({ navigate: true});
-        // window.location.reload("/");
+      // <Redirect to="/dashboard" push={true} />
+        window.location.reload("/");
     };
 
     render() {
@@ -66,9 +64,12 @@ class Header extends Component {
       {/*begin::Left*/}
       <div className="d-none d-lg-flex align-items-center mr-3">
         {/*begin::Logo*/}
-        <Link to="/dashboard" className="mr-20">
+        <Link onClick={this.logout}    to="/dashboard"            
+className="mr-20">
           <img alt="Logo" src="./assets/dist/assets/media/svg/illustrations/ecooo.png" className="max-h-35px" />
+
         </Link>
+
         {/*end::Logo*/}
         {/*begin::Tab Navs(for desktop mode)*/}
         <ul className="header-tabs nav align-self-end font-size-lg" role="tablist">
