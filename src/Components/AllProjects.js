@@ -32,7 +32,7 @@ export default class AllProjects extends Component {
           
           {/*begin::Entry*/}
           <div className="d-flex flex-column-fluid">
-          <div class="flex-row-auto offcanvas-mobile w-200px w-xxl-275px" id="kt_todo_aside">
+<div class="flex-row-auto offcanvas-mobile w-200px w-xxl-275px" id="kt_todo_aside">
 										{/*begin::Card*/}
 <div className="card card-custom card-stretch">
   {/*begin::Body*/}
@@ -117,7 +117,7 @@ export default class AllProjects extends Component {
                                   {/*end::Svg Icon*/}
                                 </span>
                               </span>
-                              <span className="navi-text font-weight-bolder font-size-lg">Completed Tasks</span>
+                              <span className="navi-text font-weight-bolder font-size-lg">All Tasks</span>
                             </a>
                           </div>
       

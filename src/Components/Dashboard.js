@@ -114,7 +114,7 @@ export default class Dashboard extends Component {
 
                           {/*begin:Item*/}
                           <div className="navi-item my-2">
-                            <a href="#" className="navi-link active">
+                            <Link to="/AssignTask" className="navi-link active">
                               <span className="navi-icon mr-4">
                                 <span className="svg-icon svg-icon-xl">
                                   {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-heart.svg*/}
@@ -131,12 +131,12 @@ export default class Dashboard extends Component {
                               <span className="navi-text font-weight-bolder font-size-lg">Assign Task</span>
                               <span className="navi-label">
                               </span>
-                            </a>
+                            </Link>
                           </div>
                           {/*end:Item*/}
                           {/*begin:Item*/}
                           <div className="navi-item my-2">
-                            <a href="#" className="navi-link">
+                            <Link to="/alltasks" className="navi-link">
                               <span className="navi-icon mr-4">
                                 <span className="svg-icon svg-icon-xl">
                                   {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Sending.svg*/}
@@ -150,8 +150,8 @@ export default class Dashboard extends Component {
                                   {/*end::Svg Icon*/}
                                 </span>
                               </span>
-                              <span className="navi-text font-weight-bolder font-size-lg">Completed Tasks</span>
-                            </a>
+                              <span className="navi-text font-weight-bolder font-size-lg">All Tasks</span>
+                            </Link>
                           </div>
                           {/*end:Item*/}
 
@@ -749,6 +749,7 @@ export default class Dashboard extends Component {
 
           
         </div>
+        <Footer />
       </div>
 
 
