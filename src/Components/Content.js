@@ -6,6 +6,7 @@ import RegisterProject from './RegisterProject';
 import Home from './Home';
 import AllProjects from './AllProjects';
 import Dashboard from './Dashboard';
+import AssignTask from './AssignTask';
 
 
 
@@ -41,6 +42,9 @@ const  Content = () => {
 
            <Route exact path="/" component={Dashboard}/>
            <Route  path="/Dashboard" component={Dashboard}/>
+
+           <Route exact path="/" component={AssignTask}/>
+           <Route  path="/AssignTask" component={AssignTask}/>
 
 
        </Switch>
