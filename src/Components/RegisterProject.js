@@ -196,7 +196,34 @@ export default class RegisterProject extends Component {
     });
 
     this.form.validateAll();
-  }
+
+   if (this.checkBtn.context._errors.length === 0) {
+    AuthLogin.RegisterProject(this.state.title, this.state.description,this.state.status,this.state.location,this.state.start_date,this.state.due_date)
+    .then(
+            () => {
+              this.props.history.push("/dashboard");
+              window.location.reload();
+            },
+                error => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+
+                    this.setState({
+                        loading: false,
+                        message: resMessage
+                    });
+                }
+            );
+        } else {
+            this.setState({
+                loading: false
+            });
+        }
+    }
 
   render() {
 
@@ -446,25 +473,31 @@ export default class RegisterProject extends Component {
 
 
                                     <button type="button" className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
-                                 
-                                    <button
-                           id="kt_form"  
-                              className="tn btn-success font-weight-bolder text-uppercase px-9 py-4"
-                                      data-wizard-type="step"
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                     <button  id="button"
+                                         className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
+                                         disabled={this.state.loading}
 
-                                      disabled={this.state.loading}
                                     >
-                                      {this.state.loading && (
-                                        <span className="spinner-border spinner-border-sm"></span>
-                                      )}
-                                      <span>Submit</span>
+                                       {this.state.loading && (
+                                            <span className="spinner-border spinner-border-sm"></span>
+                                        )}
+                                        <span>Submit</span>
                                     </button>
-                                 
-                                    <CheckButton
-                                      style={{ display: "none" }}
-                                      ref={c => {
+
+
+                                {this.state.message && (
+                                    <div className="form-group">
+                                        <div className="alert alert-danger" role="alert">
+                                            {this.state.message}
+                                        </div>
+                                    </div>
+                                )}
+                                <CheckButton
+                                    style={{ display: "none" }}
+                                    ref={c => {
                                         this.checkBtn = c;
-                                      }}
+                                    }}
                                     />
                                   </div>
                                 </div>

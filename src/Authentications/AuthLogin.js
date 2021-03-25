@@ -59,28 +59,28 @@ class AuthLogin {
   }
 
   
-//   RegisterProject(title,description,location,status,startDate,dueDate){
-//      return axios.post("https://ecological.chinikiguard.com/projects/api/create/",{
-//      title,
-//      description,
-//      location,
-//      status,
-//      startDate,
-//      dueDate,
-//   },
+  RegisterProject(title,description,location,status,startDate,dueDate){
+     return axios.post("https://ecological.chinikiguard.com/accounts/api/jwt/",{
+     title,
+     description,
+     location,
+     status,
+     startDate,
+     dueDate,
+  },
   
-//   { 
+  { 
     
     
-//     headers: { 
-//     'Authorization': `Basic ${token}`,
-//      'Access-Control-Allow-Origin': '*',
-//      'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
-//      'Access-Control-Allow-Credentials': true 
-//     }, 
-//   }   
-//   )
-// }
+    headers: { 
+    'Authorization': `Basic ${token}`,
+     'Access-Control-Allow-Origin': '*',
+     'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+     'Access-Control-Allow-Credentials': true 
+    }, 
+  }   
+  )
+}
 
   
   getCurrentUser() {
