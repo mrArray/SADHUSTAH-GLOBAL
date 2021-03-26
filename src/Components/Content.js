@@ -50,6 +50,8 @@ const  Content = () => {
            <Route exact path="/" component={Alltasks}/>
            <Route  path="/Alltasks" component={Alltasks}/>
 
+           
+
 
        </Switch>
 
