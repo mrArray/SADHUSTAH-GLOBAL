@@ -58,7 +58,7 @@ class AuthLogin {
     );
   }
 
-  
+  //this handle projects
   RegisterProject(title,description,location,status,start_date,due_date){
      return  axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
 
@@ -81,6 +81,34 @@ class AuthLogin {
     }, 
   }   
   )
+
+
+}
+//this handle Tasks
+RegisterTask(project,title,description,location,status,start_date,due_date,assigned_to){
+  return  axios.post("https://ecological.chinikiguard.com/projects/api/tasks/create/", {
+
+  project,
+  title,
+  description,
+  location,
+  assigned_to,
+  status,
+  start_date,
+  due_date,
+},
+
+{ 
+ 
+ 
+ headers: { 
+ 'Authorization': `Basic ${token}`,
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+  'Access-Control-Allow-Credentials': true 
+ }, 
+}   
+)
 }
 
   

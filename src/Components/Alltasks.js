@@ -13,7 +13,7 @@ export default class Alltasks extends Component {
   componentDidMount() {
     const script = document.createElement("script");
 
-    script.src = "././assets/dist/assets/dist/./assets/dist/assets/js/pages/custom/projects/list-datatable.js";
+    script.src = "././assets/dist/assets/dist/assets/js/pages/custom/projects/list-datatable.js";
     script.async = true;
 
 
@@ -125,7 +125,6 @@ export default class Alltasks extends Component {
                               {/*begin::Pic*/}
                               <div className="flex-shrink-0 mr-4">
                                 <div className="symbol symbol-circle symbol-lg-75">
-                                  <img src="./assets/dist/assets/media/project-logos/1.png" alt="image" />
                                 </div>
                               </div>
                               {/*end::Pic*/}
@@ -233,7 +232,6 @@ export default class Alltasks extends Component {
                               {/*begin::Pic*/}
                               <div className="flex-shrink-0 mr-4">
                                 <div className="symbol symbol-circle symbol-lg-75">
-                                  <img src="./assets/dist/assets/media/project-logos/2.png" alt="image" />
                                 </div>
                               </div>
                               {/*end::Pic*/}
@@ -346,7 +344,6 @@ export default class Alltasks extends Component {
                               {/*begin::Pic*/}
                               <div className="flex-shrink-0 mr-4">
                                 <div className="symbol symbol-circle symbol-lg-75">
-                                  <img src="./assets/dist/assets/media/project-logos/3.png" alt="image" />
                                 </div>
                               </div>
                               {/*end::Pic*/}
@@ -460,7 +457,6 @@ export default class Alltasks extends Component {
                               {/*begin::Pic*/}
                               <div className="flex-shrink-0 mr-4">
                                 <div className="symbol symbol-circle symbol-lg-75">
-                                  <img src="./assets/dist/assets/media/project-logos/5.png" alt="image" />
                                 </div>
                               </div>
                               {/*end::Pic*/}
@@ -568,7 +564,6 @@ export default class Alltasks extends Component {
                               {/*begin::Pic*/}
                               <div className="flex-shrink-0 mr-4">
                                 <div className="symbol symbol-circle symbol-lg-75">
-                                  <img src="./assets/dist/assets/media/project-logos/6.png" alt="image" />
                                 </div>
                               </div>
                               {/*end::Pic*/}
@@ -681,7 +676,6 @@ export default class Alltasks extends Component {
                               {/*begin::Pic*/}
                               <div className="flex-shrink-0 mr-4">
                                 <div className="symbol symbol-circle symbol-lg-75">
-                                  <img src="./assets/dist/assets/media/project-logos/7.png" alt="image" />
                                 </div>
                               </div>
                               {/*end::Pic*/}
@@ -793,7 +787,7 @@ export default class Alltasks extends Component {
             {/*begin::Header*/}
             <div className="d-flex align-items-center mt-5">
               <div className="symbol symbol-100 mr-5">
-                <div className="symbol-label" style={{ backgroundImage: 'url("./assets/dist/assets/media/users/300_21.jpg")' }} />
+                <div className="symbol-label" style={{ backgroundImage: 'url("assets/media/users/300_21.jpg")' }} />
                 <i className="symbol-badge bg-success" />
               </div>
               <div className="d-flex flex-column">
@@ -804,7 +798,7 @@ export default class Alltasks extends Component {
                     <span className="navi-link p-0 pb-2">
                       <span className="navi-icon mr-1">
                         <span className="svg-icon svg-icon-lg svg-icon-primary">
-                          {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/Communication/Mail-notification.svg*/}
+                          {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg*/}
                           <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                             <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                               <rect x={0} y={0} width={24} height={24} />
@@ -834,7 +828,7 @@ export default class Alltasks extends Component {
                   <div className="symbol symbol-40 bg-light mr-3">
                     <div className="symbol-label">
                       <span className="svg-icon svg-icon-md svg-icon-success">
-                        {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/General/Notification2.svg*/}
+                        {/*begin::Svg Icon | path:assets/media/svg/icons/General/Notification2.svg*/}
                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                           <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                             <rect x={0} y={0} width={24} height={24} />
@@ -860,7 +854,7 @@ export default class Alltasks extends Component {
                   <div className="symbol symbol-40 bg-light mr-3">
                     <div className="symbol-label">
                       <span className="svg-icon svg-icon-md svg-icon-warning">
-                        {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/Shopping/Chart-bar1.svg*/}
+                        {/*begin::Svg Icon | path:assets/media/svg/icons/Shopping/Chart-bar1.svg*/}
                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                           <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                             <rect x={0} y={0} width={24} height={24} />
@@ -887,7 +881,7 @@ export default class Alltasks extends Component {
                   <div className="symbol symbol-40 bg-light mr-3">
                     <div className="symbol-label">
                       <span className="svg-icon svg-icon-md svg-icon-danger">
-                        {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/Files/Selected-file.svg*/}
+                        {/*begin::Svg Icon | path:assets/media/svg/icons/Files/Selected-file.svg*/}
                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                           <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                             <polygon points="0 0 24 0 24 24 0 24" />
@@ -912,7 +906,7 @@ export default class Alltasks extends Component {
                   <div className="symbol symbol-40 bg-light mr-3">
                     <div className="symbol-label">
                       <span className="svg-icon svg-icon-md svg-icon-primary">
-                        {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/Communication/Mail-opened.svg*/}
+                        {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg*/}
                         <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                           <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                             <rect x={0} y={0} width={24} height={24} />
@@ -945,7 +939,7 @@ export default class Alltasks extends Component {
               <div className="d-flex align-items-center bg-light-warning rounded p-5 gutter-b">
                 <span className="svg-icon svg-icon-warning mr-5">
                   <span className="svg-icon svg-icon-lg">
-                    {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/Home/Library.svg*/}
+                    {/*begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg*/}
                     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                       <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                         <rect x={0} y={0} width={24} height={24} />
@@ -967,7 +961,7 @@ export default class Alltasks extends Component {
               <div className="d-flex align-items-center bg-light-success rounded p-5 gutter-b">
                 <span className="svg-icon svg-icon-success mr-5">
                   <span className="svg-icon svg-icon-lg">
-                    {/*begin::Svg Icon | path:./assets/dist/assets/media/svg/icons/Communication/Write.svg*/}
+                    {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Write.svg*/}
                     <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                       <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                         <rect x={0} y={0} width={24} height={24} />
@@ -1946,7 +1940,7 @@ export default class Alltasks extends Component {
                             <a href="#" className="text-dark-75 text-hover-primary font-weight-bold font-size-h6">You</a>
                           </div>
                           <div className="symbol symbol-circle symbol-40 ml-3">
-                            <img alt="Pic" src="./assets/dist/assets/media/users/300_21.jpg" />
+                            <img alt="Pic" src="assets/media/users/300_21.jpg" />
                           </div>
                         </div>
                         <div className="mt-2 rounded p-5 bg-light-primary text-dark-50 font-weight-bold font-size-lg text-right max-w-400px">Company BBQ to celebrate the last quater achievements and goals. Food and drinks provided</div>
@@ -1959,25 +1953,9 @@ export default class Alltasks extends Component {
                 </div>
                 {/*end::Body*/}
                 {/*begin::Footer*/}
-                <div className="card-footer align-items-center">
-                  {/*begin::Compose*/}
-                  <textarea className="form-control border-0 p-0" rows={2} placeholder="Type a message" defaultValue={""} />
-                  <div className="d-flex align-items-center justify-content-between mt-5">
-                    <div className="mr-3">
-                      <a href="#" className="btn btn-clean btn-icon btn-md mr-1">
-                        <i className="flaticon2-photograph icon-lg" />
-                      </a>
-                      <a href="#" className="btn btn-clean btn-icon btn-md">
-                        <i className="flaticon2-photo-camera icon-lg" />
-                      </a>
-                    </div>
-                    <div>
-                      <button type="button" className="btn btn-primary btn-md text-uppercase font-weight-bold chat-send py-2 px-6">Send</button>
-                    </div>
-                  </div>
-                  {/*begin::Compose*/}
-                </div>
-                {/*end::Footer*/}
+
+                <Footer/>
+                  {/*end::Footer*/}
               </div>
               {/*end::Card*/}
             </div>
@@ -2000,314 +1978,7 @@ export default class Alltasks extends Component {
         </div>
         {/*end::Scrolltop*/}
 
-        {/*begin::Demo Panel*/}
-        <div id="kt_demo_panel" className="offcanvas offcanvas-right p-10">
-          {/*begin::Header*/}
-          <div className="offcanvas-header d-flex align-items-center justify-content-between pb-7">
-            <h4 className="font-weight-bold m-0">Select A Demo</h4>
-            <a href="#" className="btn btn-xs btn-icon btn-light btn-hover-primary" id="kt_demo_panel_close">
-              <i className="ki ki-close icon-xs text-muted" />
-            </a>
-          </div>
-          {/*end::Header*/}
-          {/*begin::Content*/}
-          <div className="offcanvas-content">
-            {/*begin::Wrapper*/}
-            <div className="offcanvas-wrapper mb-5 scroll-pull">
-              <h5 className="font-weight-bold mb-4 text-center">Demo 1</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo1.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo1/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo1/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 2</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo2.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo2/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo2/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 3</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo3.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo3/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo3/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 4</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo4.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo4/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo4/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 5</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo5.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo5/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo5/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 6</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo6.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo6/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo6/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 7</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo offcanvas-demo-active">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo7.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo7/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo7/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 8</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo8.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo8/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo8/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 9</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo9.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo9/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo9/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 10</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo10.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo10/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo10/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 11</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo11.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo11/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo11/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 12</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo12.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo12/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo12/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 13</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo13.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="../../../../../demo13/dist" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">Default</a>
-                  <a href="https://preview.keenthemes.com/metronic/demo13/rtl/index.html" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow" target="_blank">RTL Version</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 14</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo14.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 15</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo15.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 16</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo16.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 17</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo17.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 18</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo18.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 19</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo19.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 20</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo20.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 21</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo21.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 22</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo22.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 23</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo23.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 24</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo24.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 25</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo25.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 26</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo26.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 27</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo27.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 28</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo28.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 29</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo29.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-              <h5 className="font-weight-bold mb-4 text-center">Demo 30</h5>
-              <div className="overlay rounded-lg mb-8 offcanvas-demo">
-                <div className="overlay-wrapper rounded-lg">
-                  <img src="./assets/dist/assets/media/demos/demo30.png" alt className="w-100" />
-                </div>
-                <div className="overlay-layer">
-                  <a href="#" className="btn btn-white btn-text-primary btn-hover-primary font-weight-boldest text-center min-w-75px shadow disabled opacity-90">Coming soon</a>
-                </div>
-              </div>
-            </div>
-            {/*end::Wrapper*/}
-            {/*begin::Purchase*/}
-            <div className="offcanvas-footer">
-              <a href="https://1.envato.market/EA4JP" target="_blank" className="btn btn-block btn-danger btn-shadow font-weight-bolder text-uppercase">Buy Metronic Now!</a>
-            </div>
-            {/*end::Purchase*/}
-          </div>
-          {/*end::Content*/}
-        </div>
-        {/*end::Demo Panel*/}
+       
       </div>
 
 

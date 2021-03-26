@@ -8,6 +8,8 @@ import { Redirect, Switch } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer'
 import Menu_Aside from "./Menu_Aside";
+import AuthLogin from "../Authentications/AuthLogin";
+
 
 
 
@@ -25,14 +27,28 @@ export default class AssignTask extends Component {
 
   constructor(props) {
     super(props);
-    this.handleLogin = this.handleLogin.bind(this);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+    this.handleRegisterTask = this.handleRegisterTask.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
+    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeStatus = this.onChangeStatus.bind(this)
+    this.onChangeLocation = this.onChangeLocation.bind(this)
+    this.onChangeStartDate = this.onChangeStartDate.bind(this)
+    this.onChangeDueDate = this.onChangeDueDate.bind(this)
+    this.onChangeAssignedTo = this.onChangeAssignedTo.bind(this)
+    this.onChangeProject = this.onChangeProject.bind(this)
 
+    
     this.state = {
-      username: "",
-      password: "",
+      project:"",
+      title: "",
+      description: "",
+      status: "",
+      location: "",
+      start_date: "",
+      due_date: "",
+      assigned_to:"",
       loading: false,
+      show: false,
       message: ""
     };
   }
@@ -47,33 +63,102 @@ export default class AssignTask extends Component {
   }
 
 
-  onChangeUsername(e) {
+  onChangeProject(e) {
     this.setState({
-      username: e.target.value
+      title: e.target.value
+    });
+  }
+  onChangeTitle(e) {
+    this.setState({
+      title: e.target.value
     });
   }
 
-  onChangePassword(e) {
+  onChangeDescription(e) {
     this.setState({
-      password: e.target.value
+      description: e.target.value
     });
   }
 
-  handleLogin(e) {
+  onChangeStatus(e) {
+    this.setState({
+      status: e.target.value
+    });
+  }
+  onChangeLocation(e) {
+    this.setState({
+      location: e.target.value
+    });
+  }
+  onChangeStartDate(e) {
+    this.setState({
+      start_date: e.target.value
+    });
+  }
+  onChangeDueDate(e) {
+    this.setState({
+      due_date: e.target.value
+    });
+  }
+  onChangeDueDate(e) {
+    this.setState({
+      due_date: e.target.value
+    });
+  }
+  onChangeAssignedTo(e){
+    this.setState({
+      assigned_to:e.target.value
+    });
+  }
+
+  
+
+  handleRegisterTask(e) {
     e.preventDefault();
 
+   
     this.setState({
       message: "",
-      loading: true
+      successful: false
     });
 
     this.form.validateAll();
 
+    if (this.checkBtn.context._errors.length === 0) {
+      AuthLogin.RegisterTask(
+        this.state.title,
+        this.state.description,
+        this.state.location,
+        this.state.status,
+        this.state.start_date,
+        this.state.due_date,
+        this.state.assigned_to
+      ).then(
+        response => {
+          this.setState({
+            message: response.data.detail,
+            successful: true
+          });
+          window.location = "/AssignTask"
+        },
 
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
 
-
+          this.setState({
+            successful: false,
+            message: resMessage,
+            loading: false
+          });
+        }
+      );
+    }
   }
-
 
   render() {
 

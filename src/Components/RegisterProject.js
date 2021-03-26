@@ -13,6 +13,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import { Redirect, Link, Router, Switch } from 'react-router-dom';
 import Menu_Aside from "./Menu_Aside";
+import Spinner from 'react-bootstrap/Spinner'
 
 
 
@@ -224,7 +225,8 @@ export default class RegisterProject extends Component {
 
           this.setState({
             successful: false,
-            message: resMessage
+            message: resMessage,
+            loading: false
           });
         }
       );
@@ -506,19 +508,20 @@ export default class RegisterProject extends Component {
 
                                     <button type="button" className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <button
-                                      className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
-                                      data-wizard-type="step-content"
-                                      disabled={this.state.loading}
+                                      
 
-                                    >
-                                      {this.state.loading && (
-                                        <span className="spinner-border spinner-border-sm"></span>
-                                      )}
-                                      <span>submit</span>
-                                    </button>
-
-
+                                          <Button id="kt_login_singin_form_submit_button"
+                                          className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
+                                          data-wizard-type="step-content"
+                                          disabled={this.state.loading}
+    
+                                        >
+                                          {this.state.loading && (
+                                                    <center><Spinner animation="border" variant="primary" /></center>
+                                                    )}
+                                          <span>submit</span>
+                                        </Button>
+                                          
 
                                     {/* <Modal show={this.state.show} onHide={this.handleClose}>
                                       <Modal.Header closeButton>
