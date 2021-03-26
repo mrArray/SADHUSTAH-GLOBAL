@@ -212,7 +212,7 @@ export default class RegisterProject extends Component {
             message: response.data.detail,
             successful: true
           });
-          window.location = "/registerproject"
+          window.location = "/allProjects"
         },
 
         error => {
