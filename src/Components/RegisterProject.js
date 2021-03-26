@@ -209,7 +209,9 @@ export default class RegisterProject extends Component {
             message: response.data.detail,
             successful: true
           });
+          window.location = "/registerproject"
         },
+        
         error => {
           const resMessage =
             (error.response &&
@@ -289,7 +291,7 @@ export default class RegisterProject extends Component {
                               <div className="wizard-step" data-wizard-type="step">
                                 <div className="wizard-label">
                                   <i className="wizard-icon flaticon-truck" />
-                                  <h3 className="wizard-title">4. Project Duration</h3>
+                                  <h3 className="wizard-title">2. Project Duration</h3>
                                 </div>
                                 <span className="svg-icon svg-icon-xl wizard-arrow">
                                   {/*begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg*/}
@@ -304,11 +306,12 @@ export default class RegisterProject extends Component {
                                 </span>
                               </div>
                               {/*end::Wizard Step 4 Nav*/}
+                              
                               {/*begin::Wizard Step 5 Nav*/}
                               <div className="wizard-step" data-wizard-type="step">
                                 <div className="wizard-label">
                                   <i className="wizard-icon flaticon-globe" />
-                                  <h3 className="wizard-title">5. Review and Submit</h3>
+                                  <h3 className="wizard-title">3. review & submit </h3>
                                 </div>
                                 <span className="svg-icon svg-icon-xl wizard-arrow last">
                                   {/*begin::Svg Icon | path:assets/media/svg/icons/Navigation/Arrow-right.svg*/}
@@ -323,20 +326,22 @@ export default class RegisterProject extends Component {
                                 </span>
                               </div>
                               {/*end::Wizard Step 5 Nav*/}
-                            </div>
-                            
+
+                              <div className="wizard-step" data-wizard-type="step">
+                                
+                              </div>
+                           </div>
                           </div>
                           {/*end::Wizard Nav*/}
                           {/*begin::Wizard Body*/}
-                          
                           <div className="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                             <div className="col-xl-12 col-xxl-7">
                               {/*begin::Wizard Form*/}
-                              {!this.state.successful && (
-                          <div>
+
                               <Form onSubmit={this.handleRegisterProject} ref={c => { this.form = c; }} className="form" id="kt_form">
 
-                                
+                                {!this.state.successful && (
+                                  <div>
                                     {/*begin::Wizard Step 1*/}
                                     <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
                                       <h3 className="mb-10 font-weight-bold text-dark">Setup Your Project Details</h3>
@@ -443,24 +448,19 @@ export default class RegisterProject extends Component {
 
                                     {/*begin::Wizard Step 5*/}
                                     <div className="pb-5" data-wizard-type="step-content">
-                                    
                                       {/*begin::Section*/}
                                       <h4 className="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
                                       <h6 className="font-weight-bolder mb-3">Project Detailss:</h6>
                                       <div className="text-dark-50 line-height-lg">
-                                    
                                         <div>Project Name</div>
                                         <div>{this.state.title}</div>
                                         <div>Project Description</div>
                                         <div>{this.state.description}</div>
                                         <div>Project Location</div>
                                         <div>{this.state.location}</div>
-                                        </div>
-                                      
-                                      
+                                      </div>
                                       <div className="separator separator-dashed my-5" />
                                       {/*end::Section*/}
-                                      
                                       {/*begin::Section*/}
                                       <h6 className="font-weight-bolder mb-3">Project Duration</h6>
                                       <div className="text-dark-50 line-height-lg">
@@ -472,42 +472,49 @@ export default class RegisterProject extends Component {
                                         <div>{this.state.due_date}</div>
                                       </div>
                                     </div>
-                                    {this.state.message && (
-                                        <div className="form-group">
+                                    
+                                    {/*end::Wizard Step 5*/}
+                                    {/*begin::Wizard Step 5*/}
+                                  
+
+                                    </div>
+                                                 )}
+                                                 <center> {this.state.message && (
+                                        <div className="pb-5" >
                                           <div
                                             className={
                                               this.state.successful
-                                                ? "alert alert-success"
-                                                : "alert alert-danger"
+                                                ? "alert alert-custom alert-outline-success fade show mb-5"
+                                                : "alert alert-custom alert-outline-danger fade show mb-5"
                                             }
                                             role="alert"
                                           >
                                             {this.state.message}
                                           </div>
                                         </div>
-                                      )}
-                                    
-                                    {/*end::Wizard Step 5*/}
-                                    {/*begin::Wizard Actions*/}
-                                   
+                                      )}</center>
+                                      
                                     <div className="d-flex justify-content-between border-top mt-5 pt-10">
                                       <div className="mr-2">
                                         <button type="button" className="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
                                       </div>
                                       <div>
 
-
-
                                         <button type="button" className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                                     <button
+                                       <button
                                           className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
+                                          data-wizard-type="step-content"
+                                          disabled={this.state.loading}
 
                                         >
-                                         
-                                          <span>Submit</span>
+                                           {this.state.loading && (
+                                            <span className="spinner-border spinner-border-sm"></span>
+                                        )}
+                                        <span>submit</span>
                                         </button>
+
+                                      
 
                                         {/* <Modal show={this.state.show} onHide={this.handleClose}>
                                       <Modal.Header closeButton>
@@ -536,33 +543,21 @@ export default class RegisterProject extends Component {
                                       />
                                     </div>
                                   </div>
-                                  
+                                 
                                 {/*end::Wizard Actions*/}
                               </Form>
-
-                            
                               {/*end::Wizard Form*/}
-                              
                             </div>
-                            
-                            )}
-                                      </div>
                           </div>
-                          
                           {/*end::Wizard Body*/}
                         </div>
-                        
                         {/*end::Wizard*/}
                       </div>
-                      
                       {/*end::Wizard*/}
                     </div>
-                    
                   </div>
-                  
                   {/*end::Container*/}
                 </div>
-                
                 {/*end::Entry*/}
               </div>
               {/*end::Content*/}
