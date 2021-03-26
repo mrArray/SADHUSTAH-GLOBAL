@@ -212,7 +212,7 @@ export default class RegisterProject extends Component {
             message: response.data.detail,
             successful: true
           });
-          window.location = "/allProjects"
+          window.location = "/AllProjects"
         },
 
         error => {
@@ -510,7 +510,7 @@ export default class RegisterProject extends Component {
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                       
 
-                                          <Button id="kt_login_singin_form_submit_button"
+                                          <button id="kt_login_singin_form_submit_button"
                                           className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
                                           data-wizard-type="step-content"
                                           disabled={this.state.loading}
@@ -520,7 +520,7 @@ export default class RegisterProject extends Component {
                                                     <center><Spinner animation="border" variant="primary" /></center>
                                                     )}
                                           <span>submit</span>
-                                        </Button>
+                                        </button>
                                           
 
                                     {/* <Modal show={this.state.show} onHide={this.handleClose}>
