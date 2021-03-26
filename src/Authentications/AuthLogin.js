@@ -4,18 +4,18 @@ import axios from "axios";
     let password = 'Pass@1234';
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
 
-    const title = new FormData();
-    title.append('title', '');
-    const description = new FormData();
-    description.append('description', '');
-    const status = new FormData();
-    status.append('status', '');
-    const location = new FormData();
-    location.append('location', '');
-    const startDate = new FormData();
-    startDate.append('startDate', '');
-    const dueDate = new FormData();
-    dueDate.append('dueDate', '');
+    // const title = new FormData();
+    // title.append('title', 'title');
+    // const description = new FormData();
+    // description.append('description', 'description');
+    // const status = new FormData();
+    // status.append('status', 'status');
+    // const location = new FormData();
+    // location.append('location', 'location');
+    // const start_date = new FormData();
+    // start_date.append('start_date', 'start_date');
+    // const due_date = new FormData();
+    // due_date.append('due_date', 'due_date');
 
 
 class AuthLogin {
@@ -59,14 +59,15 @@ class AuthLogin {
   }
 
   
-  RegisterProject(title,description,location,status,startDate,dueDate){
-     return axios.post("https://ecological.chinikiguard.com/accounts/api/jwt/",{
+  RegisterProject(title,description,location,status,start_date,due_date){
+     return  axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
+
      title,
      description,
      location,
      status,
-     startDate,
-     dueDate,
+     start_date,
+     due_date,
   },
   
   { 

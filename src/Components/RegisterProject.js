@@ -10,6 +10,8 @@ import Header from './Header';
 import Footer from './Footer'
 import axios from 'axios'
 import AuthLogin from "../Authentications/AuthLogin";
+import Modal from 'react-bootstrap/Modal'
+import Button from 'react-bootstrap/Button'
 
 
 
@@ -74,6 +76,8 @@ export default class RegisterProject extends Component {
     this.onChangeLocation = this.onChangeLocation.bind(this)
     this.onChangeStartDate = this.onChangeStartDate.bind(this)
     this.onChangeDueDate = this.onChangeDueDate.bind(this)
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
 
     this.state = {
       title: "",
@@ -83,6 +87,7 @@ export default class RegisterProject extends Component {
       startDate: "",
       dueDate: "",
       loading: false,
+      show: false,
       message: ""
     };
   }
@@ -141,90 +146,86 @@ export default class RegisterProject extends Component {
       due_date: e.target.value
     });
   }
+  handleClose() {
+    this.setState({ show: false });
+  }
+
+  handleShow() {
+    this.setState({ show: true });
+  }
 
 
   handleRegisterProject(e) {
     e.preventDefault();
-   
-    
-    // const title = new FormData(this.title);
-    // title.append("title", title);
-    // const description = new FormData(this.description);
-    // description.append("description", description);
-    // const status = new FormData(this.status);
-    // status.append("status", status);
-    // const location = new FormData(this.location);
-    // location.append("location", location);
-    // const start_date = new FormData(this.start_date);
-    // start_date.append("start_date", start_date);
-    // const due_date = new FormData(this.due_date);
-    // due_date.append("due_date", due_date);
 
-    
-    const username = 'admin'
-    const password = 'Pass@1234'
-    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
-      
-    title : this.state.title,
-    description: this.state.description,
-    status: this.state.status, 
-    location: this.state.location,
-    start_date: this.state.start_date,
-    due_date:this.state.due_date
+    // const username = 'admin'
+    // const password = 'Pass@1234'
+    // const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    // axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
 
-    },
-    
-    { headers: 
-    { 
-      'Authorization': `Basic ${token}`,
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
-    'Access-Control-Allow-Credentials': true 
-  },
+    //   title: this.state.title,
+    //   description: this.state.description,
+    //   status: this.state.status,
+    //   location: this.state.location,
+    //   start_date: this.state.start_date,
+    //   due_date: this.state.due_date
 
-  })
-  .then(res=>{
-    console.log(res);
-    console.log(res.data);
-    window.location = "/dashboard" 
-  })
+    // },
 
-    this.setState({
-      message: "",
-      loading: true
-    });
+    //   {
+    //     headers:
+    //     {
+    //       'Authorization': `Basic ${token}`,
+    //       'Access-Control-Allow-Origin': '*',
+    //       'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+    //       'Access-Control-Allow-Credentials': true
+    //     },
+
+    //   })
+    //   .then(res => {
+    //     console.log(res);
+    //     console.log(res.data);
+    //     // window.location = "/dashboard"
+    //   })
+
+      this.setState({
+        message: "",
+        successful: false
+      });
 
     this.form.validateAll();
 
-   if (this.checkBtn.context._errors.length === 0) {
-    AuthLogin.RegisterProject(this.state.title, this.state.description,this.state.status,this.state.location,this.state.start_date,this.state.due_date)
-    .then(
-            () => {
-              this.props.history.push("/dashboard");
-              window.location.reload();
-            },
-                error => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
+    if (this.checkBtn.context._errors.length === 0) {
+      AuthLogin.RegisterProject(
+        this.state.title,
+        this.state.description,
+        this.state.location,
+        this.state.status,
+        this.state.start_date,
+        this.state.due_date
+      ).then(
+        response => {
+          this.setState({
+            message: response.data.detail,
+            successful: true
+          });
+        },
+        error => {
+          const resMessage =
+            (error.response &&
+              error.response.data &&
+              error.response.data.message) ||
+            error.message ||
+            error.toString();
 
-                    this.setState({
-                        loading: false,
-                        message: resMessage
-                    });
-                }
-            );
-        } else {
-            this.setState({
-                loading: false
-            });
+          this.setState({
+            successful: false,
+            message: resMessage
+          });
         }
+      );
     }
-
+  }
   render() {
 
 
@@ -323,198 +324,245 @@ export default class RegisterProject extends Component {
                               </div>
                               {/*end::Wizard Step 5 Nav*/}
                             </div>
+                            
                           </div>
                           {/*end::Wizard Nav*/}
                           {/*begin::Wizard Body*/}
+                          
                           <div className="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                             <div className="col-xl-12 col-xxl-7">
                               {/*begin::Wizard Form*/}
-
+                              {!this.state.successful && (
+                          <div>
                               <Form onSubmit={this.handleRegisterProject} ref={c => { this.form = c; }} className="form" id="kt_form">
-                                {/*begin::Wizard Step 1*/}
-                                <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
-                                  <h3 className="mb-10 font-weight-bold text-dark">Setup Your Project Details</h3>
-                                  {/*begin::Input*/}
-                                  <div className="form-group">
-                                    <label>Project Name</label>
-                                    <Input type="text" className="form-control form-control-solid form-control-lg"
-                                      value={this.state.title}
-                                      onChange={this.onChangeTitle}
-                                      validations={[required]}
-                                      name="projectname"
-                                      placeholder="Project Name" />
-                                    <span className="form-text text-muted">Please enter Project Name.</span>
-                                  </div>
-                                  {/*end::Input*/}
-                                  {/*begin::Input*/}
-                                  <div className="form-group">
-                                    <label>Project Description</label>
-                                    <Textarea type="text" className="form-control form-control-solid form-control-lg"
-                                      value={this.state.description}
-                                      onChange={this.onChangeDescription}
-                                      validations={[required]}
-                                      name="projectdescription"
-                                      placeholder="Project Name" />
-                                    <span className="form-text text-muted">limit 50</span>
-                                  </div>
-                                  {/*end::Input*/}
 
-                                  <div className="form-group">
-                                    {/* <label>Project Status</label> */}
-                                    <label className="font-size-h6 font-weight-bolder text-dark">Status</label>
-
-                                    <select name="country" className="form-control h-auto p-5 border-0 rounded-lg font-size-h6"
-                                      value={this.state.status}
-                                      onChange={this.onChangeStatus}
-                                      validations={[required]}
-                                      name="projectstatus"
-                                    >
-
-                                      <option value>Select</option>
-                                      <option value="open">Open</option>
-                                      <option value="inprogress">In Progress</option>
-                                      <option value="completed">Completed</option>
-                                    </select>
-                                  </div>
-
-
-                                  <div className="row">
-
-                                    <div className="col-xl-12">
-                                      {/*begin::Select*/}
+                                
+                                    {/*begin::Wizard Step 1*/}
+                                    <div className="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+                                      <h3 className="mb-10 font-weight-bold text-dark">Setup Your Project Details</h3>
+                                      {/*begin::Input*/}
                                       <div className="form-group">
-                                        <label>Project Location</label>
-                                        <Textarea type="text" className="form-control form-control-solid form-control-lg"
-                                          value={this.state.location}
-                                          onChange={this.onChangeLocation}
+                                        <label>Project Name</label>
+                                        <Input type="text" className="form-control form-control-solid form-control-lg"
+                                          value={this.state.title}
+                                          onChange={this.onChangeTitle}
                                           validations={[required]}
-                                          name="projectlocation" />
+                                          name="projectname"
+                                          placeholder="Project Name" />
+                                        <span className="form-text text-muted">Please enter Project Name.</span>
+                                      </div>
+                                      {/*end::Input*/}
+                                      {/*begin::Input*/}
+                                      <div className="form-group">
+                                        <label>Project Description</label>
+                                        <Textarea type="text" className="form-control form-control-solid form-control-lg"
+                                          value={this.state.description}
+                                          onChange={this.onChangeDescription}
+                                          validations={[required]}
+                                          name="projectdescription"
+                                          placeholder="Project Name" />
                                         <span className="form-text text-muted">limit 50</span>
                                       </div>
-                                      {/*end::Select*/}
-                                    </div>
-                                    {/*end::Form Group*/}
+                                      {/*end::Input*/}
 
-                                    {/*end::Form Group*/}
-                                  </div>
-                                </div>
-                                {/*end::Wizard Step 1*/}
+                                      <div className="form-group">
+                                        {/* <label>Project Status</label> */}
+                                        <label className="font-size-h6 font-weight-bolder text-dark">Status</label>
 
-                                {/*begin::Wizard Step 3*/}
-                                <div className="pb-5" data-wizard-type="step-content">
-                                  {/* <h4 className="mb-10 font-weight-bold text-dark">Select your Services</h4> */}
-                                  {/*begin::Select*/}
-                                  <div className="form-group">
-                                    <div className="form-group">
-                                      <label>Start Date</label>
-                                      <Input type="text" className="form-control form-control-solid form-control-lg"
-                                        value={this.state.start_date}
-                                        onChange={this.onChangeStartDate}
-                                        validations={[required]}
-                                        name="startdate"
-                                        placeholder="YYYY-MM-DD" />
-                                      <span className="form-text text-muted">Start date</span>
-                                    </div>
-                                  </div>
-                                  {/*end::Select*/}
-                                  {/*begin::Select*/}
-                                  <div className="form-group">
-                                    <div className="form-group">
-                                      <label>Due Date</label>
-                                      <Input type="text" className="form-control form-control-solid form-control-lg"
-                                        value={this.state.due_date}
-                                        onChange={this.onChangeDueDate}
-                                        validations={[required]}
-                                        name="startdate"
-                                        placeholder="YYYY-MM-DD" />
-                                      <span className="form-text text-muted">Due date</span>
-                                    </div>
-                                  </div>
-                                  {/*end::Select*/}
+                                        <select name="country" className="form-control h-auto p-5 border-0 rounded-lg font-size-h6"
+                                          value={this.state.status}
+                                          onChange={this.onChangeStatus}
+                                          validations={[required]}
+                                          name="projectstatus"
+                                        >
 
-                                </div>
-                                {/*end::Wizard Step 3*/}
-
-                                {/*begin::Wizard Step 5*/}
-                                <div className="pb-5" data-wizard-type="step-content">
-                                  {/*begin::Section*/}
-                                  <h4 className="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
-                                  <h6 className="font-weight-bolder mb-3">Project Detailss:</h6>
-                                  <div className="text-dark-50 line-height-lg">
-                                    <div>Project Name</div>
-                                    <div>{this.state.title}</div>
-                                    <div>Project Description</div>
-                                    <div>{this.state.description}</div>
-                                    <div>Project Location</div>
-                                    <div>{this.state.location}</div>
-                                  </div>
-                                  <div className="separator separator-dashed my-5" />
-                                  {/*end::Section*/}
-                                  {/*begin::Section*/}
-                                  <h6 className="font-weight-bolder mb-3">Project Duration</h6>
-                                  <div className="text-dark-50 line-height-lg">
-                                    <div>Project Status</div>
-                                    <div>{this.state.status}</div>
-                                    <div>Start Date</div>
-                                    <div>{this.state.start_date}</div>
-                                    <div>Due Date</div>
-                                    <div>{this.state.due_date}</div>
-                                  </div>
-                                </div>
-                                {/*end::Wizard Step 5*/}
-                                {/*begin::Wizard Actions*/}
-                                <div className="d-flex justify-content-between border-top mt-5 pt-10">
-                                  <div className="mr-2">
-                                    <button type="button" className="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
-                                  </div>
-                                  <div>
-
-                                   
+                                          <option value>Select</option>
+                                          <option value="open">Open</option>
+                                          <option value="inprogress">In Progress</option>
+                                          <option value="completed">Completed</option>
+                                        </select>
+                                      </div>
 
 
-                                    <button type="button" className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                     <button  id="button"
-                                         className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
-                                         disabled={this.state.loading}
+                                      <div className="row">
 
-                                    >
-                                       {this.state.loading && (
-                                            <span className="spinner-border spinner-border-sm"></span>
-                                        )}
-                                        <span>Submit</span>
-                                    </button>
-
-
-                                {this.state.message && (
-                                    <div className="form-group">
-                                        <div className="alert alert-danger" role="alert">
-                                            {this.state.message}
+                                        <div className="col-xl-12">
+                                          {/*begin::Select*/}
+                                          <div className="form-group">
+                                            <label>Project Location</label>
+                                            <Textarea type="text" className="form-control form-control-solid form-control-lg"
+                                              value={this.state.location}
+                                              onChange={this.onChangeLocation}
+                                              validations={[required]}
+                                              name="projectlocation" />
+                                            <span className="form-text text-muted">limit 50</span>
+                                          </div>
+                                          {/*end::Select*/}
                                         </div>
+                                        {/*end::Form Group*/}
+
+                                        {/*end::Form Group*/}
+                                      </div>
                                     </div>
-                                )}
-                                <CheckButton
-                                    style={{ display: "none" }}
-                                    ref={c => {
-                                        this.checkBtn = c;
-                                    }}
-                                    />
+                                    {/*end::Wizard Step 1*/}
+
+                                    {/*begin::Wizard Step 3*/}
+                                    <div className="pb-5" data-wizard-type="step-content">
+                                      {/* <h4 className="mb-10 font-weight-bold text-dark">Select your Services</h4> */}
+                                      {/*begin::Select*/}
+                                      <div className="form-group">
+                                        <div className="form-group">
+                                          <label>Start Date</label>
+                                          <Input type="text" className="form-control form-control-solid form-control-lg"
+                                            value={this.state.start_date}
+                                            onChange={this.onChangeStartDate}
+                                            validations={[required]}
+                                            name="startdate"
+                                            placeholder="YYYY-MM-DD" />
+                                          <span className="form-text text-muted">Start date</span>
+                                        </div>
+                                      </div>
+                                      {/*end::Select*/}
+                                      {/*begin::Select*/}
+                                      <div className="form-group">
+                                        <div className="form-group">
+                                          <label>Due Date</label>
+                                          <Input type="text" className="form-control form-control-solid form-control-lg"
+                                            value={this.state.due_date}
+                                            onChange={this.onChangeDueDate}
+                                            validations={[required]}
+                                            name="startdate"
+                                            placeholder="YYYY-MM-DD" />
+                                          <span className="form-text text-muted">Due date</span>
+                                        </div>
+                                      </div>
+                                      {/*end::Select*/}
+
+                                    </div>
+                                    {/*end::Wizard Step 3*/}
+
+                                    {/*begin::Wizard Step 5*/}
+                                    <div className="pb-5" data-wizard-type="step-content">
+                                    
+                                      {/*begin::Section*/}
+                                      <h4 className="mb-10 font-weight-bold text-dark">Review your Details and Submit</h4>
+                                      <h6 className="font-weight-bolder mb-3">Project Detailss:</h6>
+                                      <div className="text-dark-50 line-height-lg">
+                                    
+                                        <div>Project Name</div>
+                                        <div>{this.state.title}</div>
+                                        <div>Project Description</div>
+                                        <div>{this.state.description}</div>
+                                        <div>Project Location</div>
+                                        <div>{this.state.location}</div>
+                                        </div>
+                                      
+                                      
+                                      <div className="separator separator-dashed my-5" />
+                                      {/*end::Section*/}
+                                      
+                                      {/*begin::Section*/}
+                                      <h6 className="font-weight-bolder mb-3">Project Duration</h6>
+                                      <div className="text-dark-50 line-height-lg">
+                                        <div>Project Status</div>
+                                        <div>{this.state.status}</div>
+                                        <div>Start Date</div>
+                                        <div>{this.state.start_date}</div>
+                                        <div>Due Date</div>
+                                        <div>{this.state.due_date}</div>
+                                      </div>
+                                    </div>
+                                    {this.state.message && (
+                                        <div className="form-group">
+                                          <div
+                                            className={
+                                              this.state.successful
+                                                ? "alert alert-success"
+                                                : "alert alert-danger"
+                                            }
+                                            role="alert"
+                                          >
+                                            {this.state.message}
+                                          </div>
+                                        </div>
+                                      )}
+                                    
+                                    {/*end::Wizard Step 5*/}
+                                    {/*begin::Wizard Actions*/}
+                                   
+                                    <div className="d-flex justify-content-between border-top mt-5 pt-10">
+                                      <div className="mr-2">
+                                        <button type="button" className="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
+                                      </div>
+                                      <div>
+
+
+
+                                        <button type="button" className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
+                                       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                     <button
+                                          className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
+
+                                        >
+                                         
+                                          <span>Submit</span>
+                                        </button>
+
+                                        {/* <Modal show={this.state.show} onHide={this.handleClose}>
+                                      <Modal.Header closeButton>
+                                        <Modal.Title>Modal heading</Modal.Title>
+                                      </Modal.Header>
+                                      <Modal.Body> {this.state.message}</Modal.Body>
+                                      <Modal.Footer>
+                                        <Button variant="secondary" onClick={this.handleClose}>
+                                          Close
+                                      </Button>
+                                        <Button variant="primary" onClick={this.handleClose}>
+                                          Save Changes
+                                     </Button>
+                                       </Modal.Footer>
+                                    </Modal> */}
+
+                                     
+
+                                       
+
+                                      <CheckButton
+                                        style={{ display: "none" }}
+                                        ref={c => {
+                                          this.checkBtn = c;
+                                        }}
+                                      />
+                                    </div>
                                   </div>
-                                </div>
+                                  
                                 {/*end::Wizard Actions*/}
                               </Form>
+
+                            
                               {/*end::Wizard Form*/}
+                              
                             </div>
+                            
+                            )}
+                                      </div>
                           </div>
+                          
                           {/*end::Wizard Body*/}
                         </div>
+                        
                         {/*end::Wizard*/}
                       </div>
+                      
                       {/*end::Wizard*/}
                     </div>
+                    
                   </div>
+                  
                   {/*end::Container*/}
                 </div>
+                
                 {/*end::Entry*/}
               </div>
               {/*end::Content*/}
