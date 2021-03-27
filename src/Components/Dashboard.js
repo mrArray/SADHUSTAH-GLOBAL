@@ -11,16 +11,40 @@ import Spinner from 'react-bootstrap/Spinner'
 const Dashboard = () => {
   const [projects, setProjects] = useState([]);
   const [myloading, setLoading] = useState([false]);
+  const [tasks, setTask] = useState([]);
 
-  useEffect(() => {
-    //start js style
-    const script = document.createElement("script");
-    script.src = "./assets/dist/assets/js/pages/widgets.js";
-    script.async = true;
-    document.body.appendChild(script);
-    //end js stye
 
-    const username = 'admin'
+const TotalTask =()=> {
+  const username = 'admin'
+  const password = 'Pass@1234'
+  const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+
+  axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1",
+  {
+    headers:
+    {
+      'Authorization': `Basic ${token}`,
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+      'Access-Control-Allow-Credentials': true
+    },
+
+  })
+  .then(res => {
+    const tasks = res.data.length;
+    setTask(tasks);
+    setLoading(false)
+    console.log(res);
+    console.log(res.data.length);
+    // window.location = "/dashboard"
+  })
+
+}
+
+const TotalProject=()=>{
+
+
+  const username = 'admin'
     const password = 'Pass@1234'
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
     axios.get("https://ecological.chinikiguard.com/projects/api/list/?all_record=1",
@@ -42,6 +66,21 @@ const Dashboard = () => {
         console.log(res.data.length);
         // window.location = "/dashboard"
       })
+
+}
+
+  useEffect(() => {
+    //start js style
+    const script = document.createElement("script");
+    script.src = "./assets/dist/assets/js/pages/widgets.js";
+    script.async = true;
+    document.body.appendChild(script);
+    //end js stye
+    TotalProject();
+    TotalTask();
+    
+
+      
 
   }, []);
 
@@ -68,7 +107,7 @@ const Dashboard = () => {
                 {/*begin::Container*/}
                 <div className="container">
                   <div className="row">
-                    <div className="col-xl-4">
+                    <div className="col-xl-3">
                       {/*begin::Stats Widget 16*/}
                       <a href="#" className="card card-custom card-stretch gutter-b">
                         {/*begin::Body*/}
@@ -85,25 +124,18 @@ const Dashboard = () => {
                             {/*end::Svg Icon*/}
                           </span>
                           <div className="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"> Total Projects</div>
-                          {myloading ? (
-
-                            <>
-                              <Spinner animation="spinner-border" variant="danger" />
-                            </>
-
-
-
-                          ) : (
+                          
 
                             <div className="font-weight-bold text-inverse-white font-size-sm"><h3>{projects}</h3></div>
-                          )}
                           {/* <div className="font-weight-bold text-inverse-white font-size-sm">Lands, Houses, Ranchos, Farms</div> */}
                         </div>
                         {/*end::Body*/}
+                        
                       </a>
+                      
                       {/*end::Stats Widget 16*/}
                     </div>
-                    <div className="col-xl-4">
+                    <div className="col-xl-3">
                       {/*begin::Stats Widget 17*/}
                       <a href="#" className="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
                         {/*begin::Body*/}
@@ -119,15 +151,41 @@ const Dashboard = () => {
                             </svg>
                             {/*end::Svg Icon*/}
                           </span>
-                          <div className="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Pending Projects</div>
-                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>40</h3></div>
+                          <div className="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Total Tasks</div>
+                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>{tasks}</h3></div>
 
                         </div>
                         {/*end::Body*/}
                       </a>
                       {/*end::Stats Widget 17*/}
                     </div>
-                    <div className="col-xl-4">
+                    
+                    <div className="col-xl-3">
+                      {/*begin::Stats Widget 17*/}
+                      <a href="#" className="card card-custom bg-info bg-hover-state-success card-stretch card-stretch gutter-b">
+                        {/*begin::Body*/}
+                        <div className="card-body">
+                          <span className="svg-icon svg-icon-white svg-icon-3x ml-n1">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                <rect x={0} y={0} width={24} height={24} />
+                                <rect fill="#000000" x={4} y={4} width={7} height={7} rx="1.5" />
+                                <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
+                              </g>
+                            </svg>
+                            {/*end::Svg Icon*/}
+                          </span>
+                          <div className="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Ungoing Projects</div>
+                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>{projects}</h3></div>
+
+                        </div>
+                        {/*end::Body*/}
+                      </a>
+                      {/*end::Stats Widget 17*/}
+                    </div>
+                   
+                    <div className="col-xl-3">
                       {/*begin::Stats Widget 18*/}
                       <a href="#" className="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
                         {/*begin::Body*/}
@@ -145,12 +203,13 @@ const Dashboard = () => {
                             </svg>
                             {/*end::Svg Icon*/}
                           </span>
-                          <div className="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">Costs</div>
-                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>₦5467,8984</h3></div>
+                          <div className="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">Completed Projects</div>
+                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>10</h3></div>
                         </div>
                         {/*end::Body*/}
                       </a>
                       {/*end::Stats Widget 18*/}
+                      
                     </div>
                   </div>
                   <div className="row">
