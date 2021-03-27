@@ -127,9 +127,10 @@ const AllProjects = () => {
                         </div>
 
                       ))}
+                         {/*end::Col*/}
 
                       {/*begin::Pagination*/}
-                      <div className="d-flex justify-content-between align-items-center flex-wrap">
+                      {/* <div className="d-flex justify-content-between align-items-center flex-wrap">
                         <div className="d-flex flex-wrap mr-3">
                           <a href="#" className="btn btn-icon btn-sm btn-light-primary mr-2 my-1">
                             <i className="ki ki-bold-double-arrow-back icon-xs" />
@@ -162,7 +163,7 @@ const AllProjects = () => {
                           </select>
                           <span className="text-muted">Displaying 10 of 230 records</span>
                         </div>
-                      </div>
+                      </div> */}
                       {/*end::Pagination*/}
                       
 
