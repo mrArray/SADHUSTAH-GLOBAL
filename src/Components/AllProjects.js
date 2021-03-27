@@ -120,6 +120,10 @@ const AllProjects = () => {
                                   <span className="ml-3 font-weight-bolder">{project.progress} </span>
                                 </div>
                               </div>
+                              <div className="d-flex align-items-center">
+                                  <span className="font-weight-bold mr-12">Status</span>
+                                  <span className="btn btn-light-primary btn-sm font-weight-bold btn-upper btn-text">{project.status}</span>
+                                </div>
                               {/*ebd::Progress*/}
                             </div>
                             {/*end::Body*/}
