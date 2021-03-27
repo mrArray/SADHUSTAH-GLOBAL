@@ -342,7 +342,7 @@ export default class RegisterProject extends Component {
                           {/*begin::Wizard Body*/}
                           <div className="row justify-content-center my-10 px-8 my-lg-15 px-lg-10">
                             <div className="col-xl-12 col-xxl-7">
-                              {/*begin::Wizard Form*/}
+                              {/*begin::Wizard Form*/}                      
 
                               <Form onSubmit={this.handleRegisterProject} ref={c => { this.form = c; }} className="form" id="kt_form">
 
@@ -377,16 +377,13 @@ export default class RegisterProject extends Component {
                                       {/*end::Input*/}
 
                                       <div className="form-group">
-                                        {/* <label>Project Status</label> */}
-                                        <label className="font-size-h6 font-weight-bolder text-dark">Status</label>
-
-                                        <select name="country" className="form-control h-auto p-5 border-0 rounded-lg font-size-h6"
+                                        <label>Status</label>
+                                        <select name="country" className="form-control"
                                           value={this.state.status}
                                           onChange={this.onChangeStatus}
                                           validations={[required]}
                                           name="projectstatus"
                                         >
-
                                           <option value>Select</option>
                                           <option value="open">Open</option>
                                           <option value="inprogress">In Progress</option>
@@ -484,8 +481,12 @@ export default class RegisterProject extends Component {
 
 
                                   </div>
-                                )}
-                                <center> {this.state.message && (
+                                )}  
+                                <center> 
+       
+                                  
+                                  {this.state.message && (
+                                  
                                   <div className="pb-5" >
                                     <div
                                       className={
@@ -553,6 +554,7 @@ export default class RegisterProject extends Component {
 
                                 {/*end::Wizard Actions*/}
                               </Form>
+
                               {/*end::Wizard Form*/}
                             </div>
                           </div>

@@ -60,13 +60,13 @@ const AllProjects = () => {
                     {/*begin::Row*/}
                     {myloading ? (
 
-<>
-    <center><Spinner animation="border" variant="primary" /></center>
-</>
+                  <>
+                  <center><Spinner animation="border" variant="primary" /></center>
+                 </>
 
 
 
-) : (
+              ) : (
  
                     <div className="row" >
      
