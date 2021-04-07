@@ -5,13 +5,54 @@ import Footer from './Footer'
 import Menu_Aside from "./Menu_Aside";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
+import Form from "react-validation/build/form";
+import Input from "react-validation/build/input";
+import Textarea from "react-validation/build/textarea"
+import CheckButton from "react-validation/build/button";
 
 
 const AllProjects = () => {
   const [projects, setProjects] = useState([]);
   const [myloading, setLoading] = useState([false]);
+  // const [statusUpdate, setStatusUpdate] = useState([]);
+  // const [handlestatus, setHandleStatus] = useState([]);
+  
+ 
+// const UpdateStatus =() => {
+
+//       const username = 'admin'
+//       const password = 'Pass@1234'
+//       const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+//       axios.put("https://ecological.chinikiguard.com/projects/api/update/1/",
+//         {
+
+         
+//           headers:
+//           {
+//             'Authorization': `Basic ${token}`,
+//             'Access-Control-Allow-Origin': '*',
+//             'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+//             'Access-Control-Allow-Credentials': true
+//           },
+  
+//         })
+//         .then(res => {
+//           const statsUpdate = res.data;
+//           setStatusUpdate(statsUpdate);
+//           setLoading(false)
+//           console.log(res);
+//           console.log(res.data);
+//           // window.location = "/dashboard"
+//         })
+//      };
+
+// const  HandleStatusChange=(event)=> {
+//        setHandleStatus(event.target.value);
+//      };
+  
 
   useEffect(() => {
+
     const username = 'admin'
     const password = 'Pass@1234'
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
@@ -34,10 +75,14 @@ const AllProjects = () => {
         console.log(res.data);
         // window.location = "/dashboard"
       })
+      // UpdateStatus();
 
   }, []);
 
   return (
+
+
+
     <div>
         <Header />
         <div className="d-flex flex-column flex-root"  >
@@ -99,6 +144,7 @@ const AllProjects = () => {
                               <div className="mb-10 mt-5 font-weight-bold">{project.description}</div>
                               {/*end::Description*/}
                               {/*begin::Data*/}
+                              
                               <div className="d-flex mb-5">
                                 <div className="d-flex align-items-center mr-7">
                                   <span className="font-weight-bold mr-4">Start</span>
@@ -123,9 +169,38 @@ const AllProjects = () => {
                               <div className="d-flex align-items-center">
                                   <span className="font-weight-bold mr-12">Status</span>
                                   <span className="btn btn-light-primary btn-sm font-weight-bold btn-upper btn-text">{project.status}</span>
-                                </div>
+                                  </div>
+                                  {/* <Form onSubmit={handlestatus}  className="form" id="kt_form">
+                                  <div className="form-group">
+                                        <label>Change Status</label>
+                                        <select name="projectstatus" className="form-control"
+                                         value={statusUpdate}
+                                         onChange={HandleStatusChange}
+                                          name="projectstatus"
+                                        >
+                                          <option value>Select</option>
+                                          <option value="open">Open</option>
+                                          <option value="inprogress">In Progress</option>
+                                          <option value="completed">Completed</option>
+                                        </select>
+                                      </div>
+                                      <button id="kt_login_singin_form_submit_button"
+                                          className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
+                                          data-wizard-type="step-content"
+                                          disabled={myloading}
+    
+                                        >
+                                          {myloading && (
+                                                    <center><Spinner animation="border" variant="primary" /></center>
+                                                    )}
+                                          <span>Update</span>
+                                        </button>
+                                       
+                                  </Form> */}
                               {/*ebd::Progress*/}
                             </div>
+                            <a href="#" className="btn btn-block btn-sm btn-light-primary font-weight-bolder text-uppercase py-4">Edit Project</a>
+
                             {/*end::Body*/}
                           </div>
                         </div>

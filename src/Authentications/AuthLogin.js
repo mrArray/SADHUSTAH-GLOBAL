@@ -44,18 +44,31 @@ class AuthLogin {
     localStorage.removeItem("user");
   }
 
-  register(username, email, password, firstName, lastName, address ,lg, state) {
-    return axios.post('https://gridxadmin.kedco.com.ng/accounts/api/jwt/', {
+  createNewUser( first_name,last_name,address, lga,state,username,dob,email,password,phone_number) {
+    return axios.post('https://ecological.chinikiguard.com/accounts/api/create-user/', {
+      first_name,
+      last_name,
+      address,
+      lga,
+      state,
       username,
+      dob,
       email,
       password,
-      firstName,
-      lastName,
-      address,
-      lg,
-      state
+      phone_number,
     },
-    );
+    { 
+    
+    
+      headers: { 
+        'Content-Type':'multipart/form-data',
+      'Authorization': `Basic ${token}`,
+       'Access-Control-Allow-Origin': '*',
+       'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+       'Access-Control-Allow-Credentials': true 
+      }, 
+    }   
+    )
   }
 
   //this handle projects

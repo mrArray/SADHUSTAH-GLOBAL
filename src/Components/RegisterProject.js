@@ -476,6 +476,11 @@ export default class RegisterProject extends Component {
                                       </div>
                                     </div>
 
+                                    <div className="pb-5" data-wizard-type="step-content">
+                                      {/*begin::Section*/}
+                                     
+                                    </div>
+
                                     {/*end::Wizard Step 5*/}
                                     {/*begin::Wizard Step 5*/}
 

@@ -8,6 +8,7 @@ import AllProjects from './AllProjects';
 import Dashboard from './Dashboard';
 import AssignTask from './AssignTask';
 import Alltasks from './Alltasks';
+import EditProject from './EditProject';
 
 
 
@@ -49,6 +50,9 @@ const  Content = () => {
 
            <Route exact path="/" component={Alltasks}/>
            <Route  path="/Alltasks" component={Alltasks}/>
+
+           <Route exact path="/" component={EditProject}/>
+           <Route  path="/EditProject" component={EditProject}/>
 
            
 
