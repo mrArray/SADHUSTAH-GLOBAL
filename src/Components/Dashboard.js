@@ -1,3 +1,4 @@
+
 import React, { Component, useState, useEffect } from "react";
 import { Redirect, Link } from 'react-router-dom';
 import Header from './Header';
@@ -12,42 +13,25 @@ const Dashboard = () => {
   const [projects, setProjects] = useState([]);
   const [myloading, setLoading] = useState([false]);
   const [tasks, setTask] = useState([]);
+  const [OpTasks, setOpTasks] = useState([]);
+  const [OpProjects, setOpProjects] = useState([]);
+  const [InprogressTasks, setInproTask] = useState([]);
+  const [InprogressProjects, setInproProject] = useState([]);
+  const [CompletedProjects, setCompletedProject] = useState([]);
+  const [CompletedTasks, setCompletedTask] = useState([]);
+
+  
+  
+  
+  
 
 
-const TotalTask =()=> {
-  const username = 'admin'
-  const password = 'Pass@1234'
-  const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-
-  axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1",
-  {
-    headers:
-    {
-      'Authorization': `Basic ${token}`,
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
-      'Access-Control-Allow-Credentials': true
-    },
-
-  })
-  .then(res => {
-    const tasks = res.data.length;
-    setTask(tasks);
-    setLoading(false)
-    console.log(res);
-    console.log(res.data.length);
-    // window.location = "/dashboard"
-  })
-
-}
-
-const TotalProject=()=>{
-
-
-  const username = 'admin'
+  const TotalTask = () => {
+    const username = 'admin'
     const password = 'Pass@1234'
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    axios.get("https://ecological.chinikiguard.com/projects/api/list/?all_record=1",
+
+    axios.get(" https://ecological.chinikiguard.com/projects/api/dashboard/",
       {
         headers:
         {
@@ -59,15 +43,211 @@ const TotalProject=()=>{
 
       })
       .then(res => {
-        const projects = res.data.length;
-        setProjects(projects);
+        const tasks = res.data.all_tasks;
+        setTask(tasks);
         setLoading(false)
         console.log(res);
-        console.log(res.data.length);
+        // console.log(res.data.all_tasks);
         // window.location = "/dashboard"
       })
 
-}
+  }
+
+  const TotalProject = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const projects = res.data.all_projects;
+        setProjects(projects);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.all_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
+
+  const OpenProject = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const OPProject = res.data.open_projects;
+        setOpProjects(OPProject);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.open_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
+
+  const OpenTask = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const OPTask = res.data.open_tasks;
+        setOpTasks(OPTask);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.open_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
+
+
+  const OngoingProject = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const InproPro = res.data.inprogress_projects;
+        setInproProject(InproPro);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.open_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
+  const OngoingTask = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const InProTasks = res.data.inprogress_tasks;
+        setInproTask(InProTasks);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.open_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
+
+  const CompletedProject = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const CompletedProject = res.data.completed_projects;
+        setCompletedProject(CompletedProject);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.open_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
+
+  const CompletedTask = () => {
+
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/dashboard/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+
+      })
+      .then(res => {
+        const CompletedTask = res.data.completed_tasks;
+        setCompletedTask(CompletedTask);
+        setLoading(false)
+        console.log(res);
+        // console.log(res.data.open_projects);
+        // window.location = "/dashboard"
+      })
+
+  }
 
   useEffect(() => {
     //start js style
@@ -78,9 +258,15 @@ const TotalProject=()=>{
     //end js stye
     TotalProject();
     TotalTask();
-    
+    OpenProject();
+    OpenTask();
+    OngoingProject();
+    OngoingTask();
+    CompletedProject();
+    CompletedTask();
 
-      
+
+
 
   }, []);
 
@@ -106,92 +292,16 @@ const TotalProject=()=>{
                 <Menu_Aside />
                 {/*begin::Container*/}
                 <div className="container">
+
                   <div className="row">
-                    <div className="col-xl-3">
-                      {/*begin::Stats Widget 16*/}
-                      <a href="#" className="card card-custom card-stretch gutter-b">
+                    <div className="col-xl-2">
+                      {/*begin::Stats Widget 25*/}
+                      <div className="card card-custom bg-green card-stretch gutter-b">
                         {/*begin::Body*/}
                         <div className="card-body">
-                          <span className="svg-icon svg-icon-info svg-icon-3x ml-n1">
-                            {/*begin::Svg Icon | path:assets/media/svg/icons/Shopping/Cart3.svg*/}
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                <rect x={0} y={0} width={24} height={24} />
-                                <path d="M12.7037037,14 L15.6666667,10 L13.4444444,10 L13.4444444,6 L9,12 L11.2222222,12 L11.2222222,14 L6,14 C5.44771525,14 5,13.5522847 5,13 L5,3 C5,2.44771525 5.44771525,2 6,2 L18,2 C18.5522847,2 19,2.44771525 19,3 L19,13 C19,13.5522847 18.5522847,14 18,14 L12.7037037,14 Z" fill="#000000" opacity="0.3" />
-                                <path d="M9.80428954,10.9142091 L9,12 L11.2222222,12 L11.2222222,16 L15.6666667,10 L15.4615385,10 L20.2072547,6.57253826 C20.4311176,6.4108595 20.7436609,6.46126971 20.9053396,6.68513259 C20.9668779,6.77033951 21,6.87277228 21,6.97787787 L21,17 C21,18.1045695 20.1045695,19 19,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,6.97787787 C3,6.70173549 3.22385763,6.47787787 3.5,6.47787787 C3.60510559,6.47787787 3.70753836,6.51099993 3.79274528,6.57253826 L9.80428954,10.9142091 Z" fill="#000000" />
-                              </g>
-                            </svg>
-                            {/*end::Svg Icon*/}
-                          </span>
-                          <div className="text-inverse-white font-weight-bolder font-size-h5 mb-2 mt-5"> Total Projects</div>
-                          
-
-                            <div className="font-weight-bold text-inverse-white font-size-sm"><h3>{projects}</h3></div>
-                          {/* <div className="font-weight-bold text-inverse-white font-size-sm">Lands, Houses, Ranchos, Farms</div> */}
-                        </div>
-                        {/*end::Body*/}
-                        
-                      </a>
-                      
-                      {/*end::Stats Widget 16*/}
-                    </div>
-                    <div className="col-xl-3">
-                      {/*begin::Stats Widget 17*/}
-                      <a href="#" className="card card-custom bg-info bg-hover-state-info card-stretch card-stretch gutter-b">
-                        {/*begin::Body*/}
-                        <div className="card-body">
-                          <span className="svg-icon svg-icon-white svg-icon-3x ml-n1">
-                            {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                <rect x={0} y={0} width={24} height={24} />
-                                <rect fill="#000000" x={4} y={4} width={7} height={7} rx="1.5" />
-                                <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-                              </g>
-                            </svg>
-                            {/*end::Svg Icon*/}
-                          </span>
-                          <div className="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Total Tasks</div>
-                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>{tasks}</h3></div>
-
-                        </div>
-                        {/*end::Body*/}
-                      </a>
-                      {/*end::Stats Widget 17*/}
-                    </div>
-                    
-                    <div className="col-xl-3">
-                      {/*begin::Stats Widget 17*/}
-                      <a href="#" className="card card-custom bg-info bg-hover-state-success card-stretch card-stretch gutter-b">
-                        {/*begin::Body*/}
-                        <div className="card-body">
-                          <span className="svg-icon svg-icon-white svg-icon-3x ml-n1">
-                            {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                <rect x={0} y={0} width={24} height={24} />
-                                <rect fill="#000000" x={4} y={4} width={7} height={7} rx="1.5" />
-                                <path d="M5.5,13 L9.5,13 C10.3284271,13 11,13.6715729 11,14.5 L11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L5.5,20 C4.67157288,20 4,19.3284271 4,18.5 L4,14.5 C4,13.6715729 4.67157288,13 5.5,13 Z M14.5,4 L18.5,4 C19.3284271,4 20,4.67157288 20,5.5 L20,9.5 C20,10.3284271 19.3284271,11 18.5,11 L14.5,11 C13.6715729,11 13,10.3284271 13,9.5 L13,5.5 C13,4.67157288 13.6715729,4 14.5,4 Z M14.5,13 L18.5,13 C19.3284271,13 20,13.6715729 20,14.5 L20,18.5 C20,19.3284271 19.3284271,20 18.5,20 L14.5,20 C13.6715729,20 13,19.3284271 13,18.5 L13,14.5 C13,13.6715729 13.6715729,13 14.5,13 Z" fill="#000000" opacity="0.3" />
-                              </g>
-                            </svg>
-                            {/*end::Svg Icon*/}
-                          </span>
-                          <div className="text-inverse-info font-weight-bolder font-size-h5 mb-2 mt-5">Ungoing Projects</div>
-                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>{projects}</h3></div>
-
-                        </div>
-                        {/*end::Body*/}
-                      </a>
-                      {/*end::Stats Widget 17*/}
-                    </div>
-                   
-                    <div className="col-xl-3">
-                      {/*begin::Stats Widget 18*/}
-                      <a href="#" className="card card-custom bg-dark bg-hover-state-dark card-stretch gutter-b">
-                        {/*begin::Body*/}
-                        <div className="card-body">
-                          <span className="svg-icon svg-icon-white svg-icon-3x ml-n1">
-                            {/*begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg*/}
+                          <span className="svg-icon svg-icon-2x svg-icon-success">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-opened.svg*/}
+                            <center>
                             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                               <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                                 <rect x={0} y={0} width={24} height={24} />
@@ -201,17 +311,193 @@ const TotalProject=()=>{
                                 <rect fill="#000000" x={3} y={13} width={3} height={7} rx="1.5" />
                               </g>
                             </svg>
+                            </center>
                             {/*end::Svg Icon*/}
                           </span>
-                          <div className="text-inverse-dark font-weight-bolder font-size-h5 mb-2 mt-5">Completed Projects</div>
-                          <div className="font-weight-bold text-inverse-dark font-size-sm"><h3>10</h3></div>
+                          <center> <span className="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><h1>{projects}</h1></span></center>
+                          <center><span className="font-weight-bold text font-size-sm">Total Projects</span></center>
+                         </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 25*/}
+                    </div>
+                    <div className="col-xl-2">
+                      
+                      {/*begin::Stats Widget 26*/}
+                      <div className="card card-custom bg-green card-stretch gutter-b">
+                        {/*begin::ody*/}
+                        <div className="card-body">
+                          <span className="svg-icon svg-icon-2x svg-icon-danger">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Group.svg*/}
+                            <center>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                <rect x={0} y={0} width={24} height={24} />
+                                <rect fill="#000000" opacity="0.3" x={13} y={4} width={3} height={16} rx="1.5" />
+                                <rect fill="#000000" x={8} y={9} width={3} height={11} rx="1.5" />
+                                <rect fill="#000000" x={18} y={11} width={3} height={9} rx="1.5" />
+                                <rect fill="#000000" x={3} y={13} width={3} height={7} rx="1.5" />
+                              </g>
+                            </svg>
+                            </center>
+                            {/*end::Svg Icon*/}
+                          </span>
+                         <center> <span className="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><h1>{tasks}</h1></span></center>
+                          <center><span className="font-weight-bold text font-size-sm">Total Tasks</span></center>
                         </div>
                         {/*end::Body*/}
-                      </a>
-                      {/*end::Stats Widget 18*/}
-                      
+                      </div>
+                      {/*end::Stats Widget 26*/}
+                    </div>
+                    <div className="col-xl-2">
+                      {/*begin::Stats Widget 27*/}
+                      <div className="card card-custom bg-green card-stretch gutter-b">
+                        {/*begin::Body*/}
+                        <div className="card-body">
+                          <span className="svg-icon svg-icon-2x svg-icon-info">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg*/}
+                            <center>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                <rect x={0} y={0} width={24} height={24} />
+                                <rect fill="#000000" opacity="0.3" x={13} y={4} width={3} height={16} rx="1.5" />
+                                <rect fill="#000000" x={8} y={9} width={3} height={11} rx="1.5" />
+                                <rect fill="#000000" x={18} y={11} width={3} height={9} rx="1.5" />
+                                <rect fill="#000000" x={3} y={13} width={3} height={7} rx="1.5" />
+                              </g>
+                            </svg>
+                            </center>
+                            {/*end::Svg Icon*/}
+                          </span>
+                          <center> <span className="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><h1>{OpProjects}</h1></span></center>
+                          <center><span className="font-weight-bold text font-size-sm">New Projects</span></center>
+                       </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 27*/}
+                    </div>
+
+                    <div className="col-xl-2">
+                      {/*begin::Stats Widget 27*/}
+                      <div className="card card-custom bg-green card-stretch gutter-b">
+                        {/*begin::Body*/}
+                        <div className="card-body">
+                          <span className="svg-icon svg-icon-2x svg-icon-info">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg*/}
+                            <center>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                <rect x={0} y={0} width={24} height={24} />
+                                <rect fill="#000000" opacity="0.3" x={13} y={4} width={3} height={16} rx="1.5" />
+                                <rect fill="#000000" x={8} y={9} width={3} height={11} rx="1.5" />
+                                <rect fill="#000000" x={18} y={11} width={3} height={9} rx="1.5" />
+                                <rect fill="#000000" x={3} y={13} width={3} height={7} rx="1.5" />
+                              </g>
+                            </svg>
+                            </center>
+                            {/*end::Svg Icon*/}
+                          </span>
+                          <center> <span className="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><h1>{OpTasks}</h1></span></center>
+                          <center><span className="font-weight-bold text font-size-sm">New Tasks</span></center>
+                      </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 27*/}
+                    </div>
+                    <div className="col-xl-2">
+                      {/*begin::Stats Widget 27*/}
+                      <div className="card card-custom bg-green card-stretch gutter-b">
+                        {/*begin::Body*/}
+                        <div className="card-body">
+                          <span className="svg-icon svg-icon-2x svg-icon-info">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg*/}
+                            <center>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                <rect x={0} y={0} width={24} height={24} />
+                                <rect fill="#000000" opacity="0.3" x={13} y={4} width={3} height={16} rx="1.5" />
+                                <rect fill="#000000" x={8} y={9} width={3} height={11} rx="1.5" />
+                                <rect fill="#000000" x={18} y={11} width={3} height={9} rx="1.5" />
+                                <rect fill="#000000" x={3} y={13} width={3} height={7} rx="1.5" />
+                              </g>
+                            </svg>
+                            </center>
+                            {/*end::Svg Icon*/}
+                          </span>
+                          <center> <span className="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><h1>{InprogressProjects}</h1></span></center>
+                          <center><span className="font-weight-bold text font-size-sm">Ongoing Projects</span></center>
+                     </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 27*/}
+                    </div>
+                   
+
+                    <div className="col-xl-2">
+                      {/*begin::Stats Widget 28*/}
+                      <div className="card card-custom bg-green card-stretch gutter-b">
+                        {/*begin::Body*/}
+                        <div className="card-body">
+                          <span className="svg-icon svg-icon-2x svg-icon-warning">
+                            {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Group-chat.svg*/}
+                            <center>
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                              <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+                                <rect x={0} y={0} width={24} height={24} />
+                                <rect fill="#000000" opacity="0.3" x={13} y={4} width={3} height={16} rx="1.5" />
+                                <rect fill="#000000" x={8} y={9} width={3} height={11} rx="1.5" />
+                                <rect fill="#000000" x={18} y={11} width={3} height={9} rx="1.5" />
+                                <rect fill="#000000" x={3} y={13} width={3} height={7} rx="1.5" />
+                              </g>
+                            </svg>
+                            </center>
+                            {/*end::Svg Icon*/}
+                          </span>
+                          <center> <span className="card-title font-weight-bolder text-dark-75 font-size-h2 mb-0 mt-6 d-block"><h1>{InprogressTasks}</h1></span></center>
+                          <center><span className="font-weight-bold text font-size-sm">Ongoing Tasks</span></center>
+                      </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stat: Widget 28*/}
                     </div>
                   </div>
+
+
+                  <div className="row">
+                    <div className="col-xl-6">
+                      {/*begin::Stats Widget 22*/}
+                      <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{ backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)' }}>
+                        {/*begin::Body*/}
+                        <div className="card-body my-4">
+                          <a href="#" className="card-title font-weight-bolder text-success font-size-h6 mb-4 text-hover-state-dark d-block">Completed Projects</a>
+                          <div className="font-weight-bold text-muted font-size-sm">
+                            <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedProjects}</span><h3>100%</h3></div>
+                          <div className="progress progress-xs mt-7 bg-success-o-60">
+                            <div className="progress-bar bg-success" role="progressbar" style={{ width: '100%' }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                          </div>
+                        </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 22*/}
+                    </div>
+                    <div className="col-xl-6">
+                      {/*begin::Stats Widget 22*/}
+                      <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{ backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)' }}>
+                        {/*begin::Body*/}
+                        <div className="card-body my-4">
+                          <a href="#" className="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block">Completed Projects</a>
+                          <div className="font-weight-bold text-muted font-size-sm">
+                          <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedTasks}</span><h3>100%</h3></div>
+                          <div className="progress progress-xs mt-7 bg-info-o-60">
+                            <div className="progress-bar bg-info" role="progressbar" style={{ width: '100%' }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                          </div>
+                        </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 22*/}
+                    </div>
+                     </div>
+
                   <div className="row">
                     <div className="col-xl-4">
                       {/*begin::Mixed Widget 2*/}

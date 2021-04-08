@@ -44,27 +44,27 @@ class AuthLogin {
     localStorage.removeItem("user");
   }
 
-  createNewUser( first_name,last_name,address, lga,state,username,dob,email,password,phone_number) {
+  createNewUser( username,password,first_name,last_name,address, lga,state,dob,email,phone_number) {
     return axios.post('https://ecological.chinikiguard.com/accounts/api/create-user/', {
+      username,
+      password,
       first_name,
       last_name,
       address,
       lga,
       state,
-      username,
       dob,
       email,
-      password,
       phone_number,
     },
     { 
     
     
       headers: { 
-        'Content-Type':'multipart/form-data',
+        'Content-Type':'application/json',
       'Authorization': `Basic ${token}`,
        'Access-Control-Allow-Origin': '*',
-       'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+       'Access-Control-Allow-Methods': 'POST, GET,HEAD,OPTIONS',
        'Access-Control-Allow-Credentials': true 
       }, 
     }   

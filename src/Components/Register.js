@@ -68,15 +68,15 @@ export default class Register extends Component {
 
 
     this.state = {
+      username: "",
+      password: "",
       first_name: "",
       last_name: "",
       address: "",
       lga: "",
       state: "",
-      username: "",
       dob: "",
       email: "",
-      password: "",
       phone_number: "",
       successful: false,
       message: ""
@@ -151,26 +151,23 @@ export default class Register extends Component {
 
   handleRegister(e) {
     e.preventDefault();
-
     this.setState({
       message: "",
       successful: false
     });
-
     this.form.validateAll();
-
     if (this.checkBtn.context._errors.length === 0) {
       AuthLogin.createNewUser(
-        this.state.first_name,
+        this.state.username,
+        this.state.password,
+      this.state.first_name,
       this.state.last_name,
       this.state.address,
       this.state.lga,
       this.state.state,
-      this.state.username,
       this.state.dob,
       this.state.email,
-        this.state.password,
-        this.state.phone_number,
+      this.state.phone_number,
 
       ).then(
         response => {
