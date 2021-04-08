@@ -485,7 +485,7 @@ const Dashboard = () => {
                       <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{ backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)' }}>
                         {/*begin::Body*/}
                         <div className="card-body my-4">
-                          <a href="#" className="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block">Completed Projects</a>
+                          <a href="#" className="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block">Completed Tasks</a>
                           <div className="font-weight-bold text-muted font-size-sm">
                           <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedTasks}</span><h3>100%</h3></div>
                           <div className="progress progress-xs mt-7 bg-info-o-60">
