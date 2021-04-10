@@ -14,6 +14,8 @@ import CheckButton from "react-validation/build/button";
 const AllProjects = () => {
   const [projects, setProjects] = useState([]);
   const [myloading, setLoading] = useState([false]);
+  const [ProjectId, setProjectId] = useState([]);
+
   // const [statusUpdate, setStatusUpdate] = useState([]);
   // const [handlestatus, setHandleStatus] = useState([]);
   
@@ -51,6 +53,38 @@ const AllProjects = () => {
 //      };
   
 
+
+
+const ProjectIDS = () => {
+  const username = 'admin'
+  const password = 'Pass@1234'
+  const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+  const Ids = JSON.parse(localStorage.getItem('ProjectsIds'))
+  setProjectId(Ids)
+  console.log(Ids)
+
+  // axios.get("  https://ecological.chinikiguard.com/projects/api/details/"+`${Pids}`,
+  //   {
+  //     headers:
+  //     {
+  //       'Authorization': `Basic ${token}`,
+  //       'Access-Control-Allow-Origin': '*',
+  //       'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+  //       'Access-Control-Allow-Credentials': true
+  //     },
+
+  //   })
+  //   .then(res => {
+  //     const tasks = res.data.all_tasks;
+  //     setTask(tasks);
+  //     setLoading(false)
+  //     console.log(res);
+      // console.log(res.data.all_tasks);
+      // window.location = "/dashboard"
+    // })
+
+}
+
   useEffect(() => {
 
     const username = 'admin'
@@ -69,6 +103,9 @@ const AllProjects = () => {
       })
       .then(res => {
         const projects = res.data;
+        if (res.data) {
+          localStorage.setItem("ProjectsIds", JSON.stringify(res.data));
+      }
         setProjects(projects);
         setLoading(false)
         console.log(res);
@@ -76,6 +113,8 @@ const AllProjects = () => {
         // window.location = "/dashboard"
       })
       // UpdateStatus();
+      ProjectIDS ();
+
 
   }, []);
 
@@ -199,7 +238,8 @@ const AllProjects = () => {
                                   </Form> */}
                               {/*ebd::Progress*/}
                             </div>
-                            <a href="#" className="btn btn-block btn-sm btn-light-primary font-weight-bolder text-uppercase py-4">Edit Project</a>
+                        
+                            {/* <a href="#" className="btn btn-block btn-sm btn-light-primary font-weight-bolder text-uppercase py-4">Edit Project</a> */}
 
                             {/*end::Body*/}
                           </div>

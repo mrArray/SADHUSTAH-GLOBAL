@@ -124,6 +124,24 @@ RegisterTask(project,title,description,location,status,start_date,due_date,assig
 )
 }
 
+//this handle View Project
+// ViewProject(project){
+//   return  axios.get("https://ecological.chinikiguard.com/projects/api/details/"+`${project}`,
+  
+  
+// { 
+//  headers: { 
+//  'Authorization': `Basic ${token}`,
+//   'Access-Control-Allow-Origin': '*',
+//   'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+//   'Access-Control-Allow-Credentials': true 
+//  }, 
+// }   
+// )
+// }
+
+
+
   
   getCurrentUser() {
     return JSON.parse(localStorage.getItem('user'));

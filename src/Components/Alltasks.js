@@ -114,7 +114,7 @@ const AllTasks = () => {
                                   </div>
                                 </div>
                                 {/*end::Info*/}
-                                <a href="#" className="btn btn-block btn-sm btn-light-success font-weight-bolder text-uppercase py-4">Edit Task</a>
+                                <a href="#" className="btn btn-block btn-sm btn-light-success font-weight-bolder text-uppercase py-4">{task.status}</a>
                               </div>
                               {/*end::Body*/}
                             </div>

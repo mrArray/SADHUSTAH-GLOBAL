@@ -21,6 +21,9 @@ const Dashboard = () => {
   const [CompletedTasks, setCompletedTask] = useState([]);
   const [barchartData, setbarChartData] = useState({});
 
+  
+
+
 
 
 
@@ -329,7 +332,7 @@ const Dashboard = () => {
     script.async = true;
     document.body.appendChild(script);
     //end js stye
-    
+
 
 
 
@@ -563,40 +566,40 @@ const Dashboard = () => {
 
                   </div>
 
-                 <div className="row">
-  <div className="col-xl-6">
-    {/*begin::Stats Widget 22*/}
-    <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)'}}>
-      {/*begin::Body*/}
-      <div className="card-body my-4">
-        <a href="#" className="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block">Completed Projects</a>
-        <div className="font-weight-bold text-muted font-size-sm">
-          <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedProjects}</span></div>
-        <div className="progress progress-xs mt-7 bg-info-o-60">
-          <div className="progress-bar bg-info" role="progressbar" style={{width: '100%'}} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
-        </div>
-      </div>
-      {/*end::Body*/}
-    </div>
-    {/*end::Stats Widget 22*/}
-  </div>
-  <div className="col-xl-6">
-    {/*begin::Stats Widget 22*/}
-    <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)'}}>
-      {/*begin::Body*/}
-      <div className="card-body my-4">
-        <a href="#" className="card-title font-weight-bolder text-success font-size-h6 mb-4 text-hover-state-dark d-block">Completed Tasks</a>
-        <div className="font-weight-bold text-muted font-size-sm">
-          <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedTasks}</span></div>
-        <div className="progress progress-xs mt-7 bg-success-o-60">
-          <div className="progress-bar bg-success" role="progressbar" style={{width: '100%'}} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
-        </div>
-      </div>
-      {/*end::Body*/}
-    </div>
-    {/*end::Stats Widget 22*/}
-  </div>
-</div>
+                  <div className="row">
+                    <div className="col-xl-6">
+                      {/*begin::Stats Widget 22*/}
+                      <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{ backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)' }}>
+                        {/*begin::Body*/}
+                        <div className="card-body my-4">
+                          <a href="#" className="card-title font-weight-bolder text-info font-size-h6 mb-4 text-hover-state-dark d-block">Completed Projects</a>
+                          <div className="font-weight-bold text-muted font-size-sm">
+                            <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedProjects}</span></div>
+                          <div className="progress progress-xs mt-7 bg-info-o-60">
+                            <div className="progress-bar bg-info" role="progressbar" style={{ width: '100%' }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                          </div>
+                        </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 22*/}
+                    </div>
+                    <div className="col-xl-6">
+                      {/*begin::Stats Widget 22*/}
+                      <div className="card card-custom bgi-no-repeat card-stretch gutter-b" style={{ backgroundPosition: 'right top', backgroundSize: '30% auto', backgroundImage: 'url(assets/media/svg/shapes/abstract-3.svg)' }}>
+                        {/*begin::Body*/}
+                        <div className="card-body my-4">
+                          <a href="#" className="card-title font-weight-bolder text-success font-size-h6 mb-4 text-hover-state-dark d-block">Completed Tasks</a>
+                          <div className="font-weight-bold text-muted font-size-sm">
+                            <span className="text-dark-75 font-weight-bolder font-size-h2 mr-2">{CompletedTasks}</span></div>
+                          <div className="progress progress-xs mt-7 bg-success-o-60">
+                            <div className="progress-bar bg-success" role="progressbar" style={{ width: '100%' }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                          </div>
+                        </div>
+                        {/*end::Body*/}
+                      </div>
+                      {/*end::Stats Widget 22*/}
+                    </div>
+                  </div>
 
 
                 </div>
