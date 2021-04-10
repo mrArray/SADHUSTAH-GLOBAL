@@ -90,11 +90,12 @@ export default class ViewProjects extends Component {
       )
       .then(res => {
         if (res.data) {
-          localStorage.setItem("AllProjectData", JSON.stringify(res.data));
+          localStorage.setItem("singleProjects", JSON.stringify(res.data));
         }
         console.log(res);
         console.log(res.data);
-        // window.location = "/dashboard"
+       
+        window.location = "/EditProject"
       })
   }
   handleViewProject(e) {
@@ -116,7 +117,9 @@ export default class ViewProjects extends Component {
             successful: true,
             loading:true
           });
-          window.location = "/EditProject"
+          
+             
+          // window.location = "/EditProject"
         },
         error => {
           const resMessage =
