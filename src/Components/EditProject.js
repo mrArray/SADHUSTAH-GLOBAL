@@ -65,8 +65,7 @@ export default class EditProject extends Component {
 
         try {
 
-            const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
-            console.log(singleProjects)
+            
         } catch (e) {
     
           console.log(e);
@@ -174,6 +173,8 @@ export default class EditProject extends Component {
 
     render() {
 
+        const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
+            console.log(singleProjects)
         
         const { loading } = this.state;
 
@@ -228,23 +229,12 @@ export default class EditProject extends Component {
                                                         <div className="d-flex align-items-center justify-content-between flex-wrap">
                                                             <div className="mr-3">
                                                                 {/*begin::Name*/}
-                                                                <a href="#" className="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">Nexa - Next generation SAAS
+                                                                <a href="#" className="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{singleProjects.title}
               <i className="flaticon2-correct text-success icon-md ml-2" /></a>
                                                                 {/*end::Name*/}
                                                                 {/*begin::Contacts*/}
                                                                 <div className="d-flex flex-wrap my-2">
-                                                                    <a href="#" className="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
-                                                                        <span className="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
-                                                                            {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Mail-notification.svg*/}
-                                                                            <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
-                                                                                <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                                                                    <rect x={0} y={0} width={24} height={24} />
-                                                                                    <path d="M21,12.0829584 C20.6747915,12.0283988 20.3407122,12 20,12 C16.6862915,12 14,14.6862915 14,18 C14,18.3407122 14.0283988,18.6747915 14.0829584,19 L5,19 C3.8954305,19 3,18.1045695 3,17 L3,8 C3,6.8954305 3.8954305,6 5,6 L19,6 C20.1045695,6 21,6.8954305 21,8 L21,12.0829584 Z M18.1444251,7.83964668 L12,11.1481833 L5.85557487,7.83964668 C5.4908718,7.6432681 5.03602525,7.77972206 4.83964668,8.14442513 C4.6432681,8.5091282 4.77972206,8.96397475 5.14442513,9.16035332 L11.6444251,12.6603533 C11.8664074,12.7798822 12.1335926,12.7798822 12.3555749,12.6603533 L18.8555749,9.16035332 C19.2202779,8.96397475 19.3567319,8.5091282 19.1603533,8.14442513 C18.9639747,7.77972206 18.5091282,7.6432681 18.1444251,7.83964668 Z" fill="#000000" />
-                                                                                    <circle fill="#000000" opacity="0.3" cx="19.5" cy="17.5" r="2.5" />
-                                                                                </g>
-                                                                            </svg>
-                                                                            {/*end::Svg Icon*/}
-                                                                        </span>jason@siastudio.com</a>
+                                                                   
                                                                     <a href="#" className="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                                                         <span className="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                                             {/*begin::Svg Icon | path:assets/media/svg/icons/General/Lock.svg*/}
@@ -258,7 +248,7 @@ export default class EditProject extends Component {
                                                                                 </g>
                                                                             </svg>
                                                                             {/*end::Svg Icon*/}
-                                                                        </span>PR Manager</a>
+                                                                        </span>{singleProjects.manager}</a>
                                                                     <a href="#" className="text-muted text-hover-primary font-weight-bold">
                                                                         <span className="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg*/}
@@ -269,37 +259,36 @@ export default class EditProject extends Component {
                                                                                 </g>
                                                                             </svg>
                                                                             {/*end::Svg Icon*/}
-                                                                        </span>Melbourne</a>
+                                                                        </span>{singleProjects.location}</a>
                                                                 </div>
                                                                 {/*end::Contacts*/}
                                                             </div>
                                                             <div className="my-lg-0 my-1">
                                                                 {/* <a href="#" className="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a> */}
-                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">Completed</a>
+                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{singleProjects.status}</a>
                                                             </div>
                                                         </div>
                                                         {/*end: Title*/}
                                                         {/*begin: Content*/}
                                                         <div className="d-flex align-items-center flex-wrap justify-content-between">
-                                                            <div className="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">I distinguish three main text objectives
-            <br />could be merely to inform people</div>
+                                                            <div className="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">{singleProjects.description}</div>
                                                             <div className="d-flex flex-wrap align-items-center py-2">
                                                                 <div className="d-flex align-items-center mr-10">
                                                                     <div className="mr-6">
                                                                         <div className="font-weight-bold mb-2">Start Date</div>
-                                                                        <span className="btn btn-sm btn-text btn-light-primary text-uppercase font-weight-bold">07 May, 2020</span>
+                                                                        <span className="btn btn-sm btn-text btn-light-primary text-uppercase font-weight-bold">{singleProjects.start_date}</span>
                                                                     </div>
                                                                     <div className>
                                                                         <div className="font-weight-bold mb-2">Due Date</div>
-                                                                        <span className="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">10 June, 2021</span>
+                                                                        <span className="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">{singleProjects.due_date}</span>
                                                                     </div>
                                                                 </div>
                                                                 <div className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">
                                                                     <span className="font-weight-bold">Progress</span>
                                                                     <div className="progress progress-xs mt-2 mb-2">
-                                                                        <div className="progress-bar bg-success" role="progressbar" style={{ width: '63%' }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                                                                        <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleProjects.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
                                                                     </div>
-                                                                    <span className="font-weight-bolder text-dark">78%</span>
+                                                                    <span className="font-weight-bolder text-dark">{singleProjects.progress}</span>
                                                                 </div>
                                                             </div>
                                                         </div>
