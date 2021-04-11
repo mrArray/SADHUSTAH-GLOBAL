@@ -232,6 +232,7 @@ export default class EditProject extends Component {
                                                             </div>
                                                             <div className="my-lg-0 my-1">
                                                                 {/* <a href="#" className="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a> */}
+                                                                
                                                                 <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{statuss}</a>
                                                             </div>
                                                         </div>

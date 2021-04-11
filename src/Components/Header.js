@@ -23,7 +23,7 @@ class Header extends Component {
         navigate: false
     };
 
-    componentDidMount() {
+    componentWillMount() {
       const username = 'admin'
       const password = 'Pass@1234'
       const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
