@@ -61,6 +61,7 @@ export default class Login extends Component {
         () => {
           this.props.history.push("/dashboard");
           window.location.reload();
+          
         },
         error => {
           const resMessage =

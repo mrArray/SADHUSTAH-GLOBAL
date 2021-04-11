@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 // import AuthService from "../services/auth.service";
+import axios from 'axios';
+
 
 
 class Header extends Component {
@@ -22,6 +24,29 @@ class Header extends Component {
     };
 
     componentDidMount() {
+      const username = 'admin'
+      const password = 'Pass@1234'
+      const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+      axios.get("hhttps://ecological.chinikiguard.com/projects/api/list/?all_record=1",
+        {
+          headers:
+          {
+            'Authorization': `Basic ${token}`,
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+            'Access-Control-Allow-Credentials': true
+          },
+  
+        })
+        .then(res => {
+          if (res.data) {
+            localStorage.setItem("AllProjectData", JSON.stringify(res.data));
+  
+          }
+          console.log(res);
+          console.log(res.data);
+          // window.location = "/dashboard"
+        })
 
         //user  stored user information (including JWT) from AuthService class
         // const user = AuthService.getCurrentUser();

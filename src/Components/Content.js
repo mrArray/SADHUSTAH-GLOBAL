@@ -11,6 +11,7 @@ import Alltasks from './Alltasks';
 import EditProject from './EditProject';
 import ViewProjects from './ViewProjects';
 import ViewTasks from './ViewTasks';
+import EditTask from './EditTask';
 
 
 
@@ -62,6 +63,9 @@ const  Content = () => {
            <Route exact path="/" component={ViewTasks}/>
            <Route  path="/ViewTasks" component={ViewTasks}/>
 
+ <Route exact path="/" component={EditTask}/>
+           <Route  path="/EditTask" component={EditTask}/>
+           
 
 
            

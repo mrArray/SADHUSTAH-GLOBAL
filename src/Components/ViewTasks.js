@@ -12,11 +12,6 @@ import AuthLogin from "../Authentications/AuthLogin";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
 
-
-
-
-
-
 const required = value => {
   if (!value) {
     return (
@@ -31,13 +26,11 @@ export default class ViewTasks extends Component {
 
   constructor(props) {
     super(props);
-    this.handleCompleteProject = this.handleCompleteProject.bind(this);
-    this.onChangeProject = this.onChangeProject.bind(this)
-
-
+    this.handleViewTask = this.handleViewTask.bind(this);
+    this.onChangeTask = this.onChangeTask.bind(this)
+    this.ViewTask=this.ViewTask.bind(this)
     this.state = {
-      project: "",
-     
+      task: "",
       loading: false,
       show: false,
       message: ""
@@ -45,17 +38,11 @@ export default class ViewTasks extends Component {
   }
   componentDidMount() {
     const script = document.createElement("script");
-
     script.src = "./assets/dist/assets/js/pages/custom/wizard/wizard-3.js";
     script.async = true;
-
-
     document.body.appendChild(script);
-
-
   }
   componentWillMount() {
-
 
     const username = 'admin'
     const password = 'Pass@1234'
@@ -74,52 +61,66 @@ export default class ViewTasks extends Component {
       .then(res => {
         if (res.data) {
           localStorage.setItem("AllTasksData", JSON.stringify(res.data));
-
-
-
         }
         console.log(res);
         console.log(res.data);
         // window.location = "/dashboard"
       })
-
   }
-
-
-  onChangeProject(e) {
+  onChangeTask(e) {
     this.setState({
-      project: e.target.value
+      task: e.target.value
     });
   }
   
 
-
-  handleCompleteProject(e) {
+   ViewTask (task){
+    let username = 'admin';
+    let password = 'Pass@1234';
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+      return  axios.get(`https://ecological.chinikiguard.com/projects/api/tasks/details/${task}/`,
+      { 
+       headers: { 
+       'Authorization': `Basic ${token}`,
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+        'Access-Control-Allow-Credentials': true 
+       }, 
+      }   
+      )
+      .then(res => {
+        if (res.data) {
+          localStorage.setItem("singleTask", JSON.stringify(res.data));
+        }
+        console.log(res);
+        console.log(res.data);
+       
+        window.location = "/EditTask"
+      })
+  }
+  handleViewTask(e) {
     e.preventDefault();
-
-
-
-
     this.setState({
       message: "",
-      successful: false
+      successful: false,
+      loading:true
     });
-
     this.form.validateAll();
 
     if (this.checkBtn.context._errors.length === 0) {
-      AuthLogin.RegisterTask(
-        this.state.project,
-       
+      this.ViewTask(
+        this.state.task
       ).then(
         response => {
           this.setState({
             message: response.data.detail,
-            successful: true
+            successful: true,
+            loading:true
           });
-          window.location = "/Alltasks"
+          
+             
+          // window.location = "/EditProject"
         },
-
         error => {
           const resMessage =
             (error.response &&
@@ -127,22 +128,18 @@ export default class ViewTasks extends Component {
               error.response.data.message) ||
             error.message ||
             error.toString();
-
           this.setState({
             successful: false,
             message: resMessage,
-            loading: false
+            loading: true
           });
         }
       );
     }
   }
-
   render() {
-
-
-    const TaskId = JSON.parse(localStorage.getItem('AllTasksData'))
-    console.log(TaskId)
+    const taskId = JSON.parse(localStorage.getItem('AllTasksData'))
+    console.log(taskId)
     const { loading } = this.state;
 
     // if (this.state.redirectToReferrer) {
@@ -201,7 +198,7 @@ export default class ViewTasks extends Component {
                           <div className="row justify-content-center py-10 px-8 py-lg-12 px-lg-10">
                             <div className="col-xl-12 col-xxl-7">
                               {/*begin: Wizard Form*/}
-                              <Form onSubmit={this.handleCompleteProject} ref={c => { this.form = c; }} className="form" id="kt_form">
+                              <Form onSubmit={this.handleViewTask} ref={c => { this.form = c; }} className="form" id="kt_form">
                                 {!this.state.successful && (
                                   <div>
                                     {/*begin: Wizard Step 1*/}
@@ -209,16 +206,16 @@ export default class ViewTasks extends Component {
                                       <h4 className="mb-10 font-weight-bold text-dark">View Task </h4>
                                       {/*begin::Input*/}
                                       <div className="form-group">
-                                        <label>Projects</label>
+                                        <label>Task</label>
                                         <select name="country" className="form-control"
-                                          value={this.state.project}
-                                          onChange={this.onChangeProject}
+                                          value={this.state.task}
+                                          onChange={this.onChangeTask}
                                           validations={[required]}
                                         >
                                           <option value>Select</option>
-                                          {TaskId.map(project => (
+                                          {taskId.map(task => (
 
-                                            <option value={`${project.pk}`}>{project.title}</option>
+                                            <option value={`${task.pk}`}>{task.title}</option>
                                           ))}
                                         </select>
                                       </div>
@@ -226,11 +223,11 @@ export default class ViewTasks extends Component {
                                       <center>
                                     <button id="kt_login_singin_form_submit_button"
                                       className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
-                                      disabled={this.state.loading}
+                                      enabled={this.state.loading}
 
                                     >
                                       {this.state.loading && (
-                                        <center><Spinner animation="border" variant="primary" /></center>
+                                        <center><Spinner animation="border" variant="white" /></center>
                                       )}
                                       <span>View</span> 
                                     </button>

@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-// import AuthService from "../services/auth.service";
-// import { PostData } from "./PostData";
 import { Redirect, Switch } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer'
@@ -31,152 +29,123 @@ export default class EditProject extends Component {
 
     constructor(props) {
         super(props);
-        this.handleRegisterTask = this.handleRegisterTask.bind(this);
-        this.onChangeTitle = this.onChangeTitle.bind(this);
-        this.onChangeDescription = this.onChangeDescription.bind(this);
-        this.onChangeStatus = this.onChangeStatus.bind(this)
-        this.onChangeLocation = this.onChangeLocation.bind(this)
-        this.onChangeStartDate = this.onChangeStartDate.bind(this)
-        this.onChangeDueDate = this.onChangeDueDate.bind(this)
-        this.onChangeAssignedTo = this.onChangeAssignedTo.bind(this)
-        this.onChangeProject = this.onChangeProject.bind(this)
+        this.handleStatus = this.handleStatus.bind(this);
+        this.onChangeStatus = this.onChangeStatus.bind(this);
 
 
         this.state = {
-            project: "",
-            title: "",
-            description: "",
             status: "",
-            location: "",
-            start_date: "",
-            due_date: "",
-            assigned_to: "",
             loading: false,
             show: false,
             message: ""
         };
     }
-    componentDidMount() {
+    // componentDidMount() {
 
 
 
-    }
-    componentWillMount() {
+    // }
+    // componentWillMount() {
 
-        try {
 
-            
-        } catch (e) {
-    
-          console.log(e);
-    
-        }
-    
-    
-      };
-    onChangeProject(e) {
-        this.setState({
-            project: e.target.value
-        });
-    }
-    onChangeTitle(e) {
-        this.setState({
-            title: e.target.value
-        });
-    }
 
-    onChangeDescription(e) {
-        this.setState({
-            description: e.target.value
-        });
-    }
+
+    // };
 
     onChangeStatus(e) {
         this.setState({
             status: e.target.value
         });
     }
-    onChangeLocation(e) {
-        this.setState({
-            location: e.target.value
-        });
-    }
-    onChangeStartDate(e) {
-        this.setState({
-            start_date: e.target.value
-        });
-    }
-    onChangeDueDate(e) {
-        this.setState({
-            due_date: e.target.value
-        });
-    }
 
-    onChangeAssignedTo(e) {
-        this.setState({
-            assigned_to: e.target.value
-        });
-    }
+    ChangeStatus (status){
+
+        let username = 'admin';
+        let password = 'Pass@1234';
+        const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+        const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
+        const ProjectPk = singleProjects.pk;
+        console.log(ProjectPk)
+
+        return axios.put(`https://ecological.chinikiguard.com/projects/api/update/${ProjectPk}/`, {  status: `${status}`,
+    },
+            {
+                headers: {
+                    'Authorization': `Basic ${token}`,
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+                    'Access-Control-Allow-Credentials': true
+                },
+            }
+        )
+
+          .then(res => {
+            if (res.data) {
+                localStorage.setItem("singleProjects", JSON.stringify(singleProjects));
+                localStorage.setItem("status", JSON.stringify(res.data.status));
 
 
+              }
 
 
-    handleRegisterTask(e) {
+            console.log(res);
+            console.log(res.data.status);
+            JSON.parse(localStorage.getItem('singleProjects'))
+
+            window.location = "/EditProject"
+          })
+      }
+
+    
+    handleStatus(e) {
         e.preventDefault();
-
-
-
 
         this.setState({
             message: "",
-            successful: false
+            successful: false,
+            loading:true
+
         });
 
         this.form.validateAll();
-
         if (this.checkBtn.context._errors.length === 0) {
-            AuthLogin.RegisterTask(
-                this.state.project,
-                this.state.title,
-                this.state.description,
-                this.state.location,
-                this.state.status,
-                this.state.start_date,
-                this.state.due_date,
-                this.state.assigned_to
+            this.ChangeStatus(
+              this.state.status
             ).then(
-                response => {
-                    this.setState({
-                        message: response.data.detail,
-                        successful: true
-                    });
-                    window.location = "/Alltasks"
-                },
-
-                error => {
-                    const resMessage =
-                        (error.response &&
-                            error.response.data &&
-                            error.response.data.message) ||
-                        error.message ||
-                        error.toString();
-
-                    this.setState({
-                        successful: false,
-                        message: resMessage,
-                        loading: false
-                    });
-                }
+              response => {
+                this.setState({
+                  message: response.data.detail,
+                  successful: true,
+                  loading:true
+                });
+                   
+                window.location = "/EditProject"
+              },
+              error => {
+                const resMessage =
+                  (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                  error.message ||
+                  error.toString();
+                this.setState({
+                  successful: false,
+                  message: resMessage,
+                  loading: true
+                });
+              }
             );
+          }
         }
-    }
-
     render() {
 
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
-            console.log(singleProjects)
-        
+        const statuss = JSON.parse(localStorage.getItem('status'))
+
+        console.log(singleProjects)
+
         const { loading } = this.state;
+        
 
         // if (this.state.redirectToReferrer) {
         //     return (<Redirect to={'/dashboard'} />)
@@ -205,9 +174,7 @@ export default class EditProject extends Component {
 
                                 <div className="d-flex flex-column-fluid">
                                     <Menu_Aside />
-
-
-                                    {/*begin::Container*/}
+                {/*begin::Container*/}
                                     <div className="container">
 
                                         <div className="card card-custom gutter-b">
@@ -230,11 +197,11 @@ export default class EditProject extends Component {
                                                             <div className="mr-3">
                                                                 {/*begin::Name*/}
                                                                 <a href="#" className="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{singleProjects.title}
-              <i className="flaticon2-correct text-success icon-md ml-2" /></a>
+                                                                    <i className="flaticon2-correct text-success icon-md ml-2" /></a>
                                                                 {/*end::Name*/}
                                                                 {/*begin::Contacts*/}
                                                                 <div className="d-flex flex-wrap my-2">
-                                                                   
+
                                                                     <a href="#" className="text-muted text-hover-primary font-weight-bold mr-lg-8 mr-5 mb-lg-0 mb-2">
                                                                         <span className="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                                             {/*begin::Svg Icon | path:assets/media/svg/icons/General/Lock.svg*/}
@@ -265,7 +232,7 @@ export default class EditProject extends Component {
                                                             </div>
                                                             <div className="my-lg-0 my-1">
                                                                 {/* <a href="#" className="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a> */}
-                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{singleProjects.status}</a>
+                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{statuss}</a>
                                                             </div>
                                                         </div>
                                                         {/*end: Title*/}
@@ -296,35 +263,62 @@ export default class EditProject extends Component {
                                                     </div>
                                                     {/*end: Info*/}
                                                 </div>
-                                                <div className="separator separator-solid my-7" />
-                                                <div className="form-group">
-                                                    <label><h5>Change Status</h5></label>
-                                                    <select name="country" className="form-control"
-                                                        value={this.state.status}
-                                                        onChange={this.onChangeStatus}
-                                                        validations={[required]}
-                                                        name="projectstatus"
-                                                    >
-                                                        <option value>Select</option>
-                                                        <option value="open">Open</option>
-                                                        <option value="inprogress">In Progress</option>
-                                                        <option value="completed">Completed</option>
-                                                    </select>
-                                                </div>
-                                                <center>
-                                                <button id="kt_login_singin_form_submit_button"
-                                                    className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
-                                                    data-wizard-type="step-content"
-                                                    disabled={this.state.loading}
-
-                                                >
-                                                    {this.state.loading && (
-                                                        <center><Spinner animation="border" variant="primary" /></center>
+                                                <Form onSubmit={this.handleStatus} ref={c => { this.form = c; }} className="form" id="kt_form">
+                                                    {!this.state.successful && (
+                                                        <div>
+                                                            <div className="separator separator-solid my-7" />
+                                                            <div className="form-group">
+                                                                <label><h5>Change Status</h5></label>
+                                                                <select name="country" className="form-control"
+                                                                    value={this.state.status}
+                                                                    onChange={this.onChangeStatus}
+                                                                    validations={[required]}
+                                                                    name="projectstatus"
+                                                                >
+                                                                    <option value>Select</option>
+                                                                    <option value="open">Open</option>
+                                                                    <option value="inprogress">In Progress</option>
+                                                                    <option value="completed">Completed</option>
+                                                                </select>
+                                                            </div>
+                                                            <center>
+                                                                <button id="kt_login_singin_form_submit_button"
+                                                                    className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
+                                                                    // data-wizard-type="step-content"
+                                                                    enabled={this.state.loading}
+                                                                    >
+                                                                    {this.state.loading && (
+                                                                        <center><Spinner animation="border" variant="white" /></center>
+                                                                    )}
+                                                                    <span>Change</span>
+                                                                </button></center>
+                                                            <CheckButton
+                                                                style={{ display: "none" }}
+                                                                ref={c => {
+                                                                    this.checkBtn = c;
+                                                                }}
+                                                            />
+                                                        </div>
                                                     )}
-                                                    <span>Change</span>
-                                                </button></center>
+                                                    {this.state.message && (
+
+                                                        <div className="pb-5" >
+                                                            <div
+                                                                className={
+                                                                    this.state.successful
+                                                                        ? "alert alert-custom alert-outline-success fade show mb-5"
+                                                                        : "alert alert-custom alert-outline-danger fade show mb-5"
+                                                                }
+                                                                role="alert"
+                                                            >
+                                                                {this.state.message}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </Form>
+
                                             </div>
-                                           
+
                                         </div>
 
                                         <div className="card card-custom card-stretch gutter-b">
@@ -337,16 +331,16 @@ export default class EditProject extends Component {
                                                 <div className="card-toolbar">
                                                     {/* <a href="#" className="btn btn-info font-weight-bolder font-size-sm">
                                                         <span className="svg-icon svg-icon-md svg-icon-white"> */}
-                                                            {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg*/}
-                                                            {/* <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+                                                    {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg*/}
+                                                    {/* <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                                                 <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
                                                                     <polygon points="0 0 24 0 24 24 0 24" />
                                                                     <path d="M18,8 L16,8 C15.4477153,8 15,7.55228475 15,7 C15,6.44771525 15.4477153,6 16,6 L18,6 L18,4 C18,3.44771525 18.4477153,3 19,3 C19.5522847,3 20,3.44771525 20,4 L20,6 L22,6 C22.5522847,6 23,6.44771525 23,7 C23,7.55228475 22.5522847,8 22,8 L20,8 L20,10 C20,10.5522847 19.5522847,11 19,11 C18.4477153,11 18,10.5522847 18,10 L18,8 Z M9,11 C6.790861,11 5,9.209139 5,7 C5,4.790861 6.790861,3 9,3 C11.209139,3 13,4.790861 13,7 C13,9.209139 11.209139,11 9,11 Z" fill="#000000" fillRule="nonzero" opacity="0.3" />
                                                                     <path d="M0.00065168429,20.1992055 C0.388258525,15.4265159 4.26191235,13 8.98334134,13 C13.7712164,13 17.7048837,15.2931929 17.9979143,20.2 C18.0095879,20.3954741 17.9979143,21 17.2466999,21 C13.541124,21 8.03472472,21 0.727502227,21 C0.476712155,21 -0.0204617505,20.45918 0.00065168429,20.1992055 Z" fill="#000000" fillRule="nonzero" />
                                                                 </g>
                                                             </svg> */}
-                                                            {/*end::Svg Icon*/}
-                                                        {/* </span>Add New Task</a> */}
+                                                    {/*end::Svg Icon*/}
+                                                    {/* </span>Add New Task</a> */}
                                                 </div>
                                             </div>
                                             {/*end::Header*/}
