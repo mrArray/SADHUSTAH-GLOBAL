@@ -10,11 +10,6 @@ import AuthLogin from "../Authentications/AuthLogin";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
 
-
-
-
-
-
 const required = value => {
     if (!value) {
         return (
@@ -26,7 +21,6 @@ const required = value => {
 };
 
 export default class EditProject extends Component {
-
     constructor(props) {
         super(props);
         this.handleStatus = this.handleStatus.bind(this);
@@ -41,24 +35,15 @@ export default class EditProject extends Component {
         };
     }
     // componentDidMount() {
-
-
-
     // }
     // componentWillMount() {
-
-
-
-
     // };
-
     onChangeStatus(e) {
         this.setState({
             status: e.target.value
         });
     }
-
-    ChangeStatus (status){
+    ChangeStatus(status) {
 
         let username = 'admin';
         let password = 'Pass@1234';
@@ -67,8 +52,9 @@ export default class EditProject extends Component {
         const ProjectPk = singleProjects.pk;
         console.log(ProjectPk)
 
-        return axios.put(`https://ecological.chinikiguard.com/projects/api/update/${ProjectPk}/`, {  status: `${status}`,
-    },
+        return axios.put(`https://ecological.chinikiguard.com/projects/api/update/${ProjectPk}/`, {
+            status: `${status}`,
+        },
             {
                 headers: {
                     'Authorization': `Basic ${token}`,
@@ -78,75 +64,63 @@ export default class EditProject extends Component {
                 },
             }
         )
+            .then(res => {
+                if (res.data) {
+                    localStorage.setItem("singleProjects", JSON.stringify(singleProjects));
+                    // localStorage.setItem("status", JSON.stringify(singleProjects));
+                }
+                console.log(res);
+                console.log(res.data.status);
+                // JSON.parse(localStorage.getItem('singleProjects'))
 
-          .then(res => {
-            if (res.data) {
-                localStorage.setItem("singleProjects", JSON.stringify(singleProjects));
-                // localStorage.setItem("status", JSON.stringify(singleProjects));
-
-
-              }
-
-
-            console.log(res);
-            console.log(res.data.status);
-            // JSON.parse(localStorage.getItem('singleProjects'))
-
-            window.location = "/allProjects"
-          })
-      }
-
-    
+                window.location = "/allProjects"
+            })
+    }
     handleStatus(e) {
         e.preventDefault();
 
         this.setState({
             message: "",
             successful: false,
-            loading:true
+            loading: true
 
         });
 
         this.form.validateAll();
         if (this.checkBtn.context._errors.length === 0) {
             this.ChangeStatus(
-              this.state.status
+                this.state.status
             ).then(
-              response => {
-                this.setState({
-                  message: response.data.detail,
-                  successful: true,
-                  loading:true
-                });
-                   
-                window.location = "/EditProject"
-              },
-              error => {
-                const resMessage =
-                  (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                  error.message ||
-                  error.toString();
-                this.setState({
-                  successful: false,
-                  message: resMessage,
-                  loading: true
-                });
-              }
-            );
-          }
-        }
-    render() {
+                response => {
+                    this.setState({
+                        message: response.data.detail,
+                        successful: true,
+                        loading: true
+                    });
 
+                    window.location = "/EditProject"
+                },
+                error => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+                    this.setState({
+                        successful: false,
+                        message: resMessage,
+                        loading: true
+                    });
+                }
+            );
+        }
+    }
+    render() {
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
         // const statuss = JSON.parse(localStorage.getItem('status'))
-
         console.log(singleProjects)
-
         const { loading } = this.state;
-        
-
         // if (this.state.redirectToReferrer) {
         //     return (<Redirect to={'/dashboard'} />)
         // }
@@ -154,9 +128,6 @@ export default class EditProject extends Component {
         // if (sessionStorage.getItem('token')) {
         //     return (<Redirect to={'/dashboard'} />)
         // }
-
-
-
         return (
             <div>
 
@@ -174,7 +145,7 @@ export default class EditProject extends Component {
 
                                 <div className="d-flex flex-column-fluid">
                                     <Menu_Aside />
-                {/*begin::Container*/}
+                                    {/*begin::Container*/}
                                     <div className="container">
 
                                         <div className="card card-custom gutter-b">
@@ -232,7 +203,7 @@ export default class EditProject extends Component {
                                                             </div>
                                                             <div className="my-lg-0 my-1">
                                                                 {/* <a href="#" className="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a> */}
-                                                                
+
                                                                 <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{singleProjects.status}</a>
                                                             </div>
                                                         </div>
@@ -287,7 +258,7 @@ export default class EditProject extends Component {
                                                                     className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
                                                                     // data-wizard-type="step-content"
                                                                     enabled={this.state.loading}
-                                                                    >
+                                                                >
                                                                     {this.state.loading && (
                                                                         <center><Spinner animation="border" variant="white" /></center>
                                                                     )}

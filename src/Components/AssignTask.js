@@ -143,18 +143,13 @@ export default class AssignTask extends Component {
     });
   }
 
-
-
-
   handleRegisterTask(e) {
     e.preventDefault();
 
-
-
-
     this.setState({
       message: "",
-      successful: false
+      successful: false,
+      loading:true
     });
 
     this.form.validateAll();
@@ -177,7 +172,6 @@ export default class AssignTask extends Component {
           });
           window.location = "/Alltasks"
         },
-
         error => {
           const resMessage =
             (error.response &&
@@ -210,9 +204,6 @@ export default class AssignTask extends Component {
     // if (sessionStorage.getItem('token')) {
     //     return (<Redirect to={'/dashboard'} />)
     // }
-
-
-
     return (
       <div>
 
@@ -430,11 +421,11 @@ export default class AssignTask extends Component {
                                     <button id="kt_login_singin_form_submit_button"
                                       className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
                                       data-wizard-type="step-content"
-                                      disabled={this.state.loading}
+                                      enabled={this.state.loading}
 
                                     >
                                       {this.state.loading && (
-                                        <center><Spinner animation="border" variant="primary" /></center>
+                                        <center><Spinner animation="border" variant="white" /></center>
                                       )}
                                       <span>Assign</span>
                                     </button>

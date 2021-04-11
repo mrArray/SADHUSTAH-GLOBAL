@@ -193,7 +193,9 @@ export default class RegisterProject extends Component {
 
     this.setState({
       message: "",
-      successful: false
+      successful: false,
+      loading:true
+
     });
 
     this.form.validateAll();
@@ -210,7 +212,8 @@ export default class RegisterProject extends Component {
         response => {
           this.setState({
             message: response.data.detail,
-            successful: true
+            successful: true,
+            loading:true
           });
           window.location = "/AllProjects"
         },
@@ -226,7 +229,7 @@ export default class RegisterProject extends Component {
           this.setState({
             successful: false,
             message: resMessage,
-            loading: false
+            loading: true
           });
         }
       );
@@ -514,11 +517,11 @@ export default class RegisterProject extends Component {
                                           <button id="kt_login_singin_form_submit_button"
                                           className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
                                           data-wizard-type="step-content"
-                                          disabled={this.state.loading}
+                                          enabled={this.state.loading}
     
                                         >
                                           {this.state.loading && (
-                                                    <center><Spinner animation="border" variant="primary" /></center>
+                                                    <center><Spinner animation="border" variant="white" /></center>
                                                     )}
                                           <span>submit</span>
                                         </button>
