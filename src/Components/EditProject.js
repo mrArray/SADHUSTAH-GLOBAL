@@ -82,7 +82,7 @@ export default class EditProject extends Component {
           .then(res => {
             if (res.data) {
                 localStorage.setItem("singleProjects", JSON.stringify(singleProjects));
-                localStorage.setItem("status", JSON.stringify(res.data.status));
+                // localStorage.setItem("status", JSON.stringify(singleProjects));
 
 
               }
@@ -90,9 +90,9 @@ export default class EditProject extends Component {
 
             console.log(res);
             console.log(res.data.status);
-            JSON.parse(localStorage.getItem('singleProjects'))
+            // JSON.parse(localStorage.getItem('singleProjects'))
 
-            window.location = "/EditProject"
+            window.location = "/allProjects"
           })
       }
 
@@ -140,7 +140,7 @@ export default class EditProject extends Component {
     render() {
 
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
-        const statuss = JSON.parse(localStorage.getItem('status'))
+        // const statuss = JSON.parse(localStorage.getItem('status'))
 
         console.log(singleProjects)
 
@@ -233,7 +233,7 @@ export default class EditProject extends Component {
                                                             <div className="my-lg-0 my-1">
                                                                 {/* <a href="#" className="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a> */}
                                                                 
-                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{statuss}</a>
+                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{singleProjects.status}</a>
                                                             </div>
                                                         </div>
                                                         {/*end: Title*/}

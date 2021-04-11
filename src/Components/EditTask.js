@@ -82,7 +82,7 @@ export default class EditTask extends Component {
           .then(res => {
             if (res.data) {
                 localStorage.setItem("singleTask", JSON.stringify(singleTask));
-                localStorage.setItem("statusTask", JSON.stringify(res.data.status));
+                // localStorage.setItem("statusTask", JSON.stringify(res.data.status));
 
 
               }
@@ -91,8 +91,8 @@ export default class EditTask extends Component {
             console.log(res);
             console.log(res.data.status);
 
-            window.location = "/EditTask"
-          })
+            window.location = "/Alltasks"
+        })
       }
 
     
@@ -118,7 +118,7 @@ export default class EditTask extends Component {
                   loading:true
                 });
                    
-                window.location = "/EditTask"
+                // window.location = "/Alltasks"
               },
               error => {
                 const resMessage =
@@ -139,7 +139,7 @@ export default class EditTask extends Component {
     render() {
 
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
-        const statussTask = JSON.parse(localStorage.getItem('statusTask'))
+        // const statussTask = JSON.parse(localStorage.getItem('statusTask'))
 
         console.log(singleTask)
 
@@ -235,7 +235,7 @@ export default class EditTask extends Component {
                                                             </div>
                                                             <div className="my-lg-0 my-1">
                                                                 {/* <a href="#" className="btn btn-sm btn-light-success font-weight-bolder text-uppercase mr-3">Reports</a> */}
-                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{statussTask}</a>
+                                                                <a href="#" className="btn btn-sm btn-light-success  font-weight-bolder text-uppercase">{singleTask.status}</a>
                                                             </div>
                                                         </div>
                                                         {/*end: Title*/}
