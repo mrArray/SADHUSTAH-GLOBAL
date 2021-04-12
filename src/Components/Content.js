@@ -12,6 +12,7 @@ import EditProject from './EditProject';
 import ViewProjects from './ViewProjects';
 import ViewTasks from './ViewTasks';
 import EditTask from './EditTask';
+import TaskManagerDashboard from './TaskManagerDashboard';
 
 
 
@@ -66,7 +67,9 @@ const  Content = () => {
  <Route exact path="/" component={EditTask}/>
            <Route  path="/EditTask" component={EditTask}/>
            
-
+           <Route exact path="/" component={TaskManagerDashboard}/>
+           <Route  path="/TaskManagerDashboard" component={TaskManagerDashboard}/>
+           
 
            
 

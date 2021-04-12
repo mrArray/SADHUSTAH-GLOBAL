@@ -118,8 +118,6 @@ export default class ViewProjects extends Component {
             successful: true,
             loading:true
           });
-          
-             
           // window.location = "/EditProject"
         },
         error => {

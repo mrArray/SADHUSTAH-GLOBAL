@@ -61,7 +61,7 @@ class AuthLogin {
     
     
       headers: { 
-        'Content-Type':'application/json',
+      'Content-Type':'application/json',
       'Authorization': `Basic ${token}`,
        'Access-Control-Allow-Origin': '*',
        'Access-Control-Allow-Methods': 'POST, GET,HEAD,OPTIONS',

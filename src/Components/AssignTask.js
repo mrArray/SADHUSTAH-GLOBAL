@@ -195,7 +195,10 @@ export default class AssignTask extends Component {
 
     const projectId = JSON.parse(localStorage.getItem('AllProjectData'))
     console.log(projectId)
+    const UsersIds = JSON.parse(localStorage.getItem('AllUsersData'))
+
     const { loading } = this.state;
+    
 
     // if (this.state.redirectToReferrer) {
     //     return (<Redirect to={'/dashboard'} />)
@@ -342,8 +345,13 @@ export default class AssignTask extends Component {
                                           validations={[required]}
                                           name="assignedto"
                                         >
+                                          
                                           <option value>Select</option>
-                                          <option value="1" selected="selected">SALISU ABDULLAHI MUSA</option>
+                                          {/* {UsersIds.map(users => (
+
+                                            <option value={`${users.username}`}>{users.username}</option>
+                                         ))} */}
+                                            <option value='1'>Alh Sani Umar Suleman</option>
 
                                         </select>
                                       </div>
