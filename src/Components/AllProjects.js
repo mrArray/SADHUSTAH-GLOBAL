@@ -36,18 +36,110 @@ export default class AllProjects extends Component {
       .then(res => {
         if (res.data) {
           localStorage.setItem("AllProjectData", JSON.stringify(res.data));
+          localStorage.setItem("AllProjectsTasks", JSON.stringify(data));
+
         }
         console.log(res);
         console.log(res.data);
         this.setState({ allProzz: res.data, myloading: false });
       })
 
-  }
-  //this is my onclick event to pass project ID
+      const data=
+      [
+        {
+            "pk": 9,
+            "project": 1,
+            "project_name": "--------",
+            "title": "--------",
+            "description": "--------",
+            "status": "open",
+            "location": "--------",
+            "assigned_by": "--------",
+            "assigned_to": '--------',
+            "assigned_to_name": "--------",
+            "start_date": "--------",
+            "due_date": "--------",
+            "progress": "--------%",
+            "created": "--------",
+            "updated": "--------"
+        },
+        {
+          "pk": 9,
+          "project": 1,
+          "project_name": "--------",
+          "title": "--------",
+          "description": "--------",
+          "status": "open",
+          "location": "--------",
+          "assigned_by": "--------",
+          "assigned_to": '--------',
+          "assigned_to_name": "--------",
+          "start_date": "--------",
+          "due_date": "--------",
+          "progress": "--------%",
+          "created": "--------",
+          "updated": "--------"
+        },{
+          "pk": 9,
+          "project": 1,
+          "project_name": "--------",
+          "title": "--------",
+          "description": "--------",
+          "status": "open",
+          "location": "--------",
+          "assigned_by": "--------",
+          "assigned_to": '--------',
+          "assigned_to_name": "--------",
+          "start_date": "--------",
+          "due_date": "--------",
+          "progress": "--------%",
+          "created": "--------",
+          "updated": "--------"
+        }
+    ]
+  
+    
+  
+    }
+  
+  //this is my onclick event to pass project ID    onClick={ () => this.toggleEditing.bind(this, valueA, valueB) }
+
   EditProject(project) {
     localStorage.setItem("singleProjects", JSON.stringify(project));
-    console.log(project)
+    console.log(project.pk)
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+        params:{
+
+          project:`${project.pk}`
+        }
+
+      })
+      .then(res => {
+        if (res.data) {
+          localStorage.setItem("AllProjectsTasks", JSON.stringify(res.data));
+        }
+        console.log(res);
+        console.log(res.data);
+        window.location = "/EditProject"
+
+      })
+
+
   }
+
+
   render() {
     return (
       <div>

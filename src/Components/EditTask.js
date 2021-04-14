@@ -337,12 +337,6 @@ export default class EditTask extends Component {
 
                                         </div>
 
-                                       
-
-
-
-
-
                                         <Footer />
 
                                     </div>
