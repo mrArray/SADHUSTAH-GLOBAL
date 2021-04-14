@@ -59,7 +59,7 @@ export default class Login extends Component {
     });
 
     this.form.validateAll();
-  //   const user = AuthLogin.getCurrentUser();
+    const user = AuthLogin.getCurrentUser();
 
   //   if (user) {
   //     this.setState({
@@ -71,6 +71,7 @@ export default class Login extends Component {
     if (this.checkBtn.context._errors.length === 0) {
       AuthLogin.login(this.state.username, this.state.password).then(
         () => {
+          
           this.props.history.push("/dashboard");
           window.location.reload();
           
@@ -89,33 +90,33 @@ export default class Login extends Component {
           });
         }
       );
-  //   } else if (user) {
-  //     this.setState({
-  //         currentUser: user,
-  //         TaskManager: user.user.groups.includes("PROJECT MANAGER"),
-  //     });
-  // }
-  // if (this.checkBtn.context._errors.length === 0) {
-  //   AuthLogin.login(this.state.username, this.state.password).then(
-  //     () => {
-  //       this.props.history.push("/ProjectManagerDashboard");
-  //       window.location.reload();
+    } else if (user) {
+      this.setState({
+          currentUser: user,
+          TaskManager: user.user.groups.includes("PROJECT MANAGER"),
+      });
+  }
+  if (this.checkBtn.context._errors.length === 0) {
+    AuthLogin.login(this.state.username, this.state.password).then(
+      () => {
+        this.props.history.push("/ProjectManagerDashboard");
+        window.location.reload();
         
-  //     },
-  //     error => {
-  //       const resMessage =
-  //         (error.response &&
-  //           error.response.data &&
-  //           error.response.data.message) ||
-  //         error.message ||
-  //         error.toString();
+      },
+      error => {
+        const resMessage =
+          (error.response &&
+            error.response.data &&
+            error.response.data.message) ||
+          error.message ||
+          error.toString();
 
-  //       this.setState({
-  //         loading: false,
-  //         message: resMessage
-  //       });
-  //     }
-  //   );
+        this.setState({
+          loading: false,
+          message: resMessage
+        });
+      }
+    );
   }else{
 
 

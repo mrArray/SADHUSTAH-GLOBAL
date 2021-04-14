@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [InprogressProjects, setInproProject] = useState([]);
   const [CompletedProjects, setCompletedProject] = useState([]);
   const [CompletedTasks, setCompletedTask] = useState([]);
+  
 
 
   const TotalProjectTasks = async () => {  
@@ -378,6 +379,14 @@ const Dashboard = () => {
                         {/*end::Body*/}
                       </div>
                       {/*end::Stats Widget 22*/}
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-xl-6">
+                      
+                    </div>
+                    <div className="col-xl-6">
+                      
                     </div>
                   </div>
                 </div>

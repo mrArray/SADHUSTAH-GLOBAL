@@ -44,37 +44,13 @@ export default class ViewProjects extends Component {
   }
   
   componentWillMount() {
-
-    // const username = 'admin'
-    // const password = 'Pass@1234'
-    // const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    // axios.get("https://ecological.chinikiguard.com/projects/api/list/?all_record=1",
-    //   {
-    //     headers:
-    //     {
-    //       'Authorization': `Basic ${token}`,
-    //       'Access-Control-Allow-Origin': '*',
-    //       'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
-    //       'Access-Control-Allow-Credentials': true
-    //     },
-
-    //   })
-    //   .then(res => {
-    //     if (res.data) {
-    //       localStorage.setItem("AllProjectData", JSON.stringify(res.data));
-    //     }
-    //     console.log(res);
-    //     console.log(res.data);
-    //     // window.location = "/dashboard"
-    //   })
+    
   }
   onChangeProject(e) {
     this.setState({
       project: e.target.value
     });
   }
-  
-
    ViewProject (project){
     let username = 'admin';
     let password = 'Pass@1234';

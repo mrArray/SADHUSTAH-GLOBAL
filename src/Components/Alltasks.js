@@ -88,7 +88,7 @@ const AllTasks = () => {
                                   {/*begin::Title*/}
                                   <div className="d-flex flex-column">
                                     <a href="#" className="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">{task.title}</a>
-                                    <span className="text-muted font-weight-bold">{task.project}</span>
+                                    <span className="text-muted font-weight-bold">{task.project_name}</span>
                                   </div>
                                   {/*end::Title*/}
                                 </div>
@@ -102,7 +102,7 @@ const AllTasks = () => {
                                 <div className="mb-7">
                                   <div className="d-flex justify-content-between align-items-center">
                                     <span className="text-dark-75 font-weight-bolder mr-2">Assigned To:</span>
-                                    <a href="#" className="text-muted text-hover-primary">{task.assigned_to}</a>
+                                    <a href="#" className="text-muted text-hover-primary">{task.assigned_to_name}</a>
                                   </div>
                                   <div className="d-flex justify-content-between align-items-cente my-1">
                                     <span className="text-dark-75 font-weight-bolder mr-2">Due Date::</span>

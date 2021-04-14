@@ -347,11 +347,11 @@ export default class AssignTask extends Component {
                                         >
                                           
                                           <option value>Select</option>
-                                          {/* {UsersIds.map(users => (
+                                          {UsersIds.map(users => (
 
-                                            <option value={`${users.username}`}>{users.username}</option>
-                                         ))} */}
-                                            <option value='1'>Alh Sani Umar Suleman</option>
+                                            <option value={`${users.pk}`}>{`${users.first_name} ${users.last_name} `}</option>
+                                         ))}
+                                            {/* <option value='1'>Alh Sani Umar Suleman</option> */}
 
                                         </select>
                                       </div>
