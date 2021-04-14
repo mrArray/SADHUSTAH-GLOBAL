@@ -102,7 +102,7 @@ export default class AllTasks extends Component {
                                   {/*end::Pic*/}
                                   {/*begin::Title*/}
                                   <div className="d-flex flex-column">
-                                    <a href="#" className="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">{task.title}</a>
+                                    <Link to="/EditTask" onClick={this.EditTask.bind(this, task)} className="text-dark font-weight-bold text-hover-primary font-size-h4 mb-0">{task.title}</Link>
                                     <span className="text-muted font-weight-bold">{task.project_name}</span>
                                   </div>
                                   {/*end::Title*/}

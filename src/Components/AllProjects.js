@@ -87,7 +87,7 @@ export default class AllProjects extends Component {
                                   <div className="d-flex flex-column mr-auto">
                                     {/*begin: Title*/}
                                     <div className="d-flex flex-column mr-auto">
-                                      <Link to="EditProject" onClick={this.EditProject.bind(this, project)} className="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">{project.title}</Link>
+                                      <Link to="/EditProject" onClick={this.EditProject.bind(this, project)} className="text-dark text-hover-primary font-size-h4 font-weight-bolder mb-1">{project.title}</Link>
                                       <span className="text-muted font-weight-bold">{project.location}</span>
                                     </div>
                                     {/*end::Title*/}
