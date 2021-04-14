@@ -167,7 +167,7 @@ export default class EditProject extends Component {
                                                             {/* <img alt="Pic" src="assets/media/project-logos/3.png" /> */}
                                                         </div>
                                                         <div className="symbol symbol-50 symbol-lg-120 symbol-primary d-none">
-                                                            <span className="font-size-h3 symbol-label font-weight-boldest">JM</span>
+                                                            {/* <span className="font-size-h3 symbol-label font-weight-boldest">JM</span> */}
                                                         </div>
                                                     </div>
                                                     {/*end: Pic*/}

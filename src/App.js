@@ -28,25 +28,7 @@ export default function App() {
         console.log(res.data);
         // window.location = "/dashboard"
       })
-      axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1",
-      {
-        headers:
-        {
-          'Authorization': `Basic ${token}`,
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
-          'Access-Control-Allow-Credentials': true
-        },
-
-      })
-      .then(res => {
-        if (res.data) {
-          localStorage.setItem("AllTasksData", JSON.stringify(res.data));
-        }
-        console.log(res);
-        console.log(res.data);
-        // window.location = "/dashboard"
-      })
+      
 
   return (
     <div>

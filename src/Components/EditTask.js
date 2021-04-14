@@ -260,6 +260,13 @@ export default class EditTask extends Component {
                                                                     
                                                                 </div>
                                                                 <div >
+                                                                <div className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">
+                                                                <div className="font-weight-bold mb-2">Progress</div>
+                                                                    <div className="progress progress-xs mt-2 mb-2">
+                                                                        <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleTask.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                                                                    </div>
+                                                                    <span className="font-weight-bolder text-dark">{singleTask.progress}</span>
+                                                                </div>
                                                                     <span className="font-weight-bold"></span>
                                                                     {/* <div className="progress progress-xs mt-2 mb-2"> */}
                                                                         {/* <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleTask.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} /> */}
