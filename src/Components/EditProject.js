@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { Redirect, Switch } from 'react-router-dom';
+import { Link, Redirect, Switch } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer'
 import Menu_Aside from "./Menu_Aside";
@@ -38,7 +38,10 @@ export default class EditProject extends Component {
     // }
     // componentWillMount() {
     // };
-
+    refreshPage(){ 
+        window.location.reload(); 
+    }
+      
     
     onChangeStatus(e) {
         this.setState({
@@ -73,13 +76,14 @@ export default class EditProject extends Component {
                 }
                 console.log(res);
                 console.log(res.data.status);
-                // JSON.parse(localStorage.getItem('singleProjects'))
+                window.location = "/allprojects"
 
-                window.location = "/allProjects"
             })
     }
     handleStatus(e) {
         e.preventDefault();
+
+        
 
         this.setState({
             message: "",
@@ -117,12 +121,16 @@ export default class EditProject extends Component {
                 }
             );
         }
+
+        
     }
     render() {
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
         // const statuss = JSON.parse(localStorage.getItem('status'))
         console.log(singleProjects)
         const { loading } = this.state;
+
+        
         // if (this.state.redirectToReferrer) {
         //     return (<Redirect to={'/dashboard'} />)
         // }

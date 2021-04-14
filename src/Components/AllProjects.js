@@ -4,27 +4,51 @@ import Header from './Header';
 import Footer from './Footer'
 import Menu_Aside from "./Menu_Aside";
 import Spinner from 'react-bootstrap/Spinner'
+import axios from "axios";
+
 
 export default class AllProjects extends Component {
   constructor(props) {
     super(props);
     this.state = {
       project: "",
-      myloading: false,
+      myloading: true,
       show: false,
-      message: ""
+      message: "",
+      allProzz: []
     };
   }
+  componentDidMount() {
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/list/?all_record=1",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
 
-  
+      })
+      .then(res => {
+        if (res.data) {
+          localStorage.setItem("AllProjectData", JSON.stringify(res.data));
+        }
+        console.log(res);
+        console.log(res.data);
+        this.setState({ allProzz: res.data, myloading: false });
+      })
+
+  }
+  //this is my onclick event to pass project ID
   EditProject(project) {
     localStorage.setItem("singleProjects", JSON.stringify(project));
     console.log(project)
   }
   render() {
-    const projects = JSON.parse(localStorage.getItem('AllProjectData'))
-    console.log(projects)
-    const { myloading } = this.state;
     return (
       <div>
         <Header />
@@ -41,13 +65,13 @@ export default class AllProjects extends Component {
                   {/*begin::Container*/}
                   <div className="container">
                     {/*begin::Row*/}
-                    {myloading ? (
+                    {this.state.myloading ? (
                       <>
                         <center><Spinner animation="border" variant="primary" /></center>
                       </>
                     ) : (
                       <div className="row" >
-                        {projects.map(project => (
+                        {this.state.allProzz.map(project => (
                           <div className="col-xl-4">
                             {/*begin::Card*/}
                             <div className="card card-custom gutter-b card-stretch">
@@ -113,7 +137,7 @@ export default class AllProjects extends Component {
                       </div>
                     )}
                     {/*end::Container*/}
-                    </div>
+                  </div>
                   {/*end::Entry*/}
                 </div>
                 {/*end::Content*/}
