@@ -199,7 +199,7 @@ export default class EditTask extends Component {
                                                                     <i className="flaticon2-correct text-success icon-md ml-2" /></a>
                                                                     <div className>
                                                                         {/* <div className="font-weight-bold mb-2">Project Name</div> */}
-                                                                        <span className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">{singleTask.project}</span>
+                                                                        <span className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">{singleTask.project_name}</span>
                                                                     </div>
                                                                 {/*end::Name*/}
                                                                 {/*begin::Contacts*/}
@@ -218,7 +218,7 @@ export default class EditTask extends Component {
                                                                                 </g>
                                                                             </svg>
                                                                             {/*end::Svg Icon*/}
-                                                                        </span>{singleTask.assigned_to}</a>
+                                                                        </span>{singleTask.assigned_to_name}</a>
                                                                     <a href="#" className="text-muted text-hover-primary font-weight-bold">
                                                                         <span className="svg-icon svg-icon-md svg-icon-gray-500 mr-1">
                                                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Map/Marker2.svg*/}
