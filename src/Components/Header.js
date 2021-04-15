@@ -729,19 +729,22 @@ class Header extends Component {
         </div>
         {/*end::Quick Actions*/}
         
-        
+       
        
         {/*begin::User*/}
         <div className="topbar-item">
           <div className="btn btn-icon btn-hover-transparent-white w-sm-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
             <div className="d-flex flex-column text-right pr-sm-3">
-              <span className="text-white opacity-50 font-weight-bold font-size-sm d-none d-sm-inline">Abdulhakim</span>
+              <span className="text-white opacity-50 font-weight-bold font-size-sm d-none d-sm-inline"><center>Abdulhakim</center></span>
               <span className="text-white font-weight-bolder font-size-sm d-none d-sm-inline">Project Manager</span>
             </div>
-            <span className="symbol symbol-35">
+            {/* <span className="symbol symbol-35">
               <span className="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">A</span>
-            </span>
+            </span> */}
           </div>
+        </div>
+        <div className="topbar-item">
+        <a href="#" class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5">Sign Out</a>
         </div>
         {/*end::User*/}
       </div>
