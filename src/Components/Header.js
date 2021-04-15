@@ -57,9 +57,9 @@ class Header extends Component {
               {/*begin::Left*/}
               <div className="d-none d-lg-flex align-items-center mr-3">
                 {/*begin::Logo*/}
-                <a href="index.html" className="mr-20">
+                <Link to="/dashboard" className="mr-20">
                   <img alt="Logo" src="./assets/dist/assets/media/logos/logo-2-.png" className="max-h-35px" />
-                </a>
+                </Link>
                 {/*end::Logo*/}
 
               </div>
@@ -695,19 +695,18 @@ class Header extends Component {
                 </div>
                 {/*end::Quick Actions*/}
 
-
-
                 {/*begin::User*/}
                 <div className="topbar-item">
-                  <div className="btn btn-icon btn-hover-transparent-white w-sm-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                <Link to="/UserProfile" >
                     <div className="d-flex flex-column text-right pr-sm-3">
                       <span className="text-white opacity-50 font-weight-bold font-size-sm d-none d-sm-inline"><center>Abdulhakim</center></span>
                       <span className="text-white font-weight-bolder font-size-sm d-none d-sm-inline">Project Manager</span>
+
                     </div>
                     {/* <span className="symbol symbol-35">
               <span className="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">A</span>
             </span> */}
-                  </div>
+                      </Link>
                 </div>
                 <div className="topbar-item">
                   <Link  class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" onClick={this.logout}  >Sign Out</Link>
@@ -724,9 +723,9 @@ class Header extends Component {
         </div>
         <div id="kt_header_mobile" className="header-mobile bg-primary header-mobile-fixed">
           {/*begin::Logo*/}
-          <a href="index.html">
+          <Link to="/dashboard">
             <img alt="Logo" src="./assets/dist/assets/media/logos/logo-2-.png" className="max-h-30px" />
-          </a>
+          </Link>
           {/*end::Logo*/}
           {/*begin::Toolbar*/}
           <div className="d-flex align-items-center">
