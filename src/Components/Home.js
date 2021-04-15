@@ -46,8 +46,8 @@ export default class Home extends Component {
       
     <div className="container">
       <div className="navbar-translate">
-        <a className="navbar-brand" href="https://demos.creative-tim.com/material-kit/index.html">
-        EFMC </a>
+        <a className="navbar-brand" href="#">
+        Project Tracker </a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" aria-expanded="false" aria-label="Toggle navigation">
           <span className="sr-only">Toggle navigation</span>
           <span className="navbar-toggler-icon" />
@@ -89,11 +89,11 @@ export default class Home extends Component {
     <div className="container">
       <div className="row">
         <div className="col-md-6">
-          <h1 className="title">Welcome to Ecological Fund Office</h1>
+          <h1 className="title">Project Management & Tracking System</h1>
           <h3>Ecological Fund Office will serve as a strategic instrument for alleviating the challenges posed by Ecological Problems Nationwide through effective and efficient management.        </h3>
           <br />
-          <Link to="/registerProject" target="" className="btn btn-white btn-raised btn-lg">
-            <i className="fa fa-play" /> Request Project
+          <Link to="/dashboard" target="" className="btn btn-white btn-raised btn-lg">
+            <i className="fa fa-play" /> Dashboard
           </Link>
         </div>
       </div>

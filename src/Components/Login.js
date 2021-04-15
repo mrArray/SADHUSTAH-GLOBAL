@@ -4,7 +4,7 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import AuthLogin from "../Authentications/AuthLogin";
 // import { PostData } from "./PostData";
-import { Link, Switch } from 'react-router-dom';
+import { Link, Switch,Redirect } from 'react-router-dom';
 
 
 
@@ -92,16 +92,11 @@ export default class Login extends Component {
 
   render() {
 
+    if (localStorage.getItem('user')) {
+      return (<Redirect to={'/dashboard'} />)
+  }
+
     const { loading } = this.state;
-
-
-    // if (this.state.redirectToReferrer) {
-    //     return (<Redirect to={'/dashboard'} />)
-    // }
-
-    // if (sessionStorage.getItem('token')) {
-    //     return (<Redirect to={'/dashboard'} />)
-    // }
 
     return (
 
@@ -119,8 +114,8 @@ export default class Login extends Component {
       </a>
       {/*end::Aside header*/}
       {/*begin::Aside Title*/}
-      <h3 className="font-weight-bolder text-center font-size-h4 text-dark-50 line-height-xl">User Experience &amp; Interface Design
-        <br />Strategy SaaS Solutions</h3>
+      <h3 className="font-weight-bolder text-center font-size-h4 text-dark-50 line-height-xl">Projects Management &amp; Tracking System
+        <br />Best Project Tracking System</h3>
       {/*end::Aside Title*/}
     </div>
     {/*end::Aside Top*/}
