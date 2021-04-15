@@ -266,7 +266,6 @@ export default class RegisterProject extends Component {
 
                 {/*begin::Entry*/}
                 <div className="d-flex flex-column-fluid">
-                  <Menu_Aside />
                   {/*end::Card*/}
                   {/*begin::Container*/}
                   <div className="container">

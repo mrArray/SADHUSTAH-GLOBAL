@@ -223,7 +223,6 @@ export default class AssignTask extends Component {
               <div className="content d-flex flex-column flex-column-fluid" id="kt_content">
 
                 <div className="d-flex flex-column-fluid">
-                  <Menu_Aside />
 
 
                   {/*begin::Container*/}

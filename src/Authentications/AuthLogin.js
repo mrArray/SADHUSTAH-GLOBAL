@@ -26,10 +26,10 @@ class AuthLogin {
     'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
     'Access-Control-Allow-Credentials': true }, }   )
       .then(response => {
-        if (response.data.token) {
+        if (response.data) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
-
+        console.log(response.data)
         return response.data;
       });
   }
@@ -123,25 +123,6 @@ RegisterTask(project,title,description,location,status,start_date,due_date,assig
 }   
 )
 }
-
-
-
-//this handle View Project
-// ViewProject(project){
-//   return  axios.get("https://ecological.chinikiguard.com/projects/api/details/"+`${project}`,
-  
-  
-// { 
-//  headers: { 
-//  'Authorization': `Basic ${token}`,
-//   'Access-Control-Allow-Origin': '*',
-//   'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
-//   'Access-Control-Allow-Credentials': true 
-//  }, 
-// }   
-// )
-// }
-
 
 
   

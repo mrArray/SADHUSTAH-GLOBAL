@@ -59,16 +59,7 @@ export default class Login extends Component {
     });
 
     this.form.validateAll();
-    const user = AuthLogin.getCurrentUser();
-
-  //   if (user) {
-  //     this.setState({
-  //         currentUser: user,
-  //         TaskManager: user.user.groups.includes("TASK MANAGER"),
-  //     });
-  // }
-
-    if (this.checkBtn.context._errors.length === 0) {
+ if (this.checkBtn.context._errors.length === 0) {
       AuthLogin.login(this.state.username, this.state.password).then(
         () => {
           
@@ -85,52 +76,23 @@ export default class Login extends Component {
             error.toString();
 
           this.setState({
-            loading: false,
-            message: resMessage
+            successful: false,
+            message: resMessage,
+            loading: false
           });
         }
       );
-    } else if (user) {
-      this.setState({
-          currentUser: user,
-          TaskManager: user.user.groups.includes("PROJECT MANAGER"),
-      });
-  }
-  if (this.checkBtn.context._errors.length === 0) {
-    AuthLogin.login(this.state.username, this.state.password).then(
-      () => {
-        this.props.history.push("/ProjectManagerDashboard");
-        window.location.reload();
-        
-      },
-      error => {
-        const resMessage =
-          (error.response &&
-            error.response.data &&
-            error.response.data.message) ||
-          error.message ||
-          error.toString();
-
-        this.setState({
-          loading: false,
-          message: resMessage
-        });
-      }
-    );
-  }else{
-
-
+    } 
       this.setState({
         loading: false
       });
     }
-  }
+  
 
 
   render() {
 
     const { loading } = this.state;
-    const { currentUser, showRegionalMenu, showSuperUserMenu, showCSPMenu, RcrosMenu, RcsosMenu, MDCHIEFSMenu } = this.state;
 
 
     // if (this.state.redirectToReferrer) {

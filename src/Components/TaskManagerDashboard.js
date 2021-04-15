@@ -92,12 +92,12 @@ const TaskManagerDashboard = () => {
                 <div className="container">
                 <div class="row">
 								<div className="col-xl-12">
-  {/*begin::Nav Panel Widget 1*/}
-  <div className="card card-custom gutter-b">
-    {/*begin::Body*/}
+                   {/*begin::Nav Panel Widget 1*/}
+                  <div className="card card-custom gutter-b">
+                 {/*begin::Body*/}
     <div className="card-body">
       {/*begin::Nav Tabs*/}
-      <ul className="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row" role="tablist">
+      <ul className="dashboard-tabs nav nav-pills nav-primary row row-paddingless m-0 p-0 flex-column flex-sm-row" role="tablist">
         {/*begin::Item*/}
         <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
           <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
@@ -114,7 +114,7 @@ const TaskManagerDashboard = () => {
                 {/*end::Svg Icon*/}
               </span>
             </span>
-            <span className="nav-text font-size-lg py-2 font-weight-bold text-center"><h3>All Tasks</h3></span>
+            <span className="nav-text font-size-lg py-2 font-weight-bold text-center"><h3>All Project</h3></span>
           </a>
         </li>
         {/*end::Item*/}
@@ -134,7 +134,7 @@ const TaskManagerDashboard = () => {
                 {/*end::Svg Icon*/}
               </span>
             </span>
-            <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Ongiong Task</h3></span>
+            <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Add Project</h3></span>
           </a>
         </li>
         {/*end::Item*/}
@@ -152,11 +152,29 @@ const TaskManagerDashboard = () => {
     <path d="M11.1750002,14.75 C10.9354169,14.75 10.6958335,14.6541667 10.5041669,14.4625 L8.58750019,12.5458333 C8.20416686,12.1625 8.20416686,11.5875 8.58750019,11.2041667 C8.97083352,10.8208333 9.59375019,10.8208333 9.92916686,11.2041667 L11.1750002,12.45 L14.3375002,9.2875 C14.7208335,8.90416667 15.2958335,8.90416667 15.6791669,9.2875 C16.0625002,9.67083333 16.0625002,10.2458333 15.6791669,10.6291667 L11.8458335,14.4625 C11.6541669,14.6541667 11.4145835,14.75 11.1750002,14.75 Z" fill="#000000" />
   </g>
 </svg>
+                {/*end::Svg Icon*/}
+              </span>
+            </span>
+            <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>All Task</h3></span>
+          </a>
+        </li>
+        <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
+          <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
+            <span className="nav-icon py-2 w-auto">
+              <span className="svg-icon svg-icon-3x">
+                {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
+              <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+  <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
+    <rect x={0} y={0} width={24} height={24} />
+    <path d="M4,4 L11.6314229,2.5691082 C11.8750185,2.52343403 12.1249815,2.52343403 12.3685771,2.5691082 L20,4 L20,13.2830094 C20,16.2173861 18.4883464,18.9447835 16,20.5 L12.5299989,22.6687507 C12.2057287,22.8714196 11.7942713,22.8714196 11.4700011,22.6687507 L8,20.5 C5.51165358,18.9447835 4,16.2173861 4,13.2830094 L4,4 Z" fill="#000000" opacity="0.3" />
+    <path d="M11.1750002,14.75 C10.9354169,14.75 10.6958335,14.6541667 10.5041669,14.4625 L8.58750019,12.5458333 C8.20416686,12.1625 8.20416686,11.5875 8.58750019,11.2041667 C8.97083352,10.8208333 9.59375019,10.8208333 9.92916686,11.2041667 L11.1750002,12.45 L14.3375002,9.2875 C14.7208335,8.90416667 15.2958335,8.90416667 15.6791669,9.2875 C16.0625002,9.67083333 16.0625002,10.2458333 15.6791669,10.6291667 L11.8458335,14.4625 C11.6541669,14.6541667 11.4145835,14.75 11.1750002,14.75 Z" fill="#000000" />
+  </g>
+</svg>
 
                 {/*end::Svg Icon*/}
               </span>
             </span>
-            <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Complete Task</h3></span>
+            <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Assign Task</h3></span>
           </a>
         </li>
         
@@ -174,32 +192,32 @@ const TaskManagerDashboard = () => {
     </div>
     {/*end::Body*/}
   </div>
-  {/*begin::Nav Panel Widget 1*/}
-</div>
-</div>
+                   {/*begin::Nav Panel Widget 1*/}
+   </div>
+   </div>
 
 
                <div className="row">
-  <div className="col-xl-12">
+               <div className="col-xl-12">
     {/*begin::Mixed Widget 1*/}
     <div className="card card-custom bg-gray-100 gutter-b card-stretch">
       {/*begin::Header*/}
-      <div className="card-header border-0 bg-danger py-5">
-        <h3 className="card-title font-weight-bolder text-white">Task Info</h3>
+      <div className="card-header border-0 bg-primary py-5">
+        <h3 className="card-title font-weight-bolder text-white">Project Info</h3>
         
       </div>
       {/*end::Header*/}
       {/*begin::Body*/}
       <div className="card-body p-0 position-relative overflow-hidden">
         {/*begin::Chart*/}
-        <div id="kt_mixed_widget_1_chart" className="card-rounded-bottom bg-danger" style={{height: 200}} />
+        <div id="kt_mixed_widget_1_chart" className="card-rounded-bottom bg-primary" style={{height: 200}} />
         {/*end::Chart*/}
         {/*begin::Stats*/}
         <div className="card-spacer mt-n25">
           {/*begin::Row*/}
           <div className="row m-0">
-            <div className="col bg-light-warning px-6 py-8 rounded-xl mr-7 mb-7">
-              <span className="svg-icon svg-icon-3x svg-icon-warning d-block my-2">
+            <div className="col bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
+              <span className="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
                 {/*begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg*/}
                 <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                   <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
@@ -212,7 +230,7 @@ const TaskManagerDashboard = () => {
                 </svg>
                 {/*end::Svg Icon*/}
               </span>
-              <a href="#" className="text-warning font-weight-bold font-size-h6"><h1>Total Tasks</h1></a>
+              <a href="#" className="text-primary font-weight-bold font-size-h6"><h1>Total Projects</h1></a>
             </div>
             <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
               <span className="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
@@ -226,14 +244,14 @@ const TaskManagerDashboard = () => {
                 </svg>
                 {/*end::Svg Icon*/}
               </span>
-              <a href="#" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>New Task</h1></a>
+              <a href="#" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>Total Tasks</h1></a>
             </div>
           </div>
           {/*end::Row*/}
           {/*begin::Row*/}
           <div className="row m-0">
-            <div className="col bg-light-danger px-6 py-8 rounded-xl mr-7">
-              <span className="svg-icon svg-icon-3x svg-icon-danger d-block my-2">
+            <div className="col bg-light-success px-6 py-8 rounded-xl mr-7">
+              <span className="svg-icon svg-icon-3x svg-icon-success d-block my-2">
                 {/*begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg*/}
                 <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                   <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
@@ -244,7 +262,7 @@ const TaskManagerDashboard = () => {
                 </svg>
                 {/*end::Svg Icon*/}
               </span>
-              <a href="#" className="text-danger font-weight-bold font-size-h6 mt-2"><h1>Ongiong Tasks</h1></a>
+              <a href="#" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Projects</h1></a>
             </div>
             <div className="col bg-light-success px-6 py-8 rounded-xl">
               <span className="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -258,7 +276,7 @@ const TaskManagerDashboard = () => {
                 </svg>
                 {/*end::Svg Icon*/}
               </span>
-              <a href="#" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Task</h1></a>
+              <a href="#" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Tasks</h1></a>
             </div>
           </div>
           {/*end::Row*/}
@@ -269,14 +287,9 @@ const TaskManagerDashboard = () => {
     </div>
     {/*end::Mixed Widget 1*/}
   </div>
-  </div>
+              </div>
 
-                    
-                  <div className="row">
-                    <div className="col-xl-6">
-                    </div>
-                  </div>
-                     </div>
+                 </div>
               </div>
             </div>
           </div>
