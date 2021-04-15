@@ -8,31 +8,6 @@ import Spinner from 'react-bootstrap/Spinner'
 import AuthLogin from "../Authentications/AuthLogin";
 
 
-  // const [projects, setProjects] = useState([]);
-  // const [myloading, setLoading] = useState([true]);
-  // const [tasks, setTask] = useState([]);
-  // const [OpTasks, setOpTasks] = useState([]);
-  // const [OpProjects, setOpProjects] = useState([]);
-  // const [InprogressTasks, setInproTask] = useState([]);
-  // const [InprogressProjects, setInproProject] = useState([]);
-  // const [CompletedProjects, setCompletedProject] = useState([]);
-  // const [CompletedTasks, setCompletedTask] = useState([]);
-
-  // const TotalProjectTasks = async () => {
-  //   setLoading(false);
-  
-
-  // useEffect(() => {
-  //   TotalProjectTasks();
-
-  //   //start js style
-  //   const script = document.createElement("script");
-  //   // script.src = "./assets/dist/assets/js/pages/widgets.js";
-  //   script.async = true;
-  //   document.body.appendChild(script);
-  //   //end js stye
-
-  // }, []);
 export default class Dashboard extends Component {
   constructor(props) {
     super(props);
