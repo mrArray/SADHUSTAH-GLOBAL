@@ -14,6 +14,10 @@ import ViewTasks from './ViewTasks';
 import EditTask from './EditTask';
 import TaskManagerDashboard from './TaskManagerDashboard';
 import UserProfile from './UserProfile';
+import OngoingTask from './OngoingTask';
+import OpenTask from './OpenTask';
+import CompletedTask from './CompletedTask';
+
 
 
 
@@ -70,6 +74,16 @@ const Content = () => {
 
             <Route exact path="/" component={UserProfile} />
             <Route path="/UserProfile" component={UserProfile} />
+
+            <Route exact path="/" component={OngoingTask} />
+            <Route path="/OngoingTask" component={OngoingTask} />
+
+            <Route exact path="/" component={OpenTask} />
+            <Route path="/OpenTask" component={OpenTask} />
+
+            <Route exact path="/" component={CompletedTask} />
+            <Route path="/CompletedTask" component={CompletedTask} />
+
 
         </Switch>
 
