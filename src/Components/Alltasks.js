@@ -38,15 +38,13 @@ export default class AllTasks extends Component {
         showProjectManager: user.profile.user_groups.includes("PROJECT MANAGER"),
       });
     }
-    const username = 'admin'
-    const password = 'Pass@1234'
-    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-
+    const mytoken = AuthLogin.getCurrentUser();
+    const token = mytoken.token;
     axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1&for_user=true",
       {
         headers:
         {
-          'Authorization': `Basic ${token}`,
+          'Authorization': `Token ${token}`,
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
           'Access-Control-Allow-Credentials': true
