@@ -538,7 +538,7 @@ export default class Dashboard extends Component {
                                   <ul className="dashboard-tabs nav nav-pills nav-primary row row-paddingless m-0 p-0 flex-column flex-sm-row" role="tablist">
                                     {/*begin::Item*/}
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
+                                    <Link to="/allprojects" className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg*/}
@@ -553,12 +553,12 @@ export default class Dashboard extends Component {
                                           </span>
                                         </span>
                                         <span className="nav-text font-size-lg py-2 font-weight-bold text-center"><h3>All Project</h3></span>
-                                      </a>
+                                      </Link>
                                     </li>
                                     {/*end::Item*/}
                                     {/*begin::Item*/}
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
+                                    <Link to="/registerProject"className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
@@ -573,13 +573,13 @@ export default class Dashboard extends Component {
                                           </span>
                                         </span>
                                         <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Add Project</h3></span>
-                                      </a>
+                                      </Link>
                                     </li>
                                     {/*end::Item*/}
                                     {/*begin::Item*/}
 
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
+                                    <Link to="/alltasks"className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
@@ -594,10 +594,10 @@ export default class Dashboard extends Component {
                                           </span>
                                         </span>
                                         <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>All Task</h3></span>
-                                      </a>
+                                      </Link>
                                     </li>
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
+                                    <Link to="/assignTask" className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
@@ -613,7 +613,7 @@ export default class Dashboard extends Component {
                                           </span>
                                         </span>
                                         <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Assign Task</h3></span>
-                                      </a>
+                                      </Link>
                                     </li>
 
                                   </ul>
@@ -742,7 +742,7 @@ export default class Dashboard extends Component {
                                   <ul className="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row" role="tablist">
                                     {/*begin::Item*/}
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
+                                    <Link to="/alltask"className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg*/}
@@ -757,12 +757,12 @@ export default class Dashboard extends Component {
                                           </span>
                                         </span>
                                         <span className="nav-text font-size-lg py-2 font-weight-bold text-center"><h3>All Tasks</h3></span>
-                                      </a>
+                                      </Link>
                                     </li>
                                     {/*end::Item*/}
                                     {/*begin::Item*/}
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
+                                    <Link to="/ongoingTask" className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
@@ -777,13 +777,13 @@ export default class Dashboard extends Component {
                                           </span>
                                         </span>
                                         <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Ongiong Task</h3></span>
-                                      </a>
+                                      </Link>
                                     </li>
                                     {/*end::Item*/}
                                     {/*begin::Item*/}
 
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                      <a className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
+                                    <Link to="/NewTasks" className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_2">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Layout/Layout-4-blocks.svg*/}
@@ -798,8 +798,8 @@ export default class Dashboard extends Component {
                                             {/*end::Svg Icon*/}
                                           </span>
                                         </span>
-                                        <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>Complete Task</h3></span>
-                                      </a>
+                                        <span className="nav-text font-size-lg py-2 font-weight-bolder text-center"><h3>New Task</h3></span>
+                                      </Link>
                                     </li>
 
                                   </ul>
