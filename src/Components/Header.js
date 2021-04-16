@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 // import AuthService from "../services/auth.service";
 import axios from 'axios';
+import AuthLogin from '../Authentications/AuthLogin';
 
 
 
@@ -13,6 +14,7 @@ class Header extends Component {
   constructor(props) {
     super(props);
     this.routeChange = this.routeChange.bind(this);
+    this.logOut = this.logOut.bind(this);
 
 
     this.state = {
@@ -28,13 +30,20 @@ class Header extends Component {
   }
 
 
-  logout = () => {
+//   logout = () => {
         
         
-    localStorage.clear("user");
-    this.setState({ navigate: true});
-    window.location.reload("/login");
-};
+//     localStorage.clear("user");
+//     this.setState({ navigate: true});
+//     window.location.reload("/login");
+    
+// };
+
+logOut() {
+  AuthLogin.logout();
+  this.setState({ navigate: true});
+   window.location.reload("/login");
+}
 
 routeChange =()=> {
   this.setState({ navigate: true});
@@ -718,7 +727,7 @@ routeChange =()=> {
                       </Link>
                 </div>
                 <div className="topbar-item">
-                  <Link  class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" onClick={this.logout}  >Sign Out</Link>
+                  <Link  class="btn btn-sm btn-light-primary font-weight-bolder py-2 px-5" onClick={this.logOut}  >Sign Out</Link>
                 </div>
                 {/*end::User*/}
               </div>

@@ -1,38 +1,31 @@
 import axios from "axios";
 
-    let username = 'admin';
-    let password = 'Pass@1234';
-    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
 
-    // const title = new FormData();
-    // title.append('title', 'title');
-    // const description = new FormData();
-    // description.append('description', 'description');
-    // const status = new FormData();
-    // status.append('status', 'status');
-    // const location = new FormData();
-    // location.append('location', 'location');
-    // const start_date = new FormData();
-    // start_date.append('start_date', 'start_date');
-    // const due_date = new FormData();
-    // due_date.append('due_date', 'due_date');
-
+const Url ='https://ecological.chinikiguard.com/accounts/api/jwt/';
 
 class AuthLogin {
 
+ 
   login(username, password) {
-    return axios.post('https://ecological.chinikiguard.com/accounts/api/jwt/' , { username,  password },  { headers: { 'Authorization': `Basic ${token}`,
+    
+
+    return axios.post( Url, { username,  password },  { headers: { 
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
     'Access-Control-Allow-Credentials': true }, }   )
+    
       .then(response => {
         if (response.data) {
           localStorage.setItem("user", JSON.stringify(response.data));
         }
         console.log(response.data)
         return response.data;
-      });
+      }
+      
+      );
+    
   }
+  
 
 
 
@@ -41,10 +34,14 @@ class AuthLogin {
   }
 
   logout() {
+    
     localStorage.removeItem("user");
   }
+  
 
   createNewUser( username,password,first_name,last_name,address, lga,state,dob,email,phone_number) {
+    const mytoken = JSON.parse(localStorage.getItem('user'));
+const token = mytoken.token;
     return axios.post('https://ecological.chinikiguard.com/accounts/api/create-user/', {
       username,
       password,
@@ -62,7 +59,7 @@ class AuthLogin {
     
       headers: { 
       'Content-Type':'application/json',
-      'Authorization': `Basic ${token}`,
+      'Authorization': `Token ${token}`,
        'Access-Control-Allow-Origin': '*',
        'Access-Control-Allow-Methods': 'POST, GET,HEAD,OPTIONS',
        'Access-Control-Allow-Credentials': true 
@@ -73,6 +70,8 @@ class AuthLogin {
 
   //this handle projects
   RegisterProject(title,description,location,status,start_date,due_date){
+    const mytoken = JSON.parse(localStorage.getItem('user'));
+const token = mytoken.token;
      return  axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
 
      title,
@@ -87,7 +86,7 @@ class AuthLogin {
     
     
     headers: { 
-    'Authorization': `Basic ${token}`,
+    'Authorization': `Token ${token}`,
      'Access-Control-Allow-Origin': '*',
      'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
      'Access-Control-Allow-Credentials': true 
@@ -99,6 +98,8 @@ class AuthLogin {
 }
 //this handle Tasks
 RegisterTask(project,title,description,location,status,start_date,due_date,assigned_to){
+  const mytoken = JSON.parse(localStorage.getItem('user'));
+const token = mytoken.token;
   return  axios.post("https://ecological.chinikiguard.com/projects/api/tasks/create/", {
 
   project,
@@ -115,7 +116,7 @@ RegisterTask(project,title,description,location,status,start_date,due_date,assig
  
  
  headers: { 
- 'Authorization': `Basic ${token}`,
+ 'Authorization': `Token ${token}`,
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
   'Access-Control-Allow-Credentials': true 
@@ -130,5 +131,6 @@ RegisterTask(project,title,description,location,status,start_date,due_date,assig
     return JSON.parse(localStorage.getItem('user'));
   }
 }
+
 
 export default new AuthLogin();

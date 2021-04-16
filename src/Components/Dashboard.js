@@ -92,6 +92,7 @@ export default class Dashboard extends Component {
 
   render() {
     if (!localStorage.getItem('user')) {
+
       return (<Redirect to={'/login'} />)
     }
     const { currentUser, showAdministrator, showTaskManager, showProjectManager } = this.state;
@@ -742,7 +743,7 @@ export default class Dashboard extends Component {
                                   <ul className="dashboard-tabs nav nav-pills nav-danger row row-paddingless m-0 p-0 flex-column flex-sm-row" role="tablist">
                                     {/*begin::Item*/}
                                     <li className="nav-item d-flex col-sm flex-grow-1 flex-shrink-0 mr-3 mb-3 mb-lg-0">
-                                    <Link to="/alltask"className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
+                                    <Link to="/Alltasks"className="nav-link border py-10 d-flex flex-grow-1 rounded flex-column align-items-center" data-toggle="pill" href="#tab_forms_widget_1">
                                         <span className="nav-icon py-2 w-auto">
                                           <span className="svg-icon svg-icon-3x">
                                             {/*begin::Svg Icon | path:assets/media/svg/icons/Home/Library.svg*/}
