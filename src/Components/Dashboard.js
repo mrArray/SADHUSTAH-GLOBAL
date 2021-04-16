@@ -768,7 +768,7 @@ export default class Dashboard extends Component {
                                           {/*end::Svg Icon*/}
                                         </span>
                                         <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>Total Tasks</h1></Link>
-                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>1</h1></Link>
+                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>3</h1></Link>
 
                                       </div>
                                       <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
