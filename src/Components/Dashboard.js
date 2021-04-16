@@ -768,6 +768,8 @@ export default class Dashboard extends Component {
                                           {/*end::Svg Icon*/}
                                         </span>
                                         <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>Total Tasks</h1></Link>
+                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>1</h1></Link>
+
                                       </div>
                                       <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                         <span className="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
@@ -782,6 +784,8 @@ export default class Dashboard extends Component {
                                           {/*end::Svg Icon*/}
                                         </span>
                                         <Link to="/OpenTask" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>New Task</h1></Link>
+                                        <Link  to="/OpenTask" className="text-primary font-weight-bold font-size-h6"><h1>1</h1></Link>
+
                                       </div>
                                     </div>
                                     {/*end::Row*/}
@@ -800,6 +804,8 @@ export default class Dashboard extends Component {
                                           {/*end::Svg Icon*/}
                                         </span>
                                         <Link to="/OngoingTask" className="text-danger font-weight-bold font-size-h6 mt-2"><h1>Ongiong Tasks</h1></Link>
+                                        <Link  to="/OngoingTask" className="text-danger font-weight-bold font-size-h6"><h1>1</h1></Link>
+
                                       </div>
                                       <div className="col bg-light-success px-6 py-8 rounded-xl">
                                         <span className="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -814,6 +820,7 @@ export default class Dashboard extends Component {
                                           {/*end::Svg Icon*/}
                                         </span>
                                         <Link to="/CompletedTask" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Task</h1></Link>
+                                        <Link  to="/OngoingTask" className="text-success font-weight-bold font-size-h6"><h1>1</h1></Link>
                                       </div>
                                     </div>
                                     {/*end::Row*/}
