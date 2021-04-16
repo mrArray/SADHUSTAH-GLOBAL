@@ -12,6 +12,8 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
+    this.routeChange = this.routeChange.bind(this);
+
 
     this.state = {
 
@@ -33,6 +35,13 @@ class Header extends Component {
     this.setState({ navigate: true});
     window.location.reload("/login");
 };
+
+routeChange =()=> {
+  this.setState({ navigate: true});
+    window.location.reload("/dashboard");
+};
+
+
   render() {
     // const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     const { navigate } = this.state;
@@ -723,7 +732,7 @@ class Header extends Component {
         </div>
         <div id="kt_header_mobile" className="header-mobile bg-primary header-mobile-fixed">
           {/*begin::Logo*/}
-          <Link to="/dashboard">
+          <Link to="/dashboard" onClick={this.routeChange}>
             <img alt="Logo" src="./assets/dist/assets/media/logos/logo-2-.png" className="max-h-30px" />
           </Link>
           {/*end::Logo*/}

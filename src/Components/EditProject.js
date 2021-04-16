@@ -335,11 +335,11 @@ export default class EditProject extends Component {
                                                         <thead>
                                                             <tr className="text-uppercase">
                                                                 <th style={{ minWidth: 250 }} className="pl-7">
-                                                                    <span className="text-dark-75">Tasks</span>
+                                                                    <span className="">Tasks</span>
                                                                 </th>
-                                                                <th style={{ minWidth: 100 }}>pruce</th>
-                                                                <th style={{ minWidth: 100 }}>deposit</th>
-                                                                <th style={{ minWidth: 150 }}>agent</th>
+                                                                <th style={{ minWidth: 100 }}>Assigned to</th>
+                                                                <th style={{ minWidth: 100 }}>Start Date</th>
+                                                                <th style={{ minWidth: 150 }}>Due Date</th>
                                                                 <th style={{ minWidth: 130 }}>status</th>
                                                                 <th style={{ minWidth: 120 }} />
                                                             </tr>

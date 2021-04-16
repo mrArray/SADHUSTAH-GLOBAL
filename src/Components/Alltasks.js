@@ -42,7 +42,7 @@ export default class AllTasks extends Component {
     const password = 'Pass@1234'
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
 
-    axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1",
+    axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1&for_user=true",
       {
         headers:
         {
