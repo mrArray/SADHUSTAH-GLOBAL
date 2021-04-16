@@ -91,8 +91,8 @@ export default class AssignTask extends Component {
 
 
         }
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         // window.location = "/dashboard"
       })
 
@@ -194,7 +194,7 @@ export default class AssignTask extends Component {
 
 
     const projectId = JSON.parse(localStorage.getItem('AllProjectData'))
-    console.log(projectId)
+    // console.log(projectId)
     const UsersIds = JSON.parse(localStorage.getItem('AllUsersData'))
 
     const { loading } = this.state;

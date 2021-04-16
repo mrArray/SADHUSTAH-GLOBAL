@@ -57,7 +57,7 @@ export default class Dashboard extends Component {
     ])
       .then(axios.spread((...responses) => {
         // output of req.
-        console.log(responses)
+        // console.log(responses)
         const allTasks = responses[0].data.all_tasks;
         const allprojects = responses[0].data.all_projects;
         const openProjects = responses[0].data.open_projects;

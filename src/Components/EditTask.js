@@ -65,7 +65,7 @@ export default class EditTask extends Component {
         const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
         const singleTask= JSON.parse(localStorage.getItem('singleTask'))
         const TaskPk = singleTask.pk;
-        console.log(TaskPk)
+        // console.log(TaskPk)
 
         return axios.put(`https://ecological.chinikiguard.com/projects/api/tasks/update/${TaskPk}/`, {  status: `${status}`,
     },
@@ -88,8 +88,8 @@ export default class EditTask extends Component {
               }
 
 
-            console.log(res);
-            console.log(res.data.status);
+            // console.log(res);
+            // console.log(res.data.status);
 
             window.location = "/Alltasks"
         })
@@ -141,7 +141,7 @@ export default class EditTask extends Component {
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
         // const statussTask = JSON.parse(localStorage.getItem('statusTask'))
 
-        console.log(singleTask)
+        // console.log(singleTask)
 
         const { loading } = this.state;
         

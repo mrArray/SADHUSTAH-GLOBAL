@@ -92,8 +92,8 @@ export default class ViewTasks extends Component {
         if (res.data) {
           localStorage.setItem("singleTask", JSON.stringify(res.data));
         }
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
        
         window.location = "/EditTask"
       })
@@ -139,7 +139,7 @@ export default class ViewTasks extends Component {
   }
   render() {
     const taskId = JSON.parse(localStorage.getItem('AllTasksData'))
-    console.log(taskId)
+    // console.log(taskId)
     const { loading } = this.state;
 
     // if (this.state.redirectToReferrer) {

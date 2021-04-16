@@ -41,7 +41,7 @@ const TaskManagerDashboard = () => {
                 .then(axios.spread((...responses) => {
                   setLoading(false);  
                  // output of req.
-                    console.log(responses)
+                    // console.log(responses)
                     const allTasks =responses[0].data.all_tasks ;
                     const allprojects =responses[0].data.all_projects ;
                     const openProject = responses[0].data.open_projects;

@@ -69,8 +69,8 @@ export default class ViewProjects extends Component {
         if (res.data) {
           localStorage.setItem("singleProjects", JSON.stringify(res.data));
         }
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
        
         window.location = "/EditProject"
       })
@@ -114,7 +114,7 @@ export default class ViewProjects extends Component {
   }
   render() {
     const projectId = JSON.parse(localStorage.getItem('AllProjectData'))
-    console.log(projectId)
+    // console.log(projectId)
     const { loading } = this.state;
 
     // if (this.state.redirectToReferrer) {

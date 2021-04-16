@@ -55,8 +55,8 @@ export default class AllTasks extends Component {
         if (res.data) {
           localStorage.setItem("AllTasksData", JSON.stringify(res.data));
         }
-        console.log(res);
-        console.log(res.data);
+        // (res);
+        // (res.data);
         this.setState({ allTazz: res.data, myloading: false });
       })
 
@@ -64,7 +64,7 @@ export default class AllTasks extends Component {
   //this is my onclick event to pass project ID
   EditTask(task) {
     localStorage.setItem("singleTask", JSON.stringify(task));
-    console.log(task)
+    // (task)
   }
   render() {
 

@@ -55,8 +55,8 @@ export default class AllProjects extends Component {
           localStorage.setItem("AllProjectsTasks", JSON.stringify(data));
 
         }
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         this.setState({ allProzz: res.data, myloading: false });
       })
 
@@ -122,7 +122,7 @@ export default class AllProjects extends Component {
 
   EditProject(project) {
     localStorage.setItem("singleProjects", JSON.stringify(project));
-    console.log(project.pk)
+    // console.log(project.pk)
 
     const username = 'admin'
     const password = 'Pass@1234'
@@ -146,8 +146,8 @@ export default class AllProjects extends Component {
         if (res.data) {
           localStorage.setItem("AllProjectsTasks", JSON.stringify(res.data));
         }
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         window.location = "/EditProject"
 
       })

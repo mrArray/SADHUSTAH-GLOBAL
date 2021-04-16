@@ -54,7 +54,7 @@ export default class EditProject extends Component {
         const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
         const ProjectPk = singleProjects.pk;
-        console.log(ProjectPk)
+        // console.log(ProjectPk)
 
         return axios.put(`https://ecological.chinikiguard.com/projects/api/update/${ProjectPk}/`, {
             status: `${status}`,
@@ -73,8 +73,8 @@ export default class EditProject extends Component {
                     localStorage.setItem("singleProjects", JSON.stringify(singleProjects));
                     // localStorage.setItem("status", JSON.stringify(singleProjects));
                 }
-                console.log(res);
-                console.log(res.data.status);
+                // console.log(res);
+                // console.log(res.data.status);
                 window.location = "/allprojects"
 
             })
@@ -129,7 +129,7 @@ export default class EditProject extends Component {
     render() {
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
         // const statuss = JSON.parse(localStorage.getItem('status'))
-        console.log(singleProjects)
+        // console.log(singleProjects)
         const AllProjectsTasks = JSON.parse(localStorage.getItem('AllProjectsTasks'))
 
         // if (this.state.redirectToReferrer) {
