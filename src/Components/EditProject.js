@@ -127,6 +127,11 @@ export default class EditProject extends Component {
 
     }
     render() {
+
+        if (!localStorage.getItem('user')) {
+
+            return (<Redirect to={'/login'} />)
+          }
         const singleProjects = JSON.parse(localStorage.getItem('singleProjects'))
         // const statuss = JSON.parse(localStorage.getItem('status'))
         // console.log(singleProjects)

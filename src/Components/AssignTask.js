@@ -192,6 +192,10 @@ export default class AssignTask extends Component {
 
   render() {
 
+    if (!localStorage.getItem('user')) {
+
+      return (<Redirect to={'/login'} />)
+    }
 
     const projectId = JSON.parse(localStorage.getItem('AllProjectData'))
     // console.log(projectId)

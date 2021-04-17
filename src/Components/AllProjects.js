@@ -158,6 +158,11 @@ export default class AllProjects extends Component {
 
   render() {
 
+    if (!localStorage.getItem('user')) {
+
+      return (<Redirect to={'/login'} />)
+    }
+
     const { currentUser, showAdministrator, showTaskManager, showProjectManager } = this.state;
 
     return (

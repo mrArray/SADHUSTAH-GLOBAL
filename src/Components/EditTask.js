@@ -138,6 +138,11 @@ export default class EditTask extends Component {
         }
     render() {
 
+        if (!localStorage.getItem('user')) {
+
+            return (<Redirect to={'/login'} />)
+          }
+
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
         // const statussTask = JSON.parse(localStorage.getItem('statusTask'))
 

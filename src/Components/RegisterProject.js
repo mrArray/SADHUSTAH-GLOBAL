@@ -237,6 +237,11 @@ export default class RegisterProject extends Component {
   }
   render() {
 
+    if (!localStorage.getItem('user')) {
+
+      return (<Redirect to={'/login'} />)
+    }
+
 
 
     const { loading } = this.state;

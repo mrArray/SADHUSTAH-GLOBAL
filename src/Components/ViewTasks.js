@@ -138,6 +138,11 @@ export default class ViewTasks extends Component {
     }
   }
   render() {
+
+    if (!localStorage.getItem('user')) {
+
+      return (<Redirect to={'/login'} />)
+    }
     const taskId = JSON.parse(localStorage.getItem('AllTasksData'))
     // console.log(taskId)
     const { loading } = this.state;

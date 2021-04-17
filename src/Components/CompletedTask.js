@@ -67,6 +67,10 @@ export default class CompletedTask extends Component {
     // (task)
   }
   render() {
+    if (!localStorage.getItem('user')) {
+
+      return (<Redirect to={'/login'} />)
+    }
 
     const { currentUser, showAdministrator, showTaskManager, showProjectManager } = this.state;
 
