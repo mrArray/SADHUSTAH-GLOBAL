@@ -25,8 +25,8 @@ export default class AllTasks extends Component {
       currentUser: undefined,
     };
   }
-  componentDidMount() {
 
+  componentDidMount() {
     //user  stored user information (including JWT) from AuthService class
     const user = AuthLogin.getCurrentUser();
     //check User Group
@@ -64,6 +64,7 @@ export default class AllTasks extends Component {
   //this is my onclick event to pass project ID
   EditTask(task) {
     localStorage.setItem("singleTask", JSON.stringify(task));
+
     // (task)
   }
   render() {

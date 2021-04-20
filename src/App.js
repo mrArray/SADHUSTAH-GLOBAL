@@ -24,10 +24,13 @@ export default function App() {
         if (res.data) {
           localStorage.setItem("AllUsersData", JSON.stringify(res.data));
         }
-        console.log(res);
-        console.log(res.data);
+        // console.log(res);
+        // console.log(res.data);
         // window.location = "/dashboard"
+
+        
       })
+      
       
 
   return (
@@ -42,3 +45,4 @@ export default function App() {
     
   ) 
 }
+

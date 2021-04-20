@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
@@ -36,21 +37,80 @@ export default class EditTask extends Component {
         this.state = {
             status: "",
             loading: false,
+            myloading: false,
             show: false,
-            message: ""
+            message: "",
+            title: '',
+            image: null
+
         };
     }
-    // componentDidMount() {
 
 
-
-    // }
-    // componentWillMount() {
-
+    componentDidMount() {
+        
 
 
+    }
 
-    // };
+    handleChange = (e) => {
+        this.setState({
+            [e.target.id]: e.target.value
+        })
+    };
+
+    handleImageChange = (e) => {
+        this.setState({
+            image: e.target.files[0]
+        })
+    };
+    handleTitleChange = (e) => {
+        this.setState({
+            title: e.target.value
+        })
+    };
+
+
+    handleSubmitImage = (e) => {
+        e.preventDefault();
+        console.log(this.state);
+
+
+        const mytoken = JSON.parse(localStorage.getItem('user'));
+        const token = mytoken.token;
+        const singleTask = JSON.parse(localStorage.getItem('singleTask'))
+        const task = singleTask.pk;
+
+        let formData = new FormData();
+
+        formData.append('image', this.state.image);
+        formData.append('title', this.state.title);
+        formData.append('task', task);
+
+        let url = 'https://ecological.chinikiguard.com/projects/api/task/image/add/';
+
+        axios.post(url, formData, {
+            headers: {
+                'content-type': 'multipart/form-data',
+                'Authorization': `Token ${token}`,
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+                'Access-Control-Allow-Credentials': true
+            }
+        })
+            .then(res => {
+                console.log(res)
+                this.setState({
+                    message: "",
+                    successful: false,
+                    myloading: true
+
+                });
+
+                window.location = "/EditTask"
+            })
+
+    };
 
     onChangeStatus(e) {
         this.setState({
@@ -58,17 +118,18 @@ export default class EditTask extends Component {
         });
     }
 
-    ChangeStatus (status){
+    ChangeStatus(status) {
 
         let username = 'admin';
         let password = 'Pass@1234';
         const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-        const singleTask= JSON.parse(localStorage.getItem('singleTask'))
+        const singleTask = JSON.parse(localStorage.getItem('singleTask'))
         const TaskPk = singleTask.pk;
         // console.log(TaskPk)
 
-        return axios.put(`https://ecological.chinikiguard.com/projects/api/tasks/update/${TaskPk}/`, {  status: `${status}`,
-    },
+        return axios.put(`https://ecological.chinikiguard.com/projects/api/tasks/update/${TaskPk}/`, {
+            status: `${status}`,
+        },
             {
                 headers: {
                     'Authorization': `Basic ${token}`,
@@ -79,86 +140,77 @@ export default class EditTask extends Component {
             }
         )
 
-          .then(res => {
-            if (res.data) {
-                localStorage.setItem("singleTask", JSON.stringify(singleTask));
-                // localStorage.setItem("statusTask", JSON.stringify(res.data.status));
+            .then(res => {
+                if (res.data) {
+                    localStorage.setItem("singleTask", JSON.stringify(singleTask));
+                    // localStorage.setItem("statusTask", JSON.stringify(res.data.status));
 
 
-              }
+                }
 
 
-            // console.log(res);
-            // console.log(res.data.status);
+                // console.log(res);
+                // console.log(res.data.status);
 
-            window.location = "/Alltasks"
-        })
-      }
+                window.location = "/Alltasks"
+            })
+    }
 
-    
     handleStatus(e) {
         e.preventDefault();
 
         this.setState({
             message: "",
             successful: false,
-            loading:true
+            loading: true
 
         });
 
         this.form.validateAll();
         if (this.checkBtn.context._errors.length === 0) {
             this.ChangeStatus(
-              this.state.status
+                this.state.status
             ).then(
-              response => {
-                this.setState({
-                  message: response.data.detail,
-                  successful: true,
-                  loading:true
-                });
-                   
-                // window.location = "/Alltasks"
-              },
-              error => {
-                const resMessage =
-                  (error.response &&
-                    error.response.data &&
-                    error.response.data.message) ||
-                  error.message ||
-                  error.toString();
-                this.setState({
-                  successful: false,
-                  message: resMessage,
-                  loading: true
-                });
-              }
+                response => {
+                    this.setState({
+                        message: response.data.detail,
+                        successful: true,
+                        loading: true
+                    });
+
+                    // window.location = "/Alltasks"
+                },
+                error => {
+                    const resMessage =
+                        (error.response &&
+                            error.response.data &&
+                            error.response.data.message) ||
+                        error.message ||
+                        error.toString();
+                    this.setState({
+                        successful: false,
+                        message: resMessage,
+                        loading: true
+                    });
+                }
             );
-          }
         }
+    }
+
+
+
     render() {
 
         if (!localStorage.getItem('user')) {
 
             return (<Redirect to={'/login'} />)
-          }
+        }
 
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
-        // const statussTask = JSON.parse(localStorage.getItem('statusTask'))
+        const singleTaskImage = JSON.parse(localStorage.getItem('singleTaskImage'))
 
-        // console.log(singleTask)
 
         const { loading } = this.state;
-        
-
-        // if (this.state.redirectToReferrer) {
-        //     return (<Redirect to={'/dashboard'} />)
-        // }
-
-        // if (sessionStorage.getItem('token')) {
-        //     return (<Redirect to={'/dashboard'} />)
-        // }
-
 
 
         return (
@@ -177,8 +229,8 @@ export default class EditTask extends Component {
                             <div className="content d-flex flex-column flex-column-fluid" id="kt_content">
 
                                 <div className="d-flex flex-column-fluid">
-                                        {/*begin::Container*/}
-                                     <div className="container">
+                                    {/*begin::Container*/}
+                                    <div className="container">
 
                                         <div className="card card-custom gutter-b">
                                             <div className="card-body">
@@ -201,10 +253,10 @@ export default class EditTask extends Component {
                                                                 {/*begin::Name*/}
                                                                 <a href="#" className="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{singleTask.title}
                                                                     <i className="flaticon2-correct text-success icon-md ml-2" /></a>
-                                                                    <div className>
-                                                                        {/* <div className="font-weight-bold mb-2">Project Name</div> */}
-                                                                        <span className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">{singleTask.project_name}</span>
-                                                                    </div>
+                                                                <div className>
+                                                                    {/* <div className="font-weight-bold mb-2">Project Name</div> */}
+                                                                    <span className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">{singleTask.project_name}</span>
+                                                                </div>
                                                                 {/*end::Name*/}
                                                                 {/*begin::Contacts*/}
                                                                 <div className="d-flex flex-wrap my-2">
@@ -245,14 +297,14 @@ export default class EditTask extends Component {
                                                         {/*end: Title*/}
                                                         {/*begin: Content*/}
                                                         <div className="d-flex align-items-center flex-wrap justify-content-between">
-                                                            
+
                                                             <div className="flex-grow-1 font-weight-bold text-dark-50 py-5 py-lg-2 mr-5">{singleTask.description}</div>
-                                                            
-                                                            
+
+
                                                             <div className="d-flex flex-wrap align-items-center py-2">
-                                                                
+
                                                                 <div className="d-flex align-items-center mr-10">
-                                                               
+
                                                                     <div className="mr-6">
                                                                         <div className="font-weight-bold mb-2">Start Date</div>
                                                                         <span className="btn btn-sm btn-text btn-light-primary text-uppercase font-weight-bold">{singleTask.start_date}</span>
@@ -261,19 +313,19 @@ export default class EditTask extends Component {
                                                                         <div className="font-weight-bold mb-2">Due Date</div>
                                                                         <span className="btn btn-sm btn-text btn-light-danger text-uppercase font-weight-bold">{singleTask.due_date}</span>
                                                                     </div>
-                                                                    
+
                                                                 </div>
                                                                 <div >
-                                                                <div className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">
-                                                                <div className="font-weight-bold mb-2">Progress</div>
-                                                                    <div className="progress progress-xs mt-2 mb-2">
-                                                                        <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleTask.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                                                                    <div className="flex-grow-1 flex-shrink-0 w-150px w-xl-300px mt-4 mt-sm-0">
+                                                                        <div className="font-weight-bold mb-2">Progress</div>
+                                                                        <div className="progress progress-xs mt-2 mb-2">
+                                                                            <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleTask.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} />
+                                                                        </div>
+                                                                        <span className="font-weight-bolder text-dark">{singleTask.progress}</span>
                                                                     </div>
-                                                                    <span className="font-weight-bolder text-dark">{singleTask.progress}</span>
-                                                                </div>
                                                                     <span className="font-weight-bold"></span>
                                                                     {/* <div className="progress progress-xs mt-2 mb-2"> */}
-                                                                        {/* <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleTask.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} /> */}
+                                                                    {/* <div className="progress-bar bg-success" role="progressbar" style={{ width: `${singleTask.progress}` }} aria-valuenow={50} aria-valuemin={0} aria-valuemax={100} /> */}
                                                                     {/* </div> */}
                                                                     {/* <span className="font-weight-bolder text-dark">{singleTask.project}</span> */}
                                                                 </div>
@@ -306,7 +358,7 @@ export default class EditTask extends Component {
                                                                     className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
                                                                     // data-wizard-type="step-content"
                                                                     enabled={this.state.loading}
-                                                                    >
+                                                                >
                                                                     {this.state.loading && (
                                                                         <center><Spinner animation="border" variant="white" /></center>
                                                                     )}
@@ -337,9 +389,67 @@ export default class EditTask extends Component {
                                                     )}
                                                 </Form>
 
+
+
+                                                <Form onSubmit={this.handleSubmitImage} ref={c => { this.form = c; }} className="form" id="kt_form">
+                                                    {!this.state.successful && (
+                                                        <div>
+                                                            <div className="form-group">
+                                                                <label>Image Title</label>
+
+                                                                <Input type="text" className="form-control form-control-solid form-control-lg" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required />
+                                                            </div>
+
+                                                            <Input type="file"
+                                                                onChange={this.handleImageChange} required />
+
+                                                            <center>
+                                                                <button
+                                                                    type="submit"
+                                                                    enabled={this.state.myloading}
+                                                                    className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
+                                                                    id="kt_login_singin_form_submit_button"
+
+                                                                >
+                                                                    {this.state.myloading && (
+                                                                        <center><Spinner animation="border" variant="white" /></center>
+                                                                    )}
+                                                        Submit</button>
+                                                            </center>
+
+                                                            <CheckButton
+                                                                style={{ display: "none" }}
+                                                                ref={c => {
+                                                                    this.checkBtn = c;
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    )}
+                                                    {this.state.message && (
+
+                                                        <div className="pb-5" >
+                                                            <div
+                                                                className={
+                                                                    this.state.successful
+                                                                        ? "alert alert-custom alert-outline-success fade show mb-5"
+                                                                        : "alert alert-custom alert-outline-danger fade show mb-5"
+                                                                }
+                                                                role="alert"
+                                                            >
+                                                                {this.state.message}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </Form>
+
+
                                             </div>
+                                           
+
 
                                         </div>
+
+
 
                                         <Footer />
 
@@ -354,21 +464,9 @@ export default class EditTask extends Component {
                 </div>
             </div>
 
-
-
-
-
         );
     }
 }
-
-
-
-
-
-
-
-
 
 
 
