@@ -12,6 +12,7 @@ import AuthLogin from "../Authentications/AuthLogin";
 
 export default class AllTasks extends Component {
   constructor(props) {
+
     super(props);
     this.state = {
       project: "",
@@ -54,19 +55,100 @@ export default class AllTasks extends Component {
       .then(res => {
         if (res.data) {
           localStorage.setItem("AllTasksData", JSON.stringify(res.data));
+          localStorage.setItem("singleTaskImage", JSON.stringify(data));
+
         }
         // (res);
         // (res.data);
         this.setState({ allTazz: res.data, myloading: false });
       })
 
+       const data =
+      [
+        {
+            "task": 'loading...',
+            "task_name": "loading...",
+            "pk": 'loading...',
+            "title": "loading...",
+            "image": "loading...",
+            "version": 'loading...',
+            "created": "loading...",
+            "updated": "loading..."
+          },
+        {
+            "task": 'loading...',
+            "task_name": "loading...",
+            "pk": 'loading...',
+            "title": "loading...",
+            "image": "loading...",
+            "version": 'loading...',
+            "created": "loading...",
+            "updated": "loading..."
+          }, {
+            "task": 'loading...',
+            "task_name": "loading...",
+            "pk": 'loading...',
+            "title": "loading...",
+            "image": "loading...",
+            "version": 'loading...',
+            "created": "loading...",
+            "updated": "loading..."
+          },
+
+        {
+            "task": 'loading...',
+            "task_name": "loading...",
+            "pk": 'loading...',
+            "title": "loading...",
+            "image": "loading...",
+            "version": 'loading...',
+            "created": "loading...",
+            "updated": "loading..."
+          }
+      ]
+
+
+      
   }
   //this is my onclick event to pass project ID
   EditTask(task) {
     localStorage.setItem("singleTask", JSON.stringify(task));
 
+
+    const username = 'admin'
+    const password = 'Pass@1234'
+    const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
+    axios.get("https://ecological.chinikiguard.com/projects/api/task/image/list/",
+      {
+        headers:
+        {
+          'Authorization': `Basic ${token}`,
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+        },
+        params: {
+
+          task: `${task.pk}`
+        }
+
+      })
+      .then(res => {
+        if (res.data) {
+          localStorage.setItem("singleTaskImage", JSON.stringify(res.data));
+
+        }
+        // console.log(res);
+        // console.log(res.data);
+        window.location = "/EditTask"
+
+      })
+
+     
+
     // (task)
   }
+
   render() {
 
     if (!localStorage.getItem('user')) {

@@ -41,15 +41,32 @@ export default class EditTask extends Component {
             show: false,
             message: "",
             title: '',
-            image: null
+            image: null,
+            showAdministrator: false,
+            showTaskManager: false,
+            showProjectManager: false,
+            currentUser: undefined,
 
         };
     }
 
 
     componentDidMount() {
-        
 
+        //user  stored user information (including JWT) from AuthService class
+    const user = AuthLogin.getCurrentUser();
+    //check User Group
+    if (user) {
+      this.setState({
+        currentUser: user,
+        showAdministrator: user.profile.user_groups.includes("ADMINISTRATOR"),
+        showTaskManager: user.profile.user_groups.includes("TASK MANAGER"),
+        showProjectManager: user.profile.user_groups.includes("PROJECT MANAGER"),
+      });
+    }
+
+   
+        
 
     }
 
@@ -70,19 +87,17 @@ export default class EditTask extends Component {
         })
     };
 
-
     handleSubmitImage = (e) => {
         e.preventDefault();
-        console.log(this.state);
-
 
         const mytoken = JSON.parse(localStorage.getItem('user'));
         const token = mytoken.token;
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
         const task = singleTask.pk;
 
-        let formData = new FormData();
 
+
+        let formData = new FormData();
         formData.append('image', this.state.image);
         formData.append('title', this.state.title);
         formData.append('task', task);
@@ -104,12 +119,9 @@ export default class EditTask extends Component {
                     message: "",
                     successful: false,
                     myloading: true
-
                 });
-
                 window.location = "/EditTask"
             })
-
     };
 
     onChangeStatus(e) {
@@ -209,7 +221,7 @@ export default class EditTask extends Component {
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
         const singleTaskImage = JSON.parse(localStorage.getItem('singleTaskImage'))
 
-
+        console.log(singleTaskImage)
         const { loading } = this.state;
 
 
@@ -388,9 +400,6 @@ export default class EditTask extends Component {
                                                         </div>
                                                     )}
                                                 </Form>
-
-
-
                                                 <Form onSubmit={this.handleSubmitImage} ref={c => { this.form = c; }} className="form" id="kt_form">
                                                     {!this.state.successful && (
                                                         <div>
@@ -441,15 +450,46 @@ export default class EditTask extends Component {
                                                         </div>
                                                     )}
                                                 </Form>
-
-
                                             </div>
-                                           
-
-
                                         </div>
 
+                                        <div className="row">
+                                            {/*begin::Col*/}
+                                            {singleTaskImage.map(taskImage => (
 
+                                                <div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                                    {/*begin::Card*/}
+
+                                                    <div className="card card-custom gutter-b card-stretch">
+                                                        <div className="card-header border-0">
+                                                            <h3 className="card-title" />
+                                                            <div className="card-toolbar">
+                                                                <div className="dropdown dropdown-inline" data-toggle="tooltip" title data-placement="left" data-original-title="Quick actions">
+                                                                    <a href="#" className="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                        <i className="ki ki-bold-more-hor" />
+                                                                    </a>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div className="card-body">
+                                                            <div className="d-flex flex-column align-items-center">
+                                                                {/*begin: Icon*/}
+                                                                {/* <img alt className="max-h-65px" src={taskImage.image} /> */}
+                                                                {/*end: Icon*/}
+                                                                {/*begin: Tite*/}
+                                                                <a href={taskImage.image} className="text-dark-75 font-weight-bold mt-15 font-size-lg">{taskImage.title}</a>
+                                                                {/*end: Tite*/}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {/*end:: Card*/}
+
+                                                </div>
+                                            ))}
+
+                                            {/*end::Col*/}
+                                        </div>
 
                                         <Footer />
 
