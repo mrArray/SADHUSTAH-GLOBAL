@@ -120,7 +120,7 @@ export default class EditTask extends Component {
                     successful: false,
                     myloading: true
                 });
-                window.location = "/EditTask"
+                window.location = "/alltasks"
             })
     };
 
@@ -209,7 +209,7 @@ export default class EditTask extends Component {
         }
     }
 
-   
+
     render() {
 
         if (!localStorage.getItem('user')) {
@@ -341,69 +341,75 @@ export default class EditTask extends Component {
                                                                     {/* <span className="font-weight-bolder text-dark">{singleTask.project}</span> */}
                                                                 </div>
                                                             </div>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                                                            <Form onSubmit={this.handleStatus} ref={c => { this.form = c; }} className="form" id="kt_form">
+                                                                {!this.state.successful && (
+                                                                    <div>
+                                                                        <div className="separator separator-solid my-7" />
+                                                                        <div className="form-group">
+                                                                            <label className="font-weight-bold mb-2">Change Status</label>
+                                                                            <select name="country" className="form-control"
+                                                                                value={this.state.status}
+                                                                                onChange={this.onChangeStatus}
+                                                                                validations={[required]}
+                                                                                name="projectstatus"
+                                                                            >
+                                                                                <option value>Select</option>
+                                                                                <option value="open">Open</option>
+                                                                                <option value="inprogress">In Progress</option>
+                                                                                <option value="completed">Completed</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <center>
+                                                                            <button id="kt_login_singin_form_submit_button"
+                                                                                className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
+                                                                                // data-wizard-type="step-content"
+                                                                                enabled={this.state.loading}
+                                                                            >
+                                                                                {this.state.loading && (
+                                                                                    <center><Spinner animation="border" variant="white" /></center>
+                                                                                )}
+                                                                                <span>Change</span>
+                                                                            </button></center>
+                                                                        <CheckButton
+                                                                            style={{ display: "none" }}
+                                                                            ref={c => {
+                                                                                this.checkBtn = c;
+                                                                            }}
+                                                                        />
+                                                                    </div>
+                                                                )}
+                                                                {this.state.message && (
+
+                                                                    <div className="pb-5" >
+                                                                        <div
+                                                                            className={
+                                                                                this.state.successful
+                                                                                    ? "alert alert-custom alert-outline-success fade show mb-5"
+                                                                                    : "alert alert-custom alert-outline-danger fade show mb-5"
+                                                                            }
+                                                                            role="alert"
+                                                                        >
+                                                                            {this.state.message}
+                                                                        </div>
+                                                                    </div>
+                                                                )}
+                                                            </Form>
+
                                                         </div>
                                                         {/*end: Content*/}
                                                     </div>
+
                                                     {/*end: Info*/}
                                                 </div>
-                                                <Form onSubmit={this.handleStatus} ref={c => { this.form = c; }} className="form" id="kt_form">
-                                                    {!this.state.successful && (
-                                                        <div>
-                                                            <div className="separator separator-solid my-7" />
-                                                            <div className="form-group">
-                                                                <label><h5>Change Status</h5></label>
-                                                                <select name="country" className="form-control"
-                                                                    value={this.state.status}
-                                                                    onChange={this.onChangeStatus}
-                                                                    validations={[required]}
-                                                                    name="projectstatus"
-                                                                >
-                                                                    <option value>Select</option>
-                                                                    <option value="open">Open</option>
-                                                                    <option value="inprogress">In Progress</option>
-                                                                    <option value="completed">Completed</option>
-                                                                </select>
-                                                            </div>
-                                                            <center>
-                                                                <button id="kt_login_singin_form_submit_button"
-                                                                    className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
-                                                                    // data-wizard-type="step-content"
-                                                                    enabled={this.state.loading}
-                                                                >
-                                                                    {this.state.loading && (
-                                                                        <center><Spinner animation="border" variant="white" /></center>
-                                                                    )}
-                                                                    <span>Change</span>
-                                                                </button></center>
-                                                            <CheckButton
-                                                                style={{ display: "none" }}
-                                                                ref={c => {
-                                                                    this.checkBtn = c;
-                                                                }}
-                                                            />
-                                                        </div>
-                                                    )}
-                                                    {this.state.message && (
 
-                                                        <div className="pb-5" >
-                                                            <div
-                                                                className={
-                                                                    this.state.successful
-                                                                        ? "alert alert-custom alert-outline-success fade show mb-5"
-                                                                        : "alert alert-custom alert-outline-danger fade show mb-5"
-                                                                }
-                                                                role="alert"
-                                                            >
-                                                                {this.state.message}
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </Form>
+
                                                 <Form onSubmit={this.handleSubmitImage} ref={c => { this.form = c; }} className="form" id="kt_form">
                                                     {!this.state.successful && (
                                                         <div>
                                                             <div className="form-group">
-                                                                <label>Image Title</label>
+                                                                <label className="font-weight-bold mb-2">Image Title</label>
 
                                                                 <Input type="text" className="form-control form-control-solid form-control-lg" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required />
                                                             </div>
@@ -415,7 +421,7 @@ export default class EditTask extends Component {
                                                                 <button
                                                                     type="submit"
                                                                     enabled={this.state.myloading}
-                                                                    className="btn btn-sm btn-primary font-weight-bolder text-uppercase"
+                                                                    className="btn btn-sm btn-success font-weight-bolder text-uppercase"
                                                                     id="kt_login_singin_form_submit_button"
 
                                                                 >
@@ -449,6 +455,59 @@ export default class EditTask extends Component {
                                                         </div>
                                                     )}
                                                 </Form>
+
+{/* 
+                                                <Form onSubmit={this.handleSubmitImage} ref={c => { this.form = c; }} className="form" id="kt_form">
+                                                    {!this.state.successful && (
+                                                        <div>
+                                                            <div className="form-group">
+                                                                <label className="font-weight-bold mb-2">Document Title</label>
+
+                                                                <Input type="text" className="form-control form-control-solid form-control-lg" placeholder='Title' id='title' value={this.state.title} onChange={this.handleChange} required />
+                                                            </div>
+
+                                                            <Input type="file"
+                                                                onChange={this.handleImageChange} required />
+
+                                                            <center>
+                                                                <button
+                                                                    type="submit"
+                                                                    enabled={this.state.myloading}
+                                                                    className="btn btn-sm btn-success font-weight-bolder text-uppercase"
+                                                                    id="kt_login_singin_form_submit_button"
+
+                                                                >
+                                                                    {this.state.myloading && (
+                                                                        <center><Spinner animation="border" variant="white" /></center>
+                                                                    )}
+                                                        Submit</button>
+                                                            </center>
+
+                                                            <CheckButton
+                                                                style={{ display: "none" }}
+                                                                ref={c => {
+                                                                    this.checkBtn = c;
+                                                                }}
+                                                            />
+                                                        </div>
+                                                    )}
+                                                    {this.state.message && (
+
+                                                        <div className="pb-5" >
+                                                            <div
+                                                                className={
+                                                                    this.state.successful
+                                                                        ? "alert alert-custom alert-outline-success fade show mb-5"
+                                                                        : "alert alert-custom alert-outline-danger fade show mb-5"
+                                                                }
+                                                                role="alert"
+                                                            >
+                                                                {this.state.message}
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </Form> */}
+
                                             </div>
                                         </div>
 
@@ -457,8 +516,8 @@ export default class EditTask extends Component {
                                             {singleTaskImage.map(taskImage => (
 
                                                 <div className="card-body p-0">
-                                                     {/*begin::Details*/}
-                                                     <div className="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                    {/*begin::Details*/}
+                                                    <div className="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
                                                         <a href="#" className="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">{taskImage.title}</a>
                                                         {/* <span className="font-size-lg">Outlines keep poorly thought</span> */}
                                                     </div>
@@ -467,22 +526,22 @@ export default class EditTask extends Component {
                                                     <div className="overlay">
                                                         <div className="overlay-wrapper rounded bg-light text-center">
                                                             <a href={taskImage.image}>
-                                                            <img src={taskImage.image} alt className="mw-100 w-200px" />
+                                                                <img src={taskImage.image} alt className="mw-100 w-200px" />
                                                             </a>
                                                         </div>
                                                         <div className="overlay-layer">
-                                                            <a href={taskImage.image} target ="_blank"className="btn font-weight-bolder btn-sm btn-primary mr-2"> View</a>
+                                                            <a href={taskImage.image} target="_blank" className="btn font-weight-bolder btn-sm btn-primary mr-2"> View</a>
 
                                                             {/* <a href={taskImage.image}  download="taskImage" className="btn font-weight-bolder btn-sm btn-light-primary ">Download */}
-                                                            
-                                                          
+
+
                                                             {/* </a> */}
                                                         </div>
 
 
-                                                          </div>
+                                                    </div>
                                                     {/*end::Image*/}
-                                                   
+
                                                 </div>
 
 
@@ -525,7 +584,6 @@ export default class EditTask extends Component {
                                             {/*end::Col*/}
                                         </div>
 
-                                        <Footer />
 
                                     </div>
 
@@ -536,6 +594,8 @@ export default class EditTask extends Component {
                         </div>
                     </div>
                 </div>
+                <Footer />
+
             </div>
 
         );
