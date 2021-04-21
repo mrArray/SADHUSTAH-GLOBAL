@@ -95,7 +95,11 @@ export default class EditTask extends Component {
         const singleTask = JSON.parse(localStorage.getItem('singleTask'))
         const task = singleTask.pk;
 
-
+        this.setState({
+            message: "",
+            successful: false,
+            myloading: true
+        });
 
         let formData = new FormData();
         formData.append('image', this.state.image);

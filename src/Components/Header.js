@@ -57,6 +57,7 @@ routeChange =()=> {
 };
 
 
+
   render() {
     // const { currentUser, showModeratorBoard, showAdminBoard } = this.state;
     const { navigate } = this.state;
@@ -73,7 +74,7 @@ routeChange =()=> {
       <Router>
 
 
-        <div id="kt_header" className="header flex-column header-fixed" >
+        <div id="kt_header" className="header flex-column header-fixed"  >
           {/*begin::Top*/}
           <div className="header-top">
             {/*begin::Container*/}

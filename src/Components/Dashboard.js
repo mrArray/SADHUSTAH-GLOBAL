@@ -731,7 +731,7 @@ export default class Dashboard extends Component {
                                   ) : (
                                     <div>
                                         <Link to="/allTasks"  className="text-primary font-weight-bold font-size-h6"><h1>Total Projects</h1></Link>
-                                        <Link  to="/allTasks" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.allprojectuser}</h1></Link>
+                                        <Link  to="/allTasks" className="text-black font-weight-bold font-size-h6"><h1>{this.state.allprojectuser}</h1></Link>
                                   </div>
                                   )}
                                       </div>
@@ -757,7 +757,7 @@ export default class Dashboard extends Component {
                                   ) : (
                                     <div>
                                         <Link to="/allTasks" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>Total Tasks</h1></Link>
-                                        <Link  to="/allTasks" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.allTaskuser}</h1></Link>
+                                        <Link  to="/allTasks" className="text-black font-weight-bold font-size-h6"><h1>{this.state.allTaskuser}</h1></Link>
                                        
                                         </div>
                                   )}
@@ -792,7 +792,7 @@ export default class Dashboard extends Component {
                                   ) : (
                                     <div>
                                         <Link to="/CompletedProject"  className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Projects</h1></Link>
-                                        <Link  to="/CompletedProject" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.completedProjectuser}</h1></Link>
+                                        <Link  to="/CompletedProject" className="text-black font-weight-bold font-size-h6"><h1>{this.state.completedProjectuser}</h1></Link>
                                       </div>
                                   )}
                                     </div>
@@ -818,7 +818,7 @@ export default class Dashboard extends Component {
                                     <div>
                                         <Link to="/CompletedTask" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Tasks</h1></Link>
                                         
-                                      <Link  to="/CompletedTask" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.completedTaskuser}</h1></Link>
+                                      <Link  to="/CompletedTask" className="text-black font-weight-bold font-size-h6"><h1>{this.state.completedTaskuser}</h1></Link>
                                       </div>
 
                                         )}

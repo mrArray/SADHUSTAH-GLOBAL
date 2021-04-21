@@ -517,7 +517,6 @@ export default class RegisterProject extends Component {
                                     <button type="button" className="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                       
-
                                           <button id="kt_login_singin_form_submit_button"
                                           className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
                                           data-wizard-type="step-content"
