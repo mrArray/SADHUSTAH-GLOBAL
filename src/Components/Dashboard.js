@@ -82,6 +82,51 @@ export default class Dashboard extends Component {
 
 
       }));
+
+      //For User Counts
+
+    const DashboardUrlUsers = 'https://ecological.chinikiguard.com/projects/api/user-dashboard/'
+    axios.all([
+      axios.get(DashboardUrlUsers, {
+
+        headers: {
+          'Authorization': `Basic ${token}`,
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
+          'Access-Control-Allow-Credentials': true
+
+        },
+      }),
+
+    ])
+      .then(axios.spread((...responses) => {
+        // output of req.
+        // console.log(responses)
+        const allTasksuser = responses[0].data.all_tasks;
+        const allprojectsuser = responses[0].data.all_projects;
+        const openProjectsuser = responses[0].data.open_projects;
+        const openTasksuser = responses[0].data.open_tasks;
+        const ongoingProjectsuser = responses[0].data.inprogress_projects;
+        const ongoingTasksuser = responses[0].data.inprogress_tasks;
+        const completedProjectsuser = responses[0].data.completed_projects;
+        const completedTasksuser = responses[0].data.completed_tasks;
+        // adding the data to the state methods      
+        this.setState({
+          allTaskuser: allTasksuser,
+          allprojectuser: allprojectsuser,
+          openProjectuser: openProjectsuser,
+          openTaskuser: openTasksuser,
+          ongoingProjectuser: ongoingProjectsuser,
+          ongoingTaskuser: ongoingTasksuser,
+          completedProjectuser: completedProjectsuser,
+          completedTaskuser: completedTasksuser,
+          myloading: false
+
+        });
+
+
+      }));
   }
 
 
@@ -654,11 +699,18 @@ export default class Dashboard extends Component {
                                   <div id="kt_mixed_widget_1_chart" className="card-rounded-bottom bg-primary" style={{ height: 200 }} />
                                   {/*end::Chart*/}
                                   {/*begin::Stats*/}
+
+                                  
                                   <div className="card-spacer mt-n25">
                                     {/*begin::Row*/}
+                                  
+                                   
                                     <div className="row m-0">
+                                    
+                                    
                                       <div className="col bg-light-primary px-6 py-8 rounded-xl mr-7 mb-7">
                                         <span className="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
+                                          
                                           {/*begin::Svg Icon | path:assets/media/svg/icons/Media/Equalizer.svg*/}
                                           <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
                                             <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
@@ -671,8 +723,20 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <a href="#" className="text-primary font-weight-bold font-size-h6"><h1>Total Projects</h1></a>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
+
+                                  ) : (
+                                    <div>
+                                        <Link to="/allTasks"  className="text-primary font-weight-bold font-size-h6"><h1>Total Projects</h1></Link>
+                                        <Link  to="/allTasks" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.allprojectuser}</h1></Link>
+                                  </div>
+                                  )}
                                       </div>
+
+                                   
                                       <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                         <span className="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
                                           {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Add-user.svg*/}
@@ -685,13 +749,30 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <a href="#" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>Total Tasks</h1></a>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
+
+                                  ) : (
+                                    <div>
+                                        <Link to="/allTasks" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>Total Tasks</h1></Link>
+                                        <Link  to="/allTasks" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.allTaskuser}</h1></Link>
+                                       
+                                        </div>
+                                  )}
                                       </div>
-                                    </div>
+                                </div>
+
+                                    
                                     {/*end::Row*/}
+                                  
                                     {/*begin::Row*/}
+                                    
                                     <div className="row m-0">
+                                   
                                       <div className="col bg-light-success px-6 py-8 rounded-xl mr-7">
+                                      
                                         <span className="svg-icon svg-icon-3x svg-icon-success d-block my-2">
                                           {/*begin::Svg Icon | path:assets/media/svg/icons/Design/Layers.svg*/}
                                           <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
@@ -703,8 +784,19 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <a href="#" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Projects</h1></a>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
+
+                                  ) : (
+                                    <div>
+                                        <Link to="/CompletedProject"  className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Projects</h1></Link>
+                                        <Link  to="/CompletedProject" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.completedProjectuser}</h1></Link>
                                       </div>
+                                  )}
+                                    </div>
+                                 
                                       <div className="col bg-light-success px-6 py-8 rounded-xl">
                                         <span className="svg-icon svg-icon-3x svg-icon-success d-block my-2">
                                           {/*begin::Svg Icon | path:assets/media/svg/icons/Communication/Urgent-mail.svg*/}
@@ -717,9 +809,29 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <a href="#" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Tasks</h1></a>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
+
+                                  ) : (
+                                    <div>
+                                        <Link to="/CompletedTask" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Tasks</h1></Link>
+                                        
+                                      <Link  to="/CompletedTask" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.completedTaskuser}</h1></Link>
                                       </div>
-                                    </div>
+
+                                        )}
+
+                                        </div>
+                                        
+                                      
+                                  
+                                  </div>
+
+
+                                    {/*end::Row*/}
+
                                     {/*end::Row*/}
                                   </div>
                                   {/*end::Stats*/}
@@ -767,9 +879,17 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>Total Tasks</h1></Link>
-                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>3</h1></Link>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
 
+                                  ) : (
+                                    <div>
+                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>Total Tasks</h1></Link>
+                                        <Link  to="/Alltasks" className="text-warning font-weight-bold font-size-h6"><h1>{this.state.allTaskuser}</h1></Link>
+</div>
+                                  )}
                                       </div>
                                       <div className="col bg-light-primary px-6 py-8 rounded-xl mb-7">
                                         <span className="svg-icon svg-icon-3x svg-icon-primary d-block my-2">
@@ -785,9 +905,17 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <Link to="/OpenTask" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>New Task</h1></Link>
-                                        <Link  to="/OpenTask" className="text-primary font-weight-bold font-size-h6"><h1>1</h1></Link>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
 
+                                  ) : (
+                                    <div>
+                                        <Link to="/OpenTask" className="text-primary font-weight-bold font-size-h6 mt-2"><h1>New Task</h1></Link>
+                                        <Link  to="/OpenTask" className="text-primary font-weight-bold font-size-h6"><h1>{this.state.openTaskuser}</h1></Link>
+                                    </div>
+                                  )}
                                       </div>
                                     </div>
                                     {/*end::Row*/}
@@ -807,9 +935,17 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
-                                        <Link to="/OngoingTask" className="text-danger font-weight-bold font-size-h6 mt-2"><h1>Ongiong Tasks</h1></Link>
-                                        <Link  to="/OngoingTask" className="text-danger font-weight-bold font-size-h6"><h1>1</h1></Link>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
 
+                                  ) : (
+                                    <div>
+                                        <Link to="/OngoingTask" className="text-danger font-weight-bold font-size-h6 mt-2"><h1>Ongiong Tasks</h1></Link>
+                                        <Link  to="/OngoingTask" className="text-danger font-weight-bold font-size-h6"><h1>{this.state.ongoingTaskuser}</h1></Link>
+                                    </div>
+                                  )}
                                       </div>
                                       <div className="col bg-light-success px-6 py-8 rounded-xl">
                                         <span className="svg-icon svg-icon-3x svg-icon-success d-block my-2">
@@ -825,9 +961,19 @@ export default class Dashboard extends Component {
                                           </svg>
                                           {/*end::Svg Icon*/}
                                         </span>
+                                        {this.state.myloading ? (
+                                    <>
+                                      <center><Spinner animation="border" variant="primary" /></center>
+                                    </>
+
+                                  ) : (
+                                    <div>
                                         <Link to="/CompletedTask" className="text-success font-weight-bold font-size-h6 mt-2"><h1>Completed Task</h1></Link>
-                                        <Link  to="/OngoingTask" className="text-success font-weight-bold font-size-h6"><h1>1</h1></Link>
+                                        <Link  to="/OngoingTask" className="text-success font-weight-bold font-size-h6"><h1>{this.state.completedTaskuser}</h1></Link>
                                       </div>
+                                  )}
+                                      </div>
+                                  
                                     </div>
                                     {/*end::Row*/}
                                   </div>
