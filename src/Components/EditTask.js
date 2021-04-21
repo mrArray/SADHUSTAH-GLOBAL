@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import Form from "react-validation/build/form";
 import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
-import { Redirect, Switch } from 'react-router-dom';
+import { Redirect, Switch, Link } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer'
 import Menu_Aside from "./Menu_Aside";
@@ -54,19 +54,19 @@ export default class EditTask extends Component {
     componentDidMount() {
 
         //user  stored user information (including JWT) from AuthService class
-    const user = AuthLogin.getCurrentUser();
-    //check User Group
-    if (user) {
-      this.setState({
-        currentUser: user,
-        showAdministrator: user.profile.user_groups.includes("ADMINISTRATOR"),
-        showTaskManager: user.profile.user_groups.includes("TASK MANAGER"),
-        showProjectManager: user.profile.user_groups.includes("PROJECT MANAGER"),
-      });
-    }
+        const user = AuthLogin.getCurrentUser();
+        //check User Group
+        if (user) {
+            this.setState({
+                currentUser: user,
+                showAdministrator: user.profile.user_groups.includes("ADMINISTRATOR"),
+                showTaskManager: user.profile.user_groups.includes("TASK MANAGER"),
+                showProjectManager: user.profile.user_groups.includes("PROJECT MANAGER"),
+            });
+        }
 
-   
-        
+
+
 
     }
 
@@ -209,8 +209,7 @@ export default class EditTask extends Component {
         }
     }
 
-
-
+   
     render() {
 
         if (!localStorage.getItem('user')) {
@@ -457,35 +456,70 @@ export default class EditTask extends Component {
                                             {/*begin::Col*/}
                                             {singleTaskImage.map(taskImage => (
 
-                                                <div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
-                                                    {/*begin::Card*/}
-
-                                                    <div className="card card-custom gutter-b card-stretch">
-                                                        <div className="card-header border-0">
-                                                            <h3 className="card-title" />
-                                                            <div className="card-toolbar">
-                                                                <div className="dropdown dropdown-inline" data-toggle="tooltip" title data-placement="left" data-original-title="Quick actions">
-                                                                    <a href="#" className="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                        <i className="ki ki-bold-more-hor" />
-                                                                    </a>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="card-body">
-                                                            <div className="d-flex flex-column align-items-center">
-                                                                {/*begin: Icon*/}
-                                                                {/* <img alt className="max-h-65px" src={taskImage.image} /> */}
-                                                                {/*end: Icon*/}
-                                                                {/*begin: Tite*/}
-                                                                <a href={taskImage.image} className="text-dark-75 font-weight-bold mt-15 font-size-lg">{taskImage.title}</a>
-                                                                {/*end: Tite*/}
-                                                            </div>
-                                                        </div>
+                                                <div className="card-body p-0">
+                                                     {/*begin::Details*/}
+                                                     <div className="text-center mt-5 mb-md-0 mb-lg-5 mb-md-0 mb-lg-5 mb-lg-0 mb-5 d-flex flex-column">
+                                                        <a href="#" className="font-size-h5 font-weight-bolder text-dark-75 text-hover-primary mb-1">{taskImage.title}</a>
+                                                        {/* <span className="font-size-lg">Outlines keep poorly thought</span> */}
                                                     </div>
-                                                    {/*end:: Card*/}
+                                                    {/*end::Details*/}
+                                                    {/*begin::Image*/}
+                                                    <div className="overlay">
+                                                        <div className="overlay-wrapper rounded bg-light text-center">
+                                                            <a href={taskImage.image}>
+                                                            <img src={taskImage.image} alt className="mw-100 w-200px" />
+                                                            </a>
+                                                        </div>
+                                                        <div className="overlay-layer">
+                                                            <a href={taskImage.image} target ="_blank"className="btn font-weight-bolder btn-sm btn-primary mr-2"> View</a>
 
+                                                            {/* <a href={taskImage.image}  download="taskImage" className="btn font-weight-bolder btn-sm btn-light-primary ">Download */}
+                                                            
+                                                          
+                                                            {/* </a> */}
+                                                        </div>
+
+
+                                                          </div>
+                                                    {/*end::Image*/}
+                                                   
                                                 </div>
+
+
+                                                // <div className="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+                                                //     {/*begin::Card*/}
+
+                                                //     <div className="card card-custom gutter-b card-stretch">
+                                                //         <div className="card-header border-0">
+                                                //             <h3 className="card-title" />
+                                                //             <div className="card-toolbar">
+                                                //                 <div className="dropdown dropdown-inline" data-toggle="tooltip" title data-placement="left" data-original-title="Quick actions">
+                                                //                     <a href="#" className="btn btn-clean btn-hover-light-primary btn-sm btn-icon" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                //                         <i className="ki ki-bold-more-hor" />
+                                                //                     </a>
+
+                                                //                 </div>
+                                                //             </div>
+                                                //         </div>
+                                                //         <div className="card-body">
+                                                //             <div className="d-flex flex-column align-items-center">
+                                                //                 {/*begin: Icon*/}
+                                                //                 {/*end: Icon*/}
+                                                //                 {/*begin: Tite*/}
+
+                                                //                 {taskImage.title}
+                                                //                 <a href={taskImage.url} className="mw-100 w-200px">
+                                                //                 <img alt className="mw-100 w-200px" src={taskImage.image}  alt="image"/>
+
+
+                                                //                 </a>
+                                                //                 {/*end: Tite*/}
+                                                //             </div>
+                                                //         </div>
+                                                //     </div>
+                                                //     {/*end:: Card*/}
+
+                                                // </div>
                                             ))}
 
                                             {/*end::Col*/}
