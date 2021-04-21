@@ -39,12 +39,13 @@ export default class Dashboard extends Component {
     //API display for Dashboard
     const mytoken = AuthLogin.getCurrentUser();
     const token = mytoken.token;
+
     const DashboardUrl = 'https://ecological.chinikiguard.com/projects/api/dashboard/'
     axios.all([
       axios.get(DashboardUrl, {
 
         headers: {
-          'Authorization': `Basic ${token}`,
+          'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
@@ -89,7 +90,7 @@ export default class Dashboard extends Component {
       axios.get(DashboardUrlUsers, {
 
         headers: {
-          'Authorization': `Basic ${token}`,
+          'Authorization': `Token ${token}`,
           'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
           'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
