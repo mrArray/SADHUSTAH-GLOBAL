@@ -27,6 +27,12 @@ class Header extends Component {
 
   componentWillMount() {
 
+    const UserDetails = AuthLogin.getCurrentUser();
+    this.setState({
+      user: UserDetails,
+    });
+
+
   }
 
 
@@ -717,8 +723,8 @@ routeChange =()=> {
                 <div className="topbar-item">
                 <Link to="/UserProfile" >
                     <div className="d-flex flex-column text-right pr-sm-3">
-                      <span className="text-white opacity-50 font-weight-bold font-size-sm d-none d-sm-inline"><center>Abdulhakim</center></span>
-                      <span className="text-white font-weight-bolder font-size-sm d-none d-sm-inline">Project Manager</span>
+                      <span className="text-white opacity-50 font-weight-bold font-size-sm d-none d-sm-inline"><center>{this.state.user.profile.username}</center></span>
+                      <span className="text-white font-weight-bolder font-size-sm d-none d-sm-inline">{this.state.user.profile.user_groups}</span>
 
                     </div>
                     {/* <span className="symbol symbol-35">
