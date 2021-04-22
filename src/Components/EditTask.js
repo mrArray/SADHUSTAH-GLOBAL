@@ -10,6 +10,8 @@ import Menu_Aside from "./Menu_Aside";
 import AuthLogin from "../Authentications/AuthLogin";
 import axios from "axios";
 import Spinner from 'react-bootstrap/Spinner'
+import {ProgressBar} from 'react-bootstrap';
+
 
 
 
@@ -46,6 +48,7 @@ export default class EditTask extends Component {
             showTaskManager: false,
             showProjectManager: false,
             currentUser: undefined,
+            uploadPercentage:0
 
         };
     }
@@ -90,10 +93,18 @@ export default class EditTask extends Component {
     handleSubmitImage = (e) => {
         e.preventDefault();
 
-        const mytoken = JSON.parse(localStorage.getItem('user'));
-        const token = mytoken.token;
-        const singleTask = JSON.parse(localStorage.getItem('singleTask'))
-        const task = singleTask.pk;
+        const options = {
+            onUploadProgress: (progressEvent) => {
+              const {loaded, total} = progressEvent;
+              let percent = Math.floor( (loaded * 100) / total )
+              console.log( `${loaded}kb of ${total}kb | ${percent}%` );
+      
+              if( percent < 100 ){
+                this.setState({ uploadPercentage: percent })
+              }
+            }
+          }
+
 
         this.setState({
             message: "",
@@ -101,6 +112,10 @@ export default class EditTask extends Component {
             myloading: true
         });
 
+        const mytoken = JSON.parse(localStorage.getItem('user'));
+        const token = mytoken.token;
+        const singleTask = JSON.parse(localStorage.getItem('singleTask'))
+        const task = singleTask.pk;
         let formData = new FormData();
         formData.append('image', this.state.image);
         formData.append('title', this.state.title);
@@ -108,7 +123,8 @@ export default class EditTask extends Component {
 
         let url = 'https://ecological.chinikiguard.com/projects/api/task/image/add/';
 
-        axios.post(url, formData, {
+        axios.post(url,formData,
+            {
             headers: {
                 'content-type': 'multipart/form-data',
                 'Authorization': `Token ${token}`,
@@ -116,15 +132,23 @@ export default class EditTask extends Component {
                 'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS',
                 'Access-Control-Allow-Credentials': true
             }
-        })
+        },
+        
+        options)
             .then(res => {
                 console.log(res)
+                this.setState({ avatar: res.data.url, uploadPercentage: 100 }, ()=>{
+                    setTimeout(() => {
+                      this.setState({ uploadPercentage: 0 })
+                    }, 1000);
+                  })
+
                 this.setState({
                     message: "",
                     successful: false,
                     myloading: true
                 });
-                window.location = "/alltasks"
+                // window.location = "/alltasks"
             })
     };
 
@@ -215,6 +239,9 @@ export default class EditTask extends Component {
 
 
     render() {
+
+        const {uploadPercentage} = this.state;
+
 
         if (!localStorage.getItem('user')) {
 
@@ -412,6 +439,8 @@ export default class EditTask extends Component {
                                                 <Form onSubmit={this.handleSubmitImage} ref={c => { this.form = c; }} className="form" id="kt_form">
                                                     {!this.state.successful && (
                                                         <div>
+                                                        { uploadPercentage > 0 && <ProgressBar now={uploadPercentage} active label={`${uploadPercentage}%`} /> }
+
                                                             <div className="form-group">
                                                                 <label className="font-weight-bold mb-2">Image Title</label>
 
@@ -427,6 +456,7 @@ export default class EditTask extends Component {
                                                                     enabled={this.state.myloading}
                                                                     className="btn btn-sm btn-success font-weight-bolder text-uppercase"
                                                                     id="kt_login_singin_form_submit_button"
+                                                                    // onChange={this.handleSubmitImage}
 
                                                                 >
                                                                     {this.state.myloading && (
@@ -434,7 +464,6 @@ export default class EditTask extends Component {
                                                                     )}
                                                         Submit</button>
                                                             </center>
-
                                                             <CheckButton
                                                                 style={{ display: "none" }}
                                                                 ref={c => {
