@@ -137,7 +137,7 @@ export default class EditTask extends Component {
         options)
             .then(res => {
                 console.log(res)
-                this.setState({ avatar: res.data.url, uploadPercentage: 100 }, ()=>{
+                this.setState({ avatar: res.data.image, uploadPercentage: 100 }, ()=>{
                     setTimeout(() => {
                       this.setState({ uploadPercentage: 0 })
                     }, 1000);
@@ -148,7 +148,7 @@ export default class EditTask extends Component {
                     successful: false,
                     myloading: true
                 });
-                // window.location = "/alltasks"
+                window.location = "/alltasks"
             })
     };
 
