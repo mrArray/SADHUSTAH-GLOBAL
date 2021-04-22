@@ -272,7 +272,10 @@ export default class EditTask extends Component {
 
                                 <div className="d-flex flex-column-fluid">
                                     {/*begin::Container*/}
+
                                     <div className="container">
+                                    {/* <br/> */}
+                                    <Link  class="btn btn-light-primary font-weight-bolder btn-sm" to="/alltasks" >Back</Link>
 
                                         <div className="card card-custom gutter-b">
                                             <div className="card-body">
@@ -286,12 +289,16 @@ export default class EditTask extends Component {
                                                             <span className="font-size-h3 symbol-label font-weight-boldest"></span>
                                                         </div>
                                                     </div>
+
                                                     {/*end: Pic*/}
                                                     {/*begin: Info*/}
                                                     <div className="flex-grow-1">
                                                         {/*begin: Title*/}
+
                                                         <div className="d-flex align-items-center justify-content-between flex-wrap">
+
                                                             <div className="mr-3">
+
                                                                 {/*begin::Name*/}
                                                                 <a href="#" className="d-flex align-items-center text-dark text-hover-primary font-size-h5 font-weight-bold mr-3">{singleTask.title}
                                                                     <i className="flaticon2-correct text-success icon-md ml-2" /></a>
