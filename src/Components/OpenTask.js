@@ -40,7 +40,7 @@ export default class OpenTask extends Component {
     }
     const mytoken = AuthLogin.getCurrentUser();
     const token = mytoken.token;
-    axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1&for_user=true&status=open",
+    axios.get("https://ecological1.chinikiguard.com/projects/api/tasks/list/?all_record=1&for_user=true&status=open",
       {
         headers:
         {

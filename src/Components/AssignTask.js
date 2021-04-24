@@ -73,7 +73,7 @@ export default class AssignTask extends Component {
     const username = 'admin'
     const password = 'Pass@1234'
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    axios.get("https://ecological.chinikiguard.com/projects/api/list/?all_record=1",
+    axios.get("https://ecological1.chinikiguard.com/projects/api/list/?all_record=1",
       {
         headers:
         {

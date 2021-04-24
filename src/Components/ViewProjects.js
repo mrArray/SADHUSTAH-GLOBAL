@@ -55,7 +55,7 @@ export default class ViewProjects extends Component {
     let username = 'admin';
     let password = 'Pass@1234';
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-      return  axios.get(`https://ecological.chinikiguard.com/projects/api/details/${project}/`,
+      return  axios.get(`https://ecological1.chinikiguard.com/projects/api/details/${project}/`,
       { 
        headers: { 
        'Authorization': `Basic ${token}`,

@@ -9,7 +9,7 @@ export default function App() {
   const password = 'Pass@1234'
   const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
   
-    axios.get("https://ecological.chinikiguard.com/accounts/api/users/",
+    axios.get("https://ecological1.chinikiguard.com/accounts/api/users/",
       {
         headers:
         {

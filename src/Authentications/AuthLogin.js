@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const Url ='https://ecological.chinikiguard.com/accounts/api/jwt/';
+const Url ='https://ecological1.chinikiguard.com/accounts/api/jwt/';
 
 class AuthLogin {
 
@@ -34,7 +34,7 @@ class AuthLogin {
   createNewUser( username,password,first_name,last_name,address, lga,state,dob,email,phone_number) {
     const mytoken = JSON.parse(localStorage.getItem('user'));
 const token = mytoken.token;
-    return axios.post('https://ecological.chinikiguard.com/accounts/api/create-user/', {
+    return axios.post('https://ecological1.chinikiguard.com/accounts/api/create-user/', {
       username,
       password,
       first_name,
@@ -64,7 +64,7 @@ const token = mytoken.token;
   RegisterProject(title,description,location,status,start_date,due_date){
     const mytoken = JSON.parse(localStorage.getItem('user'));
 const token = mytoken.token;
-     return  axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
+     return  axios.post("https://ecological1.chinikiguard.com/projects/api/create/", {
 
      title,
      description,
@@ -92,7 +92,7 @@ const token = mytoken.token;
   RegisterTask(project,title,description,location,status,start_date,due_date,assigned_to){
   const mytoken = JSON.parse(localStorage.getItem('user'));
   const token = mytoken.token;
-  return  axios.post("https://ecological.chinikiguard.com/projects/api/tasks/create/", {
+  return  axios.post("https://ecological1.chinikiguard.com/projects/api/tasks/create/", {
 
   project,
   title,

@@ -121,7 +121,7 @@ export default class EditTask extends Component {
         formData.append('title', this.state.title);
         formData.append('task', task);
 
-        let url = 'https://ecological.chinikiguard.com/projects/api/task/image/add/';
+        let url = 'https://ecological1.chinikiguard.com/projects/api/task/image/add/';
 
         axios.post(url,formData,
             {
@@ -167,7 +167,7 @@ export default class EditTask extends Component {
         const TaskPk = singleTask.pk;
         // console.log(TaskPk)
 
-        return axios.put(`https://ecological.chinikiguard.com/projects/api/tasks/update/${TaskPk}/`, {
+        return axios.put(`https://ecological1.chinikiguard.com/projects/api/tasks/update/${TaskPk}/`, {
             status: `${status}`,
         },
             {

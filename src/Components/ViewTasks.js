@@ -47,7 +47,7 @@ export default class ViewTasks extends Component {
     // const username = 'admin'
     // const password = 'Pass@1234'
     // const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    // axios.get("https://ecological.chinikiguard.com/projects/api/tasks/list/?all_record=1",
+    // axios.get("https://ecological1.chinikiguard.com/projects/api/tasks/list/?all_record=1",
     //   {
     //     headers:
     //     {
@@ -78,7 +78,7 @@ export default class ViewTasks extends Component {
     let username = 'admin';
     let password = 'Pass@1234';
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-      return  axios.get(`https://ecological.chinikiguard.com/projects/api/tasks/details/${task}/`,
+      return  axios.get(`https://ecological1.chinikiguard.com/projects/api/tasks/details/${task}/`,
       { 
        headers: { 
        'Authorization': `Basic ${token}`,

@@ -40,7 +40,7 @@ export default class Dashboard extends Component {
     const mytoken = AuthLogin.getCurrentUser();
     const token = mytoken.token;
 
-    const DashboardUrl = 'https://ecological.chinikiguard.com/projects/api/dashboard/'
+    const DashboardUrl = 'https://ecological1.chinikiguard.com/projects/api/dashboard/'
     axios.all([
       axios.get(DashboardUrl, {
 
@@ -85,7 +85,7 @@ export default class Dashboard extends Component {
 
     //For User Counts
 
-    const DashboardUrlUsers = 'https://ecological.chinikiguard.com/projects/api/user-dashboard/'
+    const DashboardUrlUsers = 'https://ecological1.chinikiguard.com/projects/api/user-dashboard/'
     axios.all([
       axios.get(DashboardUrlUsers, {
 

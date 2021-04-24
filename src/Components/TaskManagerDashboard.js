@@ -23,7 +23,7 @@ const TaskManagerDashboard = () => {
     const username = 'admin'
     const password = 'Pass@1234'
     const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    const DashboardUrl='https://ecological.chinikiguard.com/projects/api/dashboard/'
+    const DashboardUrl='https://ecological1.chinikiguard.com/projects/api/dashboard/'
           await  axios.all([
             axios.get(DashboardUrl,  {
                     

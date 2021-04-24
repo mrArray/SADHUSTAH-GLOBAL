@@ -56,7 +56,7 @@ export default class EditProject extends Component {
         const ProjectPk = singleProjects.pk;
         // console.log(ProjectPk)
 
-        return axios.put(`https://ecological.chinikiguard.com/projects/api/update/${ProjectPk}/`, {
+        return axios.put(`https://ecological1.chinikiguard.com/projects/api/update/${ProjectPk}/`, {
             status: `${status}`,
         },
             {

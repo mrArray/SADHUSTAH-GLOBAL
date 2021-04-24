@@ -164,7 +164,7 @@ export default class RegisterProject extends Component {
     // const username = 'admin'
     // const password = 'Pass@1234'
     // const token = Buffer.from(`${username}:${password}`, 'utf8').toString('base64')
-    // axios.post("https://ecological.chinikiguard.com/projects/api/create/", {
+    // axios.post("https://ecological1.chinikiguard.com/projects/api/create/", {
 
     //   title: this.state.title,
     //   description: this.state.description,
