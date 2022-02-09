@@ -167,15 +167,16 @@ export default class Login extends Component {
 
 			  <div className="pb-lg-0 pb-5">
 
-				<button id="kt_login_singin_form_submit_button"
+				<Link id="kt_login_singin_form_submit_button"
 				  className="btn btn-primary font-weight-bolder font-size-h6 px-8 py-4 my-3 mr-3"
 				  disabled={this.state.loading}
+          to="/dashboard"
 				>
 				  {this.state.loading && (
 					<span className="spinner-border spinner-border-sm"></span>
 				  )}
 				  <span>Login</span>
-				</button>
+				</Link>
 			  </div>
 
 

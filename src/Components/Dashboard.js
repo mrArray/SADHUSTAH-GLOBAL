@@ -136,10 +136,10 @@ export default class Dashboard extends Component {
 
 
   render() {
-    if (!localStorage.getItem('user')) {
+    // if (!localStorage.getItem('user')) {
 
-      return (<Redirect to={'/login'} />)
-    }
+    //   return (<Redirect to={'/login'} />)
+    // }
     const { currentUser, showAdministrator, showTaskManager, showProjectManager } = this.state;
 
     return (
